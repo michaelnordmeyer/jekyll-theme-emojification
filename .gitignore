@@ -11,6 +11,3 @@ vendor/
 
 # Gems
 *.gem
-
-# Demo site (git submodule)
-_demo
