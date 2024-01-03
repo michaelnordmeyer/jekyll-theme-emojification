@@ -1,0 +1,30 @@
+# Remove URL for Github Pages plugin
+url: https://jekyll-theme-emojification.michaelnordmeyer.com
+# baseurl: "" # The subpath of the site, e.g. /blog
+title: Jekyll Theme Emojification
+# Description is used for meta headers and feeds. Limit to 160 characters if possible
+description: >-
+  A simple and minimal single-author theme with configurable big emoji as header links, and configurable background colors, which can be chosen for each post or page
+
+plugins:
+  - jekyll-include-cache
+
+## Jekyll build settings
+exclude: [jekyll-theme-emojification*, LICENSE, Rakefile.rb, README.md, TODO.md]
+ignore_theme_config: true # Since Jekyll 4.0, see: https://jekyllrb.com/docs/themes/#pre-configuring-theme-gems40, https://jekyllrb.com/docs/configuration/options/
+kramdown:
+  show_warnings: true
+liquid:
+  # Configure Liquid’s parser
+  error_mode: strict # default: warn
+  # Configure Liquid’s renderer
+  strict_filters: true # default: false
+  # strict_variables: true # default: false
+sass:
+  style: compressed
+# Only needed for the theme demo
+# source: demo
+strict_front_matter: true # default: false
+# timezone: Europe/Berlin # default: local timezone
+# remote_theme: michaelnordmeyer/jekyll-theme-emojification
+# theme: jekyll-theme-emojification

@@ -1,0 +1,19 @@
+---
+layout: default
+---
+<main aria-label="Content">
+    <article itemscope itemtype="https://schema.org/BlogPosting">
+      <header>
+        <h1 itemprop="headline name">{{ page.title | smartify }}</h1>
+        {%- assign date_format = site.theme_settings.date_format | default: "%Y-%m-%d" %}
+        <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>
+      </header>
+
+      <div itemprop="articleBody">
+        {%- if page.image %}
+        <img itemprop="image" src="{{ page.image }}" alt="{{ page.image_alt }}" title="{{ page.image_title }}">
+        {%- endif %}
+{{ content }}
+      </div>
+    </article>
+  </main>

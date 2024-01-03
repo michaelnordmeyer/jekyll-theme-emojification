@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
+<head>
+  <meta name="robots" content="noindex">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+{%- if site.theme_settings.favicon %}
+  <link rel="icon" type="{{ site.theme_settings.favicon_media_type }}" media="(prefers-color-scheme: light)" href="{{ site.theme_settings.favicon | relative_url }}">
+{%- endif %}
+{%- if site.theme_settings.favicon_dark %}
+  <link rel="icon" type="{{ site.theme_settings.favicon_media_type }}" media="(prefers-color-scheme: dark)" href="{{ site.theme_settings.favicon_dark | relative_url }}">
+{%- endif %}
+  <title>{% if page.title %}{{ page.title | smartify }}{% else %}{{ site.title | smartify }}{% endif %}</title>
+  <meta name="description" content="Error page">
+{%- assign theme_color = page.theme_color | default: site.theme_settings.theme_color -%}
+{%- if theme_color %}
+  <meta name="theme-color" content="{{ theme_color }}">
+  {%- if theme_color contains '#' %}
+    {%- assign theme_color = theme_color | replace: '#', '' %}
+  {%- endif %}
+  <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css' | relative_url }}">
+{%- else %}
+  <link rel="stylesheet" href="{{ '/assets/css/_no-colors.css' | relative_url }}">
+{%- endif %}
+  </head>
+<body>
+  {% include header.html icon=site.theme_settings.icon_error %}
+  
+  <main aria-label="Content">
+    <article itemscope itemtype="https://schema.org/WebPage">
+      <header>
+        <h1 itemprop="headline name">{{ page.title | smartify }}</h1>
+      </header>
+
+      <div itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/WebPageElement">
+{{ content }}
+      </div>
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,17 @@
+@charset "utf-8";
+@import "no-colors";
+
+html {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+}
+
+a {
+  color: var(--link-color);
+  text-decoration-color: var(--link-u-color);
+}
+
+a:visited {
+  color: var(--link-vis-color);
+  text-decoration-color: var(--link-vis-u-color);
+}

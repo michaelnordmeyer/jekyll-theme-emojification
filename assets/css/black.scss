@@ -1,0 +1,20 @@
+---
+---
+@import "styles";
+
+:root {
+  color-scheme: dark;
+  --bg-color: hsl(0, 0%, 0%);
+  --pre-bg-color: hsl(0, 0%, 15%);
+  --fg-color: floralwhite; /* floralwhite */
+  --link-color: hsl(92, 47%, 62%);
+  --link-u-color: hsl(31, 29%, 52%);
+  --link-vis-color: hsl(92, 47%, 80%);
+  --link-vis-u-color: hsl(31, 29%, 70%);
+  --line-color: hsl(0, 0%, 67%);
+}
+
+::selection {
+  background-color: var(--link-color);
+  color: var(--fg-color);
+}

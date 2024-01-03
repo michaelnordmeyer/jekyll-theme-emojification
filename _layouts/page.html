@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<main aria-label="Content">
+    <article itemscope itemtype="https://schema.org/WebPage">
+      <header>
+        <h1 itemprop="headline name">{{ page.title | smartify }}</h1>
+      </header>
+
+      <div itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/WebPageElement">
+        {%- if page.image %}
+        <img itemprop="image" src="{{ page.image }}" alt="{{ page.image_alt }}" title="{{ page.image_title }}">
+        {%- endif %}
+{{ content }}
+      </div>
+    </article>
+  </main>

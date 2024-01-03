@@ -1,0 +1,13 @@
+---
+---
+@import "saturated";
+
+:root {
+  --bg-color: hsl(0, 0%, 75%);
+  --pre-bg-color: hsl(0, 0%, 70%);
+}
+
+::selection {
+  background-color: var(--link-color);
+  color: var(--h-color);
+}
