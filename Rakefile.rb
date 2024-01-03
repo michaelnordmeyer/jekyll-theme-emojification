@@ -19,13 +19,13 @@ end
 desc "Builds the demo site for deployment"
 task :demobuild do
   puts "==> Building #{artefact}-demo..."
-  system "cd demo && bundle exec jekyll build && cd .."
+  system "cd _demo && bundle exec jekyll build && cd .."
 end
 
 desc "Serves the demo site locally"
 task :demoserve do
   puts "==> Building and serving #{artefact} -demo locally..."
-  system "cd demo && bundle exec jekyll serve && cd .."
+  system "cd _demo && bundle exec jekyll serve && cd .."
 end
 
 desc "Builds the gem"
