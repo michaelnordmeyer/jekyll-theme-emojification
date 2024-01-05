@@ -1,4 +1,4 @@
-# Jekyll Theme Emojification
+# 🤩 Jekyll Theme Emojification 🤩
 
 A simple and minimal single-author theme with configurable big emoji as header links, and configurable background colors, which can be chosen for each post or page.
 
@@ -97,7 +97,7 @@ theme_settings:
 
 Installation from Gem is recommended, but using a remote theme is also possible, even though it will increase build time a little, depending on your internet connection, because the theme will be downloaded during each build. Gems are installed locally.
 
-GitHub pages users need to use the remote theme method.
+GitHub pages gem users need to use the remote theme method.
 
 ### Installation from Gem
 
@@ -144,3 +144,13 @@ The XSLT files style the XML files. If a user selects the link to the feed, a st
 If hosted with the Github pages plugin, those plugins are already included and will automatically be used instead, unless above files are part of the site. To overwrite this, these files have to be copied manually from the theme's repository root to the site's repository root.
 
 Because feeds are generated once, they can only support one icon. The light variant was chosen for the feed.
+
+### Remove Content from Search Engine
+
+If some posts or pages should not appear in search engines, they can be removed from the `sitemap.xml`, which helps search engines to find content. Additionally, a hidden header is added to the content, to which respectable search engines adhere. Add this to frontmatter to achieve this:
+
+```yaml
+---
+sitemap: false
+---
+```

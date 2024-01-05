@@ -10,10 +10,12 @@ plugins:
   - jekyll-include-cache
 
 ## Jekyll build settings
-exclude: [jekyll-theme-emojification*, LICENSE, Rakefile.rb, README.md, TODO.md]
+exclude: [CODE_OF_CONDUCT.md, jekyll-theme-emojification*, LICENSE, Rakefile.rb, README.md, TODO.md]
 ignore_theme_config: true # Since Jekyll 4.0, see: https://jekyllrb.com/docs/themes/#pre-configuring-theme-gems40, https://jekyllrb.com/docs/configuration/options/
 kramdown:
   show_warnings: true
+  syntax_highlighter_opts:
+    disable: true
 liquid:
   # Configure Liquid’s parser
   error_mode: strict # default: warn
@@ -22,9 +24,24 @@ liquid:
   # strict_variables: true # default: false
 sass:
   style: compressed
-# Only needed for the theme demo
-# source: demo
 strict_front_matter: true # default: false
-# timezone: Europe/Berlin # default: local timezone
 # remote_theme: michaelnordmeyer/jekyll-theme-emojification
 # theme: jekyll-theme-emojification
+# timezone: Europe/Berlin # default: local timezone
+
+## https://jekyllrb.com/docs/configuration/front-matter-defaults/
+defaults:
+  - scope:
+      path: "" # an empty string here means all files in the project (allows globs, but is slow)
+      type: posts # type (optional): posts, pages, drafts, or any collection
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+  - scope:
+      path: ""
+    values:
+      layout: default

@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<main aria-label="Content" itemscope itemtype="https://schema.org/Blog">
+    <h1>{{ page.title | smartify }}</h1>
+
+    {%- assign content_without_newlines = content | strip_newlines -%}
+    {%- if content_without_newlines != "" %}
+    <section aria-label="Introduction">
+{{ content }}
+    </section>
+
+    <hr>
+    {%- endif %}
+      
+    {%- assign date_format = site.theme_settings.date_format | default: "%Y-%m-%d" -%}
+    {%- assign sorted_categories = site.categories | sort -%}
+    {%- for category in sorted_categories -%}
+      {%- assign category_posts = site.posts | where: "categories", category[0] | sort %}
+    <section aria-labelledby="{{ category[0] }}">
+      <h2>{{ category[0] }}</h2>
+      {%- for post in category_posts %}
+      <article itemscope itemtype="https://schema.org/BlogPosting"{%- if page.colorful_index %} style="margin-bottom: {% if forloop.last %}1em{% else %}0{% endif %}; padding: 1em; background-color: {{ post.theme_color }};"{%- endif %}>
+        <header>
+        {%- unless page.hide_dates %}
+          <time itemprop="datePublished" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
+          {%- endunless %}
+          <h3 itemprop="headline name">{% if page.colorful_index %}{% unless post.hide_list_emoji %}{{ post.icon | default: site.theme_settings.icon }}&nbsp;{% endunless %}{% endif %}<a href="{{ post.url | relative_url }}">{{ post.title | smartify }}</a>{% if post.content_warnings contains "video" %}&nbsp;📽️{% endif %}</h3>
+        </header>
+      {%- if site.theme_settings.show_excerpts -%}
+        {%- unless page.hide_excerpts %}
+        <p aria-label="Abstract" itemprop="abstract">
+          {{ post.excerpt | strip_html | smartify }}
+        </p>
+        {%- endunless %}
+      {%- endif %}
+      </article>
+      {%- endfor %}
+    </section>
+    {%- endfor %}
+    
+    {% include_cached feed-subscription.html %}
+  </main>

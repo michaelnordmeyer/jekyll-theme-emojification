@@ -1,4 +1,6 @@
 {%- comment -%} Compared to former versions all smartify filter miss a following | escape {%- endcomment -%}
+{%- assign cache_buster = site.time | date: '%Y%m%d%H%M' -%}
+{%- comment -%} | append: '?'| append: cache_buster {%- endcomment -%}
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
 <head>
@@ -28,7 +30,7 @@
   {%- if theme_color contains '#' %}
     {%- assign theme_color = theme_color | replace: '#', '' %}
   {%- endif %}
-  <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css?'| append: cache_buster | relative_url }}">
 {%- else %}
   <link rel="stylesheet" href="{{ '/assets/css/_no-colors.css' | relative_url }}">
 {%- endif %}

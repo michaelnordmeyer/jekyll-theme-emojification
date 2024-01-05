@@ -34,12 +34,12 @@ layout: default
         <h3 id="{{ year }}">{{ year }}</h3>
         {%- endif %}
 
-        <article itemscope itemtype="https://schema.org/BlogPosting"{%- if page.crazy_index %} style="margin-bottom: {% if forloop.last %}1em{% else %}0{% endif %}; padding: 1em; background-color: {{ post.theme_color }};"{%- endif %}>
+        <article itemscope itemtype="https://schema.org/BlogPosting"{%- if page.colorful_index %} style="margin-bottom: {% if forloop.last %}1em{% else %}0{% endif %}; padding: 1em; background-color: {{ post.theme_color }};"{%- endif %}>
           <header>
             {%- unless page.hide_dates %}
             <time itemprop="datePublished" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
             {%- endunless %}
-            <h4 itemprop="headline name">{% if page.crazy_index %}{% unless page.hide_list_emoji %}{{ post.icon | default: site.theme_settings.icon }}&nbsp;{% endunless %}{% endif %}<a href="{{ post.url | relative_url }}">{{ post.title | smartify }}</a>{%- if post.content_warnings contains "video" -%}&nbsp;📽️{%- endif -%}</h4>
+            <h4 itemprop="headline name">{% if page.colorful_index %}{% unless post.hide_list_emoji %}{{ post.icon | default: site.theme_settings.icon }}&nbsp;{% endunless %}{% endif %}<a href="{{ post.url | relative_url }}">{{ post.title | smartify }}</a>{%- if post.content_warnings contains "video" -%}&nbsp;📽️{%- endif -%}</h4>
           </header>
           {% if site.theme_settings.show_excerpts -%}
             {%- unless page.hide_excerpts -%}

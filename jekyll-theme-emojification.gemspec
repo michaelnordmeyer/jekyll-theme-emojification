@@ -12,8 +12,11 @@ Gem::Specification.new do |spec|
 
   spec.metadata["plugin_type"] = "theme"
   
-  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_data|_layouts|_includes|_sass|LICENSE|README|_config\.yml)!i) }
+  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_data|_layouts|_includes|_sass|(CODE_OF_CONDUCT|LICENSE|README)((\.(txt|md|markdown)|$))|_config\.yml)!i) }
 
   spec.add_runtime_dependency "jekyll", ">= 3.9.3", "< 5.0"
   spec.add_runtime_dependency "jekyll-include-cache", "~> 0.2.1"
+
+  spec.add_development_dependency "bundler"
+  spec.add_development_dependency "rake", ">= 13.0"
 end

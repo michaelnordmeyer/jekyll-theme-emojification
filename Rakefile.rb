@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-artefact = `basename ${PWD}`
+artefact = "jekyll-theme-emojification"
 
-task :default => ["build"]
+task :default => ["gembuild"]
 
 desc "Builds the site for deployment"
 task :build do
@@ -19,13 +19,13 @@ end
 desc "Builds the demo site for deployment"
 task :demobuild do
   puts "==> Building #{artefact}-demo..."
-  system "cd _demo && bundle exec jekyll build && cd .."
+  system "cd _demo && rake build"
 end
 
 desc "Serves the demo site locally"
 task :demoserve do
   puts "==> Building and serving #{artefact} -demo locally..."
-  system "cd _demo && bundle exec jekyll serve && cd .."
+  system "cd _demo && rake serve"
 end
 
 desc "Builds the gem"
