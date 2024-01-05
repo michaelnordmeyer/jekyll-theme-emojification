@@ -1,3 +1,5 @@
+![Jekyll Theme Emojification](repo-card.png)
+
 # 🤩 Jekyll Theme Emojification 🤩
 
 A simple and minimal single-author theme with configurable big emoji as header links, and configurable background colors, which can be chosen for each post or page.
@@ -147,7 +149,7 @@ Because feeds are generated once, they can only support one icon. The light vari
 
 ### Remove Content from Search Engine
 
-If some posts or pages should not appear in search engines, they can be removed from the `sitemap.xml`, which helps search engines to find content. Additionally, a hidden header is added to the content, to which respectable search engines adhere. Add this to frontmatter to achieve this:
+If some posts or pages should not appear in search engines, they can be removed from the `sitemap.xml`, which helps search engines to find content. Additionally, a hidden header disallowing the indexing is added to the content, which respectable search engines follow. Add this to frontmatter to achieve this:
 
 ```yaml
 ---
