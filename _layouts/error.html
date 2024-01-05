@@ -24,8 +24,11 @@
 {%- endif %}
   </head>
 <body>
-  {% include header.html icon=site.theme_settings.icon_error %}
-  
+  <header>
+    <nav>
+      <a href="{{ '/' | relative_url }}" title="Home" aria-label="Home Link" accesskey="h">{% unless page.hide_icon %}{{ page.icon | default: site.theme_settings.icon }}{% endunless %}</a>
+    </nav>
+  </header>  
   <main aria-label="Content">
     <article itemscope itemtype="https://schema.org/WebPage">
       <header>

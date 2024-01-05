@@ -126,8 +126,11 @@
   }</script>
 </head>
 <body>
-  {% include header.html icon=site.theme_settings.icon %}
-  
-  {{ content }}
+  <header>
+    <nav>
+      <a href="{{ '/' | relative_url }}" title="Home" aria-label="Home Link" accesskey="h">{% unless page.hide_icon %}{{ page.icon | default: site.theme_settings.icon }}{% endunless %}</a>
+    </nav>
+  </header>  
+{{ content }}
 </body>
 </html>
