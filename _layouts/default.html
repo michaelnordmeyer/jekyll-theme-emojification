@@ -32,7 +32,7 @@
   {%- endif %}
   <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css?'| append: cache_buster | relative_url }}">
 {%- else %}
-  <link rel="stylesheet" href="{{ '/assets/css/_no-colors.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/_default-html.css' | relative_url }}">
 {%- endif %}
   <meta property="og:title" content="{% if page.title %}{{ page.title | smartify }}{% else %}{{ site.title | smartify }}{% endif %}">
   <meta property="og:locale" content="{% if page.lang %}{{ page.lang | replace:'-','_' }}{% elsif site.lang %}{{ site.lang | replace:'-','_' }}{% else %}{{ 'en' }}{% endif %}">
