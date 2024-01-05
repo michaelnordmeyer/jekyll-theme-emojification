@@ -4,7 +4,7 @@ A simple and minimal single-author theme with configurable big emoji as header l
 
 [Demo site with examples](https://jekyll-theme-emojification.michaelnordmeyer.com/)
 
-The demo site has useful samples, which represent the below mentioned additional features(#additional-features). Those samples could be used and copied into one’s own site.
+The demo site has useful samples and shows how many color/emoji combinations are possible.
 
 ## Compatibility
 
