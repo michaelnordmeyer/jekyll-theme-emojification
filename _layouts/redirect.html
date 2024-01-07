@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
 <head>
-  <meta name="robots" content="noindex">
+  <meta name="robots" content="noindex,follow">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 {%- if site.theme_settings.favicon %}
@@ -10,8 +10,8 @@
 {%- if site.theme_settings.favicon_dark %}
   <link rel="icon" type="{{ site.theme_settings.favicon_media_type }}" media="(prefers-color-scheme: dark)" href="{{ site.theme_settings.favicon_dark | relative_url }}">
 {%- endif %}
-  <title>{% if page.title %}{{ page.title | smartify }}{% else %}{{ site.title | smartify }}{% endif %}</title>
-  <meta name="description" content="{{ site.theme_settings.error_page_description | default: 'Error page' }}">
+  <title>{{ site.theme_settings.redirect_page_title | default: "Redirecting…" }}</title>
+  <meta name="description" content="{{ site.theme_settings.redirect_page_description | default: 'Redirect page' }}">
 {%- assign theme_color = page.theme_color | default: site.theme_settings.theme_color -%}
 {%- if theme_color %}
   <meta name="theme-color" content="{{ theme_color }}">
@@ -22,7 +22,9 @@
 {%- else %}
   <link rel="stylesheet" href="{{ '/assets/css/_default-html.css' | relative_url }}">
 {%- endif %}
-  </head>
+  <link rel="canonical" href="{{ page.redirect.to | absolute_url }}">
+  <meta http-equiv="refresh" content="0; url={{ page.redirect.to | absolute_url }}">
+</head>
 <body>
   <header>
     <nav>
@@ -32,11 +34,16 @@
   <main aria-label="Content">
     <article itemscope itemtype="https://schema.org/WebPage">
       <header>
-        <h1 itemprop="headline name">{{ page.title | smartify }}</h1>
+        <h1 itemprop="headline name">{{ site.theme_settings.redirect_page_title | default: "Redirecting…" }}</h1>
       </header>
 
       <div itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/WebPageElement">
-{{ content }}
+        <p>
+          Redirecting from {{ page.redirect.from | relative_url }} to {{ page.redirect.to | absolute_url }}.
+        </p>
+        <p>
+          <a href="{{ page.redirect.to | absolute_url }}">Click here if you are not being redirected.</a>
+        </p>
       </div>
     </article>
   </main>

@@ -10,7 +10,7 @@ The demo site has useful samples and shows how many color/emoji combinations are
 
 ## Compatibility
 
-Compatible with Jekyll >= 3.9.3 and GitHub pages.
+Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 
 ## Limited, But Useful Features
 
@@ -24,6 +24,7 @@ Compatible with Jekyll >= 3.9.3 and GitHub pages.
 - Pages
 - Category pages
 - Header images
+- A styled redirection page, which will be used by the optional plugin [Jekyll Redirect From](https://github.com/jekyll/jekyll-redirect-from)
 - Optional excerpts in feed, SEO tags, category and home pages
 - Automatic dark mode favicon
 - Content warnings for embedded videos
@@ -97,19 +98,23 @@ theme_settings:
 
 ## Installation
 
-Installation from Gem is recommended, but using a remote theme is also possible, even though it will increase build time a little, depending on your internet connection, because the theme will be downloaded during each build. Gems are installed locally.
+Installation from Gem is recommended, but using a remote theme is also possible, even though it will increase build times a little, depending on your internet connection and the size of the theme download, because it will be downloaded during each build. Gems are installed locally.
 
-GitHub pages gem users need to use the remote theme method.
+GitHub Pages gem users need to use the remote theme method.
 
 ### Installation from Gem
 
 Add this line to your Jekyll site's `Gemfile`:
 
 ```ruby
-gem "jekyll-theme-emojification"
+gem "jekyll-theme-emojification", group: [:jekyll_plugins]
 ```
 
-It's up to you, if you want to limit the version, or always get the lasted during update.
+Then run `bundle` in your terminal.
+
+```sh
+bundle
+```
 
 Also add the theme to your Jekyll site's `_config.yml`:
 
@@ -117,17 +122,23 @@ Also add the theme to your Jekyll site's `_config.yml`:
 theme: jekyll-theme-emojification
 ```
 
-Make sure that this is the only `theme:` in `_config.yml`, and that there are no other `remote-theme:`. Afterwards run `bundle install`, and `bundle update` to update it, if there's a new version.
+Make sure that this is the only `theme:` in `_config.yml`, and that there are no other `remote-theme:`.
 
 ### Installation as Remote Theme
 
 Add this line to your Jekyll site's `Gemfile`:
 
 ```ruby
-gem "jekyll-remote-theme"
+gem "jekyll-remote-theme", group: [:jekyll_plugins]
 ```
 
-And add the theme to your Jekyll site's `_config.yml`:
+Then run `bundle` in your terminal.
+
+```sh
+bundle
+```
+
+Finally add the remote theme to your Jekyll site's `_config.yml`:
 
 ```yaml
 remote_theme: michaelnordmeyer/jekyll-theme-emojification
@@ -135,15 +146,13 @@ remote_theme: michaelnordmeyer/jekyll-theme-emojification
 
 Make sure that this is the only `remote_theme:` in `_config.yml`, and that there are no other `theme:`.
 
-Finally, add `jekyll-remote-theme` to your plugin section in `_config.yml` as well.
-
 ## Feed.xml and Sitemap.xml
 
 Both are included in the theme and don't need dependencies to `jekyll-feed` and `jekyll-sitemap` plugins. For a standard Jekyll installation, they work out-of-the-box if the files, `feed.xml`, `feed.xslt.xml`, `sitemap.xml`, and `sitemap.xslt.xml`, are copied to the Jekyll directory.
 
 The XSLT files style the XML files. If a user selects the link to the feed, a styled version of the feed will be shown in the browser with an explainer of what web feeds are. The `feed.xslt.xml` can also be a drop-in when using the `jekyll-feed` plugin.
 
-If hosted with the Github pages plugin, those plugins are already included and will automatically be used instead, unless above files are part of the site. To overwrite this, these files have to be copied manually from the theme's repository root to the site's repository root.
+If hosted with the GitHub Pages plugin, those plugins are already included and will automatically be used instead, unless above files are part of the site. To overwrite this, these files have to be copied manually from the theme's repository root to the site's repository root.
 
 Because feeds are generated once, they can only support one icon. The light variant was chosen for the feed.
 

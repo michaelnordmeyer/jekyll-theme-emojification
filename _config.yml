@@ -1,13 +1,10 @@
-# Remove URL for Github Pages plugin
+# Remove URL for GitHub Pages plugin
 url: https://jekyll-theme-emojification.michaelnordmeyer.com
 # baseurl: "" # The subpath of the site, e.g. /blog
 title: Jekyll Theme Emojification
 # Description is used for meta headers and feeds. Limit to 160 characters if possible
 description: >-
   A simple and minimal single-author theme with configurable big emoji as header links, and configurable background colors, which can be chosen for each post or page
-
-plugins:
-  - jekyll-include-cache
 
 ## Jekyll build settings
 exclude: [CODE_OF_CONDUCT.md, jekyll-theme-emojification*, LICENSE, Rakefile.rb, README.md, TODO.md]
