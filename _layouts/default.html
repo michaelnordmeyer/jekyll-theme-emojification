@@ -1,29 +1,18 @@
 {%- comment -%} Compared to former versions all smartify filter miss a following | escape {%- endcomment -%}
 {%- assign cache_buster = site.time | date: '%Y%m%d%H%M' -%}
-{%- comment -%} | append: '?'| append: cache_buster {%- endcomment -%}
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
 <head>
-{%- if page.sitemap == false %}
-  <meta name="robots" content="noindex">
-{%- endif %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 {%- if site.theme_settings.favicon %}
-  <link rel="icon" type="{{ site.theme_settings.favicon_media_type }}" media="(prefers-color-scheme: light)" href="{{ site.theme_settings.favicon | relative_url }}">
+  {%- if site.theme_settings.favicon_dark %}
+  <link rel="icon" type="{{ site.theme_settings.favicon_media_type }}" media="(prefers-color-scheme: light)" href="{{ site.theme_settings.favicon | append: '?'| append: cache_buster | relative_url }}">
+  <link rel="icon" type="{{ site.theme_settings.favicon_media_type }}" media="(prefers-color-scheme: dark)" href="{{ site.theme_settings.favicon_dark | append: '?'| append: cache_buster | relative_url }}">
+  {%- else %}
+  <link rel="icon" type="{{ site.theme_settings.favicon_media_type }}" href="{{ site.theme_settings.favicon | append: '?'| append: cache_buster | relative_url }}">
+  {%- endif %}
 {%- endif %}
-{%- if site.theme_settings.favicon_dark %}
-  <link rel="icon" type="{{ site.theme_settings.favicon_media_type }}" media="(prefers-color-scheme: dark)" href="{{ site.theme_settings.favicon_dark | relative_url }}">
-{%- endif %}
-{%- if page.title %}
-  <title>{{ page.title | smartify }} {{ site.theme_settings.title_separator | default: '•' }} {{ site.title | smartify }}</title>
-{%- else %}
-  <title>{{ site.title | smartify }} {{ site.theme_settings.title_separator | default: '•' }} {{ site.description | smartify }}</title>
-{%- endif %}
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | smartify }}{% else %}{{ site.description | smartify }}{% endif %}">
-  <meta name="author" content="{{ site.theme_settings.author.name }}">
-  <link rel="canonical" href="{{ page.url | absolute_url }}">
-  <link type="application/atom+xml" rel="alternate" href="{{ '/feed.xml' | relative_url }}" title="{{ site.title | smartify }}">
 {%- assign theme_color = page.theme_color | default: site.theme_settings.theme_color -%}
 {%- if theme_color %}
   <meta name="theme-color" content="{{ theme_color }}">
@@ -32,8 +21,20 @@
   {%- endif %}
   <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css?'| append: cache_buster | relative_url }}">
 {%- else %}
-  <link rel="stylesheet" href="{{ '/assets/css/_default-html.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/_default-html.css?'| append: cache_buster | relative_url }}">
 {%- endif %}
+{%- if page.sitemap == false %}
+  <meta name="robots" content="noindex, follow">
+{%- endif %}
+{%- if page.title %}
+  <title>{{ page.title | smartify }} {{ site.theme_settings.title_separator | default: '•' }} {{ site.title | smartify }}</title>
+{%- else %}
+  <title>{{ site.title | smartify }} {{ site.theme_settings.title_separator | default: '•' }} {{ site.description | smartify }}</title>
+{%- endif %}
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | smartify }}{% else %}{{ site.description | smartify }}{% endif %}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <link type="application/atom+xml" rel="alternate" href="{{ '/feed.xml' | relative_url }}" title="{{ site.title | smartify }}">
+  <meta name="author" content="{{ site.theme_settings.author.name }}">
   <meta property="og:title" content="{% if page.title %}{{ page.title | smartify }}{% else %}{{ site.title | smartify }}{% endif %}">
   <meta property="og:locale" content="{% if page.lang %}{{ page.lang | replace:'-','_' }}{% elsif site.lang %}{{ site.lang | replace:'-','_' }}{% else %}{{ 'en' }}{% endif %}">
   <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | smartify }}{% else %}{{ site.description | smartify }}{% endif %}">

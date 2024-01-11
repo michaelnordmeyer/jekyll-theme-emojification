@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Michael Nordmeyer"]
   spec.email         = ["michaelnordmeyer@users.noreply.github.com"]
 
-  spec.summary       = "A simple and minimal single-author theme with configurable big emoji as header links, and configurable background colors, which can be chosen for each post or page"
+  spec.summary       = "A simple and minimal single-author theme with configurable big emoji as the header link, and configurable background colors, which can be chosen for each post or page"
   spec.homepage      = "https://github.com/michaelnordmeyer/jekyll-theme-emojification"
   spec.license       = "MIT"
 

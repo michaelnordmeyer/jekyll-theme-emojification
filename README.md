@@ -2,7 +2,7 @@
 
 # 🤩 Jekyll Theme Emojification 🤩
 
-A simple and minimal single-author theme with configurable big emoji as header links, and configurable background colors, which can be chosen for each post or page.
+A simple and minimal single-author theme with configurable big emoji as the header link, and configurable background colors, which can be chosen for each post or page.
 
 [Demo site with examples](https://jekyll-theme-emojification.michaelnordmeyer.com/)
 
@@ -35,8 +35,8 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 Some features cannot applied automatically due to how Jekyll integrates remote themes. They have to be copied manually.
 
 - Custom error pages
-- A feed.xml containing an Atom feed with in-browser styling through a XSLT. No need for the `jekyll-feed` plugin
-- A sitemap.xml, because search engines should index us properly and quickly. There’s also a companion XSLT. No need for the `jekyll-sitemap` plugin
+- An in-browser styled Atom feed through a [feed XSLT](/feed.xslt.xml), which is automatically applied by the `jekyll-feed` plugin
+- An in-browser styled sitemap through a [sitemap XSLT](/sitemap.xsl), which is automatically applied by the `jekyll-sitemap` plugin
 - Minimal build and load times
 
 ## Minutiae
@@ -94,7 +94,7 @@ theme_settings:
 
 ### Favicons
 
-`icon.webp` is the favicon for the light mode, and there's also a dark variant `icon-dark.webp` for dark mode. If you want to use them, these files have to be copied manually from the demo's repository root to your site's repository root. Otherwise just create your own and name them accordingly.
+`icon.webp` is the favicon for the light mode, and there's also a dark variant `icon-dark.webp` for dark mode. If you want to use them, these files have to be copied manually from the demo's repository root to your site's repository root.
 
 ## Installation
 
@@ -146,15 +146,13 @@ remote_theme: michaelnordmeyer/jekyll-theme-emojification
 
 Make sure that this is the only `remote_theme:` in `_config.yml`, and that there are no other `theme:`.
 
-## Feed.xml and Sitemap.xml
+### Styled Feed.xml and Sitemap.xml
 
-Both are included in the theme and don't need dependencies to `jekyll-feed` and `jekyll-sitemap` plugins. For a standard Jekyll installation, they work out-of-the-box if the files, `feed.xml`, `feed.xslt.xml`, `sitemap.xml`, and `sitemap.xslt.xml`, are copied to the Jekyll directory.
+Both are included in the demo. For a standard Jekyll installation, they work out-of-the-box if the files, `feed.xslt.xml` and `sitemap.xsl`, are copied to the site’s Jekyll directory.
 
-The XSLT files style the XML files. If a user selects the link to the feed, a styled version of the feed will be shown in the browser with an explainer of what web feeds are. The `feed.xslt.xml` can also be a drop-in when using the `jekyll-feed` plugin.
+The XSLT files style the XML files. If a user selects the link to the feed, a styled version of the feed will be shown in the browser with an explainer of what web feeds are.
 
-If hosted with the GitHub Pages plugin, those plugins are already included and will automatically be used instead, unless above files are part of the site. To overwrite this, these files have to be copied manually from the theme's repository root to the site's repository root.
-
-Because feeds are generated once, they can only support one icon. The light variant was chosen for the feed.
+Because feeds are generated once, they can only support one icon. The light variant was chosen for the feed. `jekyll-feed` doesn’t support icons in feeds.
 
 ### Remove Content from Search Engine
 
