@@ -5,12 +5,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-{%- if site.theme_settings.favicon %}
-  {%- if site.theme_settings.favicon_dark %}
-  <link rel="icon" type="{{ site.theme_settings.favicon_media_type }}" media="(prefers-color-scheme: light)" href="{{ site.theme_settings.favicon | append: '?'| append: cache_buster | relative_url }}">
-  <link rel="icon" type="{{ site.theme_settings.favicon_media_type }}" media="(prefers-color-scheme: dark)" href="{{ site.theme_settings.favicon_dark | append: '?'| append: cache_buster | relative_url }}">
+{%- if site.favicon %}
+  {%- if site.favicon_dark %}
+  <link rel="icon" type="{{ site.favicon_media_type }}" media="(prefers-color-scheme: light)" href="{{ site.favicon | append: '?'| append: cache_buster | relative_url }}">
+  <link rel="icon" type="{{ site.favicon_media_type }}" media="(prefers-color-scheme: dark)" href="{{ site.favicon_dark | append: '?'| append: cache_buster | relative_url }}">
   {%- else %}
-  <link rel="icon" type="{{ site.theme_settings.favicon_media_type }}" href="{{ site.theme_settings.favicon | append: '?'| append: cache_buster | relative_url }}">
+  <link rel="icon" type="{{ site.favicon_media_type }}" href="{{ site.favicon | append: '?'| append: cache_buster | relative_url }}">
   {%- endif %}
 {%- endif %}
 {%- assign theme_color = page.theme_color | default: site.theme_settings.theme_color -%}

@@ -20,7 +20,7 @@ layout: default
     <section aria-labelledby="{{ page.list_title | downcase | url_encode }}">
       <h2 id="{{ page.list_title | downcase | url_encode }}">{{ page.list_title | smartify }}</h2>
       {%- endif -%}
-      {%- assign date_format = site.theme_settings.date_format | default: "%Y-%m-%d" -%}
+      {%- assign date_format = site.date_format | default: "%Y-%m-%d" -%}
       {%- assign year = "" -%}
       {%- for post in site.posts -%}
         {%- assign current_year = post.date | date: "%Y" -%}

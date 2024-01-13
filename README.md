@@ -26,18 +26,18 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 - Header images
 - A styled redirection page, which will be used by the optional plugin [Jekyll Redirect From](https://github.com/jekyll/jekyll-redirect-from)
 - Optional excerpts in feed, SEO tags, category and home pages
-- Automatic dark mode favicon
 - Content warnings for embedded videos
 - Hidden semantic info for embedding and SEO like Open Graph, JSON-LD, and inline Microdata. No need for the `jekyll-seo-tag` plugin
+- Minimal build and load times
 
 ## Additional Features
 
 Some features cannot applied automatically due to how Jekyll integrates remote themes. They have to be copied manually.
 
 - Custom error pages
-- An in-browser styled Atom feed through a [feed XSLT](/feed.xslt.xml), which is automatically applied by the `jekyll-feed` plugin
-- An in-browser styled sitemap through a [sitemap XSLT](/sitemap.xsl), which is automatically applied by the `jekyll-sitemap` plugin
-- Minimal build and load times
+- Automatic dark mode favicon
+- An [in-browser styled Atom feed](/feed.xml) through a feed XSLT, which is automatically applied by the `jekyll-feed` plugin. It educates people about feeds.
+- An [in-browser styled sitemap](/sitemap.xml) through a sitemap XSLT, which is automatically applied by the `jekyll-sitemap` plugin. Probably only the site owner might look at it every once in a while.
 
 ## Minutiae
 

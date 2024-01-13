@@ -5,12 +5,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-{%- if site.theme_settings.favicon %}
-  {%- if site.theme_settings.favicon_dark %}
-  <link rel="icon" type="{{ site.theme_settings.favicon_media_type }}" media="(prefers-color-scheme: light)" href="{{ site.theme_settings.favicon | append: '?'| append: cache_buster | relative_url }}">
-  <link rel="icon" type="{{ site.theme_settings.favicon_media_type }}" media="(prefers-color-scheme: dark)" href="{{ site.theme_settings.favicon_dark | append: '?'| append: cache_buster | relative_url }}">
+{%- if site.favicon %}
+  {%- if site.favicon_dark %}
+  <link rel="icon" type="{{ site.favicon_media_type }}" media="(prefers-color-scheme: light)" href="{{ site.favicon | append: '?'| append: cache_buster | relative_url }}">
+  <link rel="icon" type="{{ site.favicon_media_type }}" media="(prefers-color-scheme: dark)" href="{{ site.favicon_dark | append: '?'| append: cache_buster | relative_url }}">
   {%- else %}
-  <link rel="icon" type="{{ site.theme_settings.favicon_media_type }}" href="{{ site.theme_settings.favicon | append: '?'| append: cache_buster | relative_url }}">
+  <link rel="icon" type="{{ site.favicon_media_type }}" href="{{ site.favicon | append: '?'| append: cache_buster | relative_url }}">
   {%- endif %}
 {%- endif %}
 {%- assign theme_color = page.theme_color | default: site.theme_settings.theme_color -%}
@@ -27,14 +27,14 @@
   <meta name="robots" content="noindex, follow">
 {%- endif %}
 {%- if page.title %}
-  <title>{{ page.title | smartify }} {{ site.theme_settings.title_separator | default: '•' }} {{ site.title | smartify }}</title>
+  <title>{{ page.title | smartify }} {{ site.title_separator | default: '|' }} {{ site.title | smartify }}</title>
 {%- else %}
-  <title>{{ site.title | smartify }} {{ site.theme_settings.title_separator | default: '•' }} {{ site.description | smartify }}</title>
+  <title>{{ site.title | smartify }} {{ site.title_separator | default: '|' }} {{ site.description | smartify }}</title>
 {%- endif %}
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | smartify }}{% else %}{{ site.description | smartify }}{% endif %}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <link type="application/atom+xml" rel="alternate" href="{{ '/feed.xml' | relative_url }}" title="{{ site.title | smartify }}">
-  <meta name="author" content="{{ site.theme_settings.author.name }}">
+  <meta name="author" content="{{ site.author.name }}">
   <meta property="og:title" content="{% if page.title %}{{ page.title | smartify }}{% else %}{{ site.title | smartify }}{% endif %}">
   <meta property="og:locale" content="{% if page.lang %}{{ page.lang | replace:'-','_' }}{% elsif site.lang %}{{ site.lang | replace:'-','_' }}{% else %}{{ 'en' }}{% endif %}">
   <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | smartify }}{% else %}{{ site.description | smartify }}{% endif %}">
@@ -52,8 +52,8 @@
   {%- if page.image_alt %}
   <meta property="og:image:alt" content="{{ page.image_alt }}">
   {%- endif %}
-{%- elsif site.theme_settings.favicon %}
-  <meta property="og:image" content="{{ site.theme_settings.favicon }}">
+{%- elsif site.favicon %}
+  <meta property="og:image" content="{{ site.favicon }}">
   <meta property="og:image:height" content="180">
   <meta property="og:image:width" content="180">
 {%- endif %}
@@ -87,9 +87,9 @@
       "@type": "Person",
       "@id": "{{ site.url | absolute_url }}/#Person",
       "url": "{{ site.url | absolute_url }}/",
-      "name": "{{ site.theme_settings.author.name }}",
+      "name": "{{ site.author.name }}",
       "sameAs": [
-        {%- for link in site.theme_settings.social.links %}
+        {%- for link in site.social.links %}
         "{{ link }}"{% unless forloop.last %},{% endunless %}
         {%- endfor %}
       ]
@@ -117,9 +117,9 @@
       "@type": "Person",
       "@id": "{{ site.url | absolute_url }}/#Person",
       "url": "{{ site.url | absolute_url }}/",
-      "name": "{{ site.theme_settings.author.name }}",
+      "name": "{{ site.author.name }}",
       "sameAs": [
-        {%- for link in site.theme_settings.social.links %}
+        {%- for link in site.social.links %}
         "{{ link }}"{% unless forloop.last %},{% endunless %}
         {%- endfor %}
       ]

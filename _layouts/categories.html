@@ -13,7 +13,7 @@ layout: default
     <hr>
     {%- endif %}
       
-    {%- assign date_format = site.theme_settings.date_format | default: "%Y-%m-%d" -%}
+    {%- assign date_format = site.date_format | default: "%Y-%m-%d" -%}
     {%- assign sorted_categories = site.categories | sort -%}
     {%- for category in sorted_categories -%}
       {%- assign category_posts = site.posts | where: "categories", category[0] | sort %}
