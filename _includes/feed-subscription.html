@@ -1,1 +1,2 @@
-<footer aria-label="Feed Subscription Offer">Subscribe to updates via <a href="{{ '/feed.xml' | relative_url }}" rel="alternate nofollow">Atom feed</a></footer>
+{% capture feed_url -%}{% feed_url %}{%- endcapture -%}
+<footer aria-label="Feed Subscription Offer">Subscribe to updates via <a href="{{ feed_url | relative_url }}" rel="alternate nofollow">Atom feed</a></footer>

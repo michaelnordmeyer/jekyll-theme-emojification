@@ -146,7 +146,7 @@ remote_theme: michaelnordmeyer/jekyll-theme-emojification
 
 Make sure that this is the only `remote_theme:` in `_config.yml`, and that there are no other `theme:`.
 
-### Styled Feed.xml and Sitemap.xml
+### Styled Atom Feed and Sitemap
 
 Both are included in the demo. For a standard Jekyll installation, they work out-of-the-box if the files, `feed.xslt.xml` and `sitemap.xsl`, are copied to the site’s Jekyll directory.
 
