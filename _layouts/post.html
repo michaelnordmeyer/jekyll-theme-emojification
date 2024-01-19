@@ -11,7 +11,7 @@ layout: default
 
       <div itemprop="articleBody">
         {%- if page.image %}
-        <img itemprop="image" src="{{ page.image }}" alt="{{ page.image_alt }}" title="{{ page.image_title }}">
+        <img itemprop="image" src="{{ page.image.path }}" alt="{{ page.image.alt }}" title="{{ page.image.title }}">
         {%- endif %}
 {{ content }}
       </div>

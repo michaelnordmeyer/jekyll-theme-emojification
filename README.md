@@ -65,9 +65,10 @@ A header image is displayed after the title on posts and pages, if `image` is ad
 
 ```yaml
 ---
-image: /images/sample-image.jpg
-image_alt: The description of the image
-image_title: The title of the image
+image:
+  path: /images/sample-image.jpg
+  alt: The description of the image
+  title: The title of the image
 ---
 ```
 
