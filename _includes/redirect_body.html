@@ -1,0 +1,16 @@
+  <main aria-label="Content">
+    <article itemscope itemtype="https://schema.org/WebPage">
+      <header>
+        <h1 itemprop="headline name">{{ site.theme_settings.redirect_page_title | default: "Redirecting…" | smartify }}</h1>
+      </header>
+
+      <div itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/WebPageElement">
+        <p>
+          Redirecting from {{ page.redirect.from | relative_url }} to {{ page.redirect.to | absolute_url }}.
+        </p>
+        <p>
+          <a href="{{ page.redirect.to | absolute_url }}">Click here if you are not being redirected.</a>
+        </p>
+      </div>
+    </article>
+  </main>

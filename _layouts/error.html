@@ -1,50 +1,8 @@
-{%- comment -%} Compared to former versions all smartify filter miss a following | escape {%- endcomment -%}
-{%- assign cache_buster = site.time | date: '%Y%m%d%H%M' -%}
-<!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-{%- if site.favicon %}
-  {%- if site.favicon_dark %}
-  <link rel="icon" type="{{ site.favicon_media_type }}" media="(prefers-color-scheme: light)" href="{{ site.favicon | append: '?'| append: cache_buster | relative_url }}">
-  <link rel="icon" type="{{ site.favicon_media_type }}" media="(prefers-color-scheme: dark)" href="{{ site.favicon_dark | append: '?'| append: cache_buster | relative_url }}">
-  {%- else %}
-  <link rel="icon" type="{{ site.favicon_media_type }}" href="{{ site.favicon | append: '?'| append: cache_buster | relative_url }}">
-  {%- endif %}
-{%- endif %}
-{%- assign theme_color = page.theme_color | default: site.theme_settings.theme_color -%}
-{%- if theme_color %}
-  <meta name="theme-color" content="{{ theme_color }}">
-  {%- if theme_color contains '#' %}
-    {%- assign theme_color = theme_color | replace: '#', '' %}
-  {%- endif %}
-  <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css?'| append: cache_buster | relative_url }}">
-{%- else %}
-  <link rel="stylesheet" href="{{ '/assets/css/_default-html.css?'| append: cache_buster | relative_url }}">
-{%- endif %}
-{%- if page.sitemap == false %}
-  <meta name="robots" content="noindex, follow">
-{%- endif %}
-  <title>{% if page.title %}{{ page.title | smartify }}{% else %}{{ site.title | smartify }}{% endif %}</title>
-  <meta name="description" content="{{ site.theme_settings.error_page_description | default: 'Error page' }}">
+{% include head.html %}
+{% include error_head.html %}
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="{{ '/' | relative_url }}" title="Home" aria-label="Home Link" accesskey="h">{% unless page.hide_icon %}{{ page.icon | default: site.theme_settings.icon }}{% endunless %}</a>
-    </nav>
-  </header>  
-  <main aria-label="Content">
-    <article itemscope itemtype="https://schema.org/WebPage">
-      <header>
-        <h1 itemprop="headline name">{{ page.title | smartify }}</h1>
-      </header>
-
-      <div itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/WebPageElement">
-{{ content }}
-      </div>
-    </article>
-  </main>
+{% include header.html %}
+{% include error_body.html %}
 </body>
 </html>

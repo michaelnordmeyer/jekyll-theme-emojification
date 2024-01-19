@@ -23,8 +23,8 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 - Posts
 - Pages
 - Category pages
-- Header images
 - A styled redirection page, which will be used by the optional plugin [Jekyll Redirect From](https://github.com/jekyll/jekyll-redirect-from)
+- Header images
 - Optional excerpts in feed, SEO tags, category and home pages
 - Content warnings for embedded videos
 - Hidden semantic info for embedding and SEO like Open Graph, JSON-LD, and inline Microdata. No need for the `jekyll-seo-tag` plugin

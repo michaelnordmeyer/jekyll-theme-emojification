@@ -1,0 +1,11 @@
+  <main aria-label="Content">
+    <article itemscope itemtype="https://schema.org/WebPage">
+      <header>
+        <h1 itemprop="headline name">{{ page.title | smartify }}</h1>
+      </header>
+
+      <div itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/WebPageElement">
+{{ content }}
+      </div>
+    </article>
+  </main>
