@@ -29,8 +29,7 @@ tbody th, tbody td { border-top: 0.06em solid var(--line-color); }
 tbody + tbody { border-top: 0.12em solid var(--line-color); }
 tfoot th, tfoot td { border-top: 0.12em solid var(--line-color); }
 hr { margin: 2em 0; border: none; border-top: 0.06em solid var(--line-color); }
-hr:has(+.footnotes) { margin-bottom: 1em; }
-.footnotes { font-size: 0.778rem; line-height: 1.5em; }
+.footnotes { margin: 2em 0 1em; border-top: .08em solid var(--line-color); font-size: 0.778rem; line-height: 1.5em; }
 .footnotes code { font-size: 0.722rem; }
 body > header { margin: 0.5em auto; text-align: center; font-size: 6rem; line-height: 1em; }
 body > header a { text-decoration: none; }
