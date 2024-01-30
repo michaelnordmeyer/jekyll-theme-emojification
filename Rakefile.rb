@@ -4,10 +4,16 @@ artefact = "jekyll-theme-emojification"
 
 task :default => ["gembuild"]
 
-desc "Builds the site for deployment"
+desc "Builds the site"
 task :build do
   puts "==> Building #{artefact}..."
   system "bundle exec jekyll build"
+end
+
+desc "Builds the site for production"
+task :build_prod do
+  puts "==> Building #{artefact} for production..."
+  system "JEKYLL_ENV=\"production\" bundle exec jekyll build"
 end
 
 desc "Serves the site locally"
@@ -16,10 +22,16 @@ task :serve do
   system "bundle exec jekyll serve"
 end
 
-desc "Builds the demo site for deployment"
+desc "Builds the demo site"
 task :demobuild do
   puts "==> Building #{artefact}-demo..."
   system "cd _demo && rake build"
+end
+
+desc "Builds the demo site for production"
+task :demobuild do
+  puts "==> Building #{artefact}-demo for production..."
+  system "cd _demo && rake build_prod"
 end
 
 desc "Serves the demo site locally"
