@@ -1,8 +1,18 @@
 {% include head.html %}
-{% include error_head.html %}
+  <title>{% if page.title %}{{ page.title | smartify }}{% else %}{{ site.title | smartify }}{% endif %}</title>
+  <meta name="description" content="{{ site.theme_settings.error_page_description | default: 'Error page' }}">
 </head>
 <body>
 {% include header.html %}
-{% include error_body.html %}
+  <main aria-label="Content">
+    <article itemscope itemtype="https://schema.org/WebPage">
+      <header>
+        <h1 itemprop="headline name">{{ page.title | smartify }}</h1>
+      </header>
+      <div itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/WebPageElement">
+{{ content }}
+      </div>
+    </article>
+  </main>
 </body>
 </html>

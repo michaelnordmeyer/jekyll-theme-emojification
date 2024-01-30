@@ -8,7 +8,6 @@ layout: default
         {%- assign date_format = site.date_format | default: "%Y-%m-%d" %}
         <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>
       </header>
-
       <div itemprop="articleBody">
         {%- if page.image %}
         <img itemprop="image" src="{{ page.image.path }}" alt="{{ page.image.alt }}" title="{{ page.image.title }}">

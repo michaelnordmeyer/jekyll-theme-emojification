@@ -6,7 +6,6 @@ layout: default
       <header>
         <h1 itemprop="headline name">{{ page.title | smartify }}</h1>
       </header>
-
       <div itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/WebPageElement">
         {%- if page.image %}
         <img itemprop="image" src="{{ page.image.path }}" alt="{{ page.image.alt }}" title="{{ page.image.title }}">
