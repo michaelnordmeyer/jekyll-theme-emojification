@@ -4,10 +4,10 @@ layout: default
   <main aria-label="Content" itemscope itemtype="https://schema.org/Blog">
     {%- if site.title %}
     <h1>{{ site.title | smartify }}</h1>
-    {%- endif %}
+    {% endif %}
 
     {%- assign content_without_newlines = content | strip_newlines -%}
-    {%- if content_without_newlines != "" %}
+    {% if content_without_newlines != "" %}
     <section aria-label="Introduction">
 {{ content }}
     </section>
@@ -15,7 +15,7 @@ layout: default
     <hr>
     {%- endif %}
 
-    {%- if site.posts.size > 0 -%}
+    {%- if site.posts.size > 0 %}
       {% if page.list_title %}
     <section aria-labelledby="{{ page.list_title | downcase | url_encode }}">
       <h2 id="{{ page.list_title | downcase | url_encode }}">{{ page.list_title | smartify }}</h2>
