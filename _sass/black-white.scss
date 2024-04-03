@@ -3,20 +3,27 @@
 
 :root {
   color-scheme: light;
-  --fg-color: black;
-  --link-color: black;
-  --link-u-color: white;
-  --link-vis-color: black;
-  --link-vis-u-color: black;
-  --line-color: white;
-  --h-color: white;
+  --bg-color: hsl(0, 0%, 100%);
+  --fg-color: hsl(0, 0%, 0%);
+  --decoration-color: hsl(0, 0%, 100%);
+  --link-color: var(--fg-color);
+  --link-u-color: var(--decoration-color);
+  --link-vis-color: var(--fg-color);
+  --link-vis-u-color: var(--fg-color);
+  --line-color: var(--decoration-color);
 }
 
 h1, h2, h3 {
-  color: var(--h-color);
+  color: var(--decoration-color);
 }
 
-body > main > article > div > h2 > a, body > main > article > div > h3 > a {
-  color: var(--h-color);
-  text-decoration-color: var(--h-color);
+body > main > article > div > h2 > a,
+body > main > article > div > h3 > a {
+  color: var(--decoration-color);
+  text-decoration-color: var(--decoration-color);
+}
+
+::selection {
+  background-color: hsl(0, 0%, 0%, 0.5);
+  color: var(--decoration-color);
 }

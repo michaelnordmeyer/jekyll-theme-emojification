@@ -6,8 +6,3 @@
   --bg-color: hsl(210, 100%, 56%);
   --pre-bg-color: hsl(210, 100%, 61%);
 }
-
-::selection {
-  background-color: var(--link-color);
-  color: var(--h-color);
-}

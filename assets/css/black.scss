@@ -6,15 +6,15 @@
   color-scheme: dark;
   --bg-color: hsl(0, 0%, 0%);
   --pre-bg-color: hsl(0, 0%, 20%);
-  --fg-color: floralwhite;
-  --link-color: floralwhite;
-  --link-u-color: floralwhite;
-  --link-vis-color: floralwhite;
+  --fg-color: hsl(30, 100%, 97%);
+  --decoration-color: var(--fg-color);
+  --link-color: var(--fg-color);
+  --link-u-color: var(--fg-color);
+  --link-vis-color: var(--fg-color);
   --link-vis-u-color: hsl(0, 0%, 67%);
   --line-color: hsl(0, 0%, 67%);
 }
 
 ::selection {
-  background-color: var(--link-color);
-  color: var(--fg-color);
+  background-color: hsl(0, 0%, 100%, 0.5);
 }

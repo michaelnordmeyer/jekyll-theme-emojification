@@ -5,12 +5,12 @@
 :root {
   --bg-color: hsl(0, 0%, 100%);
   --pre-bg-color: hsl(0, 0%, 95%);
-  --fg-color: hsl(0, 0%, 0%);
+  --decoration-color: hsl(0, 0%, 0%);
+  --link-u-color: var(--decoration-color);
   --link-vis-u-color: hsl(0, 0%, 67%);
   --line-color: hsl(0, 0%, 67%);
 }
 
 ::selection {
-  background-color: var(--link-color);
-  color: var(--fg-color);
+  background-color: hsl(0, 0%, 0%, 0.25);
 }
