@@ -15,13 +15,17 @@
 {%- endif %}
 {%- assign theme_color = page.theme_color | default: site.theme_settings.theme_color -%}
 {%- if theme_color %}
+  {%- if theme_color != 'none' %}
   <meta name="theme-color" content="{{ theme_color }}">
-  {%- if theme_color contains '#' %}
-    {%- assign theme_color = theme_color | replace: '#', '' %}
+    {%- if theme_color contains '#' %}
+      {%- assign theme_color = theme_color | replace: '#', '' %}
+    {%- endif %}
+  {%- else %}
+  <meta name="color-scheme" content="light dark">
   {%- endif %}
   <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css?'| append: cache_buster | relative_url }}">
 {%- else %}
-  <link rel="stylesheet" href="{{ '/assets/css/_default-html.css?'| append: cache_buster | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/none.css?'| append: cache_buster | relative_url }}">
 {%- endif %}
 {%- if page.sitemap == false %}
   <meta name="robots" content="noindex, follow">
