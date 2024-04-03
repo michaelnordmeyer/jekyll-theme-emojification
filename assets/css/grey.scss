@@ -3,6 +3,7 @@
 @import "main";
 
 :root {
+  color-scheme: light;
   --bg-color: hsl(0, 0%, 50%);
   --pre-bg-color: hsl(0, 0%, 45%);
   --fg-color: hsl(0, 0%, 100%);
@@ -14,5 +15,5 @@
 }
 
 ::selection {
-  color: var(--fg-color);
+  background-color: hsl(31, 29%, 70%, 0.5);
 }
