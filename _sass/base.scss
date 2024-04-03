@@ -1,18 +1,21 @@
 @charset "utf-8";
 :root {
+  --default-font-px: 16;
   --font-size: 1rem;
+  --spacing: 1em;
+  --line-height: 1.5;
   /* Calculate integer pixel values depending on the font size (1rem = 16px) */
-  --1px:  calc(var(--font-size) *  1 / 16);
-  --2px:  calc(var(--font-size) *  2 / 16);
-  --3px:  calc(var(--font-size) *  3 / 16);
-  --11px: calc(var(--font-size) * 11 / 16);
-  --14px: calc(var(--font-size) * 14 / 16);
+  --border-size:       calc(var(--font-size) *  1/var(--default-font-px));
+  --thick-border-size: calc(var(--font-size) *  2/var(--default-font-px));
+  --border-radius:     calc(var(--font-size) *  3/var(--default-font-px));
+  --x-script:          calc(var(--font-size) * 11/var(--default-font-px));
+  --small-font-size:   calc(var(--font-size) * 14/var(--default-font-px));
 }
 html {
   max-width: 720px; // 720px (= 66.182ch in system-ui macOS), use 1440w images for 2x displays
   margin: 0 auto;
-  padding: 0.5em;
-  font: var(--font-size) / 1.5 system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: calc(var(--spacing) * 1/2);
+  font: var(--font-size) / var(--line-height) system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size-adjust: from-font;
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -20,38 +23,38 @@ html {
 }
 body { margin: 0; }
 h1, h2, h3, h4, h5, h6 { line-height: 1.2; }
-h1 { margin: 0 0 1em; font-size: 2rem; text-align: center; }
-ul, ol { padding-left: 2em; }
-ul > ul, ol > ol, ul > ol, ol > ul, li > ul, li > ol { padding-left: 1.3em; }
-blockquote { margin-left: 0.5em; padding-left: 0.75em; border-left: var(--1px) solid var(--line-color); }
-pre, code { border: var(--1px) solid var(--pre-bg-color); border-radius: var(--3px); background-color: var(--pre-bg-color); }
-pre { padding: 0.5em 0.75em; overflow-x: auto; }
-code { padding: 0.125em 0.25em; }
+h1 { margin: 0 0 var(--spacing); font-size: calc(var(--font-size) *  2); text-align: center; }
+ul, ol { padding-left: calc(var(--spacing) * 2); }
+ul > ul, ol > ol, ul > ol, ol > ul, li > ul, li > ol { padding-left: calc(var(--spacing) * 5/4); }
+blockquote { margin-left: calc(var(--spacing) * 1/2); padding-left: calc(var(--spacing) * 3/4); border-left: var(--border-size) solid var(--line-color); }
+pre, code { border: var(--border-size) solid var(--pre-bg-color); border-radius: var(--border-radius); background-color: var(--pre-bg-color); }
+pre { padding: calc(var(--spacing) * 1/2) calc(var(--spacing) * 3/4); overflow-x: auto; }
+code { padding: calc(var(--spacing) * 1/8) calc(var(--spacing) * 1/4); }
 pre > code { border: 0; padding-right: 0; padding-left: 0; }
-sup, sub { font-size: var(--11px); line-height: 0; }
-figure { margin-left: 0; margin-right: 0; text-align: center; font-size: var(--14px); line-height: 1; }
-table { border-collapse: collapse; margin: 1em auto; }
-th, td { padding: 0.5em; }
-thead th { border-bottom: var(--2px) solid var(--line-color); }
-tbody th, tbody td { border-top: var(--1px) solid var(--line-color); }
-tbody + tbody { border-top: var(--2px) solid var(--line-color); }
-tfoot th, tfoot td { border-top: var(--2px) solid var(--line-color); }
-hr { margin: 2em 0; border: none; border-top: var(--1px) solid var(--line-color); }
-body > header { margin: 0.5em auto; text-align: center; font-size: 6rem; line-height: 1; }
+sup, sub { font-size: var(--x-script); line-height: 0; }
+figure { margin-left: 0; margin-right: 0; max-width: 100; text-align: center; font-size: var(--small-font-size); line-height: 1; }
+table { border-collapse: collapse; margin: var(--spacing) auto; }
+th, td { padding: calc(var(--spacing) * 1/2); }
+thead th { border-bottom: var(--thick-border-size) solid var(--line-color); }
+tbody th, tbody td { border-top: var(--border-size) solid var(--line-color); }
+tbody + tbody { border-top: var(--thick-border-size) solid var(--line-color); }
+tfoot th, tfoot td { border-top: var(--thick-border-size) solid var(--line-color); }
+hr { margin: calc(var(--spacing) * 2) 0; border: none; border-top: var(--border-size) solid var(--line-color); }
+body > header { margin: calc(var(--spacing) * 1/2) auto; text-align: center; font-size: calc(var(--font-size) *  6); line-height: 1; }
 body > header a { text-decoration: none; }
-body > main { margin-bottom: 3em; }
+body > main { margin-bottom: calc(var(--spacing) * 3); }
 body > main > section > footer,
-body > main > footer { font-size: smaller; }
+body > main > footer { font-size: var(--small-font-size); }
 body > main > section > section > article > header > time,
-body > main > section > article > header > time { display: block; font-size: var(--14px); line-height: 1.2; }
+body > main > section > article > header > time { display: block; font-size: var(--small-font-size); line-height: 1.2; }
 body > main > section > section > article > header > h4,
-body > main > section > article > header > h3 { margin: 0.2em 0; font-size: 1.5rem; font-weight: 500; line-height: 1.1; }
+body > main > section > article > header > h3 { margin: calc(var(--spacing) * 1/5) 0; font-size: calc(var(--font-size) * 3/2); font-weight: 500; line-height: 1.1; }
 body > main > section > section > article > p,
 body > main > section > article > p { margin: 0; line-height: 1.3; }
 body > main > section > section > article,
-body > main > section > article { margin-bottom: 2em; }
-body > main > article > header > h1:has(+time) { margin: 0 0 0.5em; }
-body > main > article > header > h1 + time { display: block; margin-bottom: 2em; text-align: center; font-size: 1rem; }
-body > main img { display: block; margin: 0 auto 1em; max-width: 100%; height: auto; }
-div:has(iframe) + figcaption { margin-top: 1em; }
-.footnotes { margin: 2em 0 1em; border-top: var(--1px) solid var(--line-color); font-size: var(--14px); line-height: 1.5; }
+body > main > section > article { margin-bottom: calc(var(--spacing) * 2); }
+body > main > article > header > h1:has(+time) { margin: 0 0 calc(var(--spacing) * 1/2); }
+body > main > article > header > h1 + time { display: block; margin-bottom: calc(var(--spacing) * 2); text-align: center; font-size: var(--font-size); }
+body > main img { display: block; margin: 0 auto var(--spacing); max-width: 100%; height: auto; }
+figure:has(iframe) > figcaption { margin-top: var(--spacing); }
+.footnotes { margin: calc(var(--spacing) * 2) 0 var(--spacing); border-top: var(--border-size) solid var(--line-color); font-size: var(--small-font-size); line-height: var(--line-height); }
