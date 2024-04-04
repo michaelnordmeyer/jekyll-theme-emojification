@@ -29,6 +29,7 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 - Content warnings for embedded videos
 - Hidden semantic info for embedding and SEO like Open Graph, JSON-LD, and inline Microdata. No need for the `jekyll-seo-tag` plugin
 - Minimal build and load times
+- Custom header and footer to add snippets
 
 ## Additional Features
 
