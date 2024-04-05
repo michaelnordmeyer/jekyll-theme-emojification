@@ -32,7 +32,7 @@ pre { padding: calc(var(--spacing) * 1/2) calc(var(--spacing) * 3/4); overflow-x
 code { padding: calc(var(--spacing) * 1/8) calc(var(--spacing) * 1/4); }
 pre > code { border: 0; padding-right: 0; padding-left: 0; }
 sup, sub { font-size: var(--x-script); line-height: 0; }
-figure { margin-left: 0; margin-right: 0; max-width: 100; text-align: center; font-size: var(--small-font-size); line-height: 1; }
+figure { margin-left: 0; margin-right: 0; max-width: 100%; text-align: center; font-size: var(--small-font-size); line-height: 1; }
 table { border-collapse: collapse; margin: var(--spacing) auto; }
 th, td { padding: calc(var(--spacing) * 1/2); }
 thead th { border-bottom: var(--thick-border-size) solid var(--line-color); }
