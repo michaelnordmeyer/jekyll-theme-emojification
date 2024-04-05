@@ -2,20 +2,22 @@
 :root {
   --default-font-px: 16;
   --font-size: 1rem;
+  --font-family: ui-sans-serif, 'Segoe UI', Roboto, Ubuntu, 'Noto Sans', 'Liberation Sans', sans-serif;
+  --font-family-monospace: ui-monospace, 'Segoe UI Mono', 'Roboto Mono', 'Ubuntu Mono', 'Noto Sans Mono', 'Liberation Mono', monospace;
   --spacing: 1em;
   --line-height: 1.5;
   /* Calculate integer pixel values depending on the font size (1rem = 16px) */
   --border-size:       calc(var(--font-size) *  1/var(--default-font-px));
-  --thick-border-size: calc(var(--font-size) *  2/var(--default-font-px));
+  --border-size-thick: calc(var(--font-size) *  2/var(--default-font-px));
   --border-radius:     calc(var(--font-size) *  3/var(--default-font-px));
   --x-script:          calc(var(--font-size) * 11/var(--default-font-px));
   --small-font-size:   calc(var(--font-size) * 14/var(--default-font-px));
 }
 html {
-  max-width: 720px; // 720px (= 66.182ch in system-ui macOS), use 1440w images for 2x displays
+  max-width: 720px; // 720px (= 66.182ch in system-ui macOS Sonoma), use 1440w images for 2x displays
   margin: 0 auto;
   padding: calc(var(--spacing) * 1/2);
-  font: var(--font-size) / var(--line-height) system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font: var(--font-size) / var(--line-height) var(--font-family);
   font-size-adjust: from-font;
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
@@ -27,7 +29,7 @@ h1 { margin: 0 0 var(--spacing); font-size: calc(var(--font-size) *  2); text-al
 ul, ol { padding-left: calc(var(--spacing) * 2); }
 ul > ul, ol > ol, ul > ol, ol > ul, li > ul, li > ol { padding-left: calc(var(--spacing) * 5/4); }
 blockquote { margin-left: calc(var(--spacing) * 1/2); padding-left: calc(var(--spacing) * 3/4); border-left: var(--border-size) solid var(--line-color); }
-pre, code { border: var(--border-size) solid var(--pre-bg-color); border-radius: var(--border-radius); background-color: var(--pre-bg-color); }
+pre, code { border: var(--border-size) solid var(--pre-bg-color); border-radius: var(--border-radius); background-color: var(--pre-bg-color); font-family: var(--font-family-monospace); }
 pre { padding: calc(var(--spacing) * 1/2) calc(var(--spacing) * 3/4); overflow-x: auto; }
 code { padding: calc(var(--spacing) * 1/8) calc(var(--spacing) * 1/4); }
 pre > code { border: 0; padding-right: 0; padding-left: 0; }
@@ -35,10 +37,10 @@ sup, sub { font-size: var(--x-script); line-height: 0; }
 figure { margin-left: 0; margin-right: 0; max-width: 100%; text-align: center; font-size: var(--small-font-size); line-height: 1; }
 table { border-collapse: collapse; margin: var(--spacing) auto; }
 th, td { padding: calc(var(--spacing) * 1/2); }
-thead th { border-bottom: var(--thick-border-size) solid var(--line-color); }
+thead th { border-bottom: var(--border-size-thick) solid var(--line-color); }
 tbody th, tbody td { border-top: var(--border-size) solid var(--line-color); }
-tbody + tbody { border-top: var(--thick-border-size) solid var(--line-color); }
-tfoot th, tfoot td { border-top: var(--thick-border-size) solid var(--line-color); }
+tbody + tbody,
+tfoot th, tfoot td { border-top: var(--border-size-thick) solid var(--line-color); }
 hr { margin: calc(var(--spacing) * 2) 0; border: none; border-top: var(--border-size) solid var(--line-color); }
 body > header { margin: calc(var(--spacing) * 1/2) auto; text-align: center; font-size: calc(var(--font-size) *  6); line-height: 1; }
 body > header a { text-decoration: none; }
