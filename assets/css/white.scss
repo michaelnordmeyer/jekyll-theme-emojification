@@ -3,14 +3,14 @@
 @import "main";
 
 :root {
-  --bg-color: hsl(0, 0%, 100%);
-  --pre-bg-color: hsl(0, 0%, 95%);
-  --decoration-color: hsl(0, 0%, 0%);
+  --bg-color: hsl(0 0% 100%);
+  --pre-bg-color: hsl(0 0% 95%);
+  --decoration-color: hsl(0 0% 0%);
   --link-u-color: var(--decoration-color);
-  --link-vis-u-color: hsl(0, 0%, 67%);
-  --line-color: hsl(0, 0%, 67%);
+  --link-vis-u-color: hsl(0 0% 67%);
+  --line-color: hsl(0 0% 67%);
 }
 
 ::selection {
-  background-color: hsl(0, 0%, 0%, 0.25);
+  background-color: hsl(0 0% 0% / 0.25);
 }

@@ -4,17 +4,17 @@
 
 :root {
   color-scheme: dark;
-  --bg-color: hsl(0, 0%, 0%);
-  --pre-bg-color: hsl(0, 0%, 20%);
-  --fg-color: hsl(30, 100%, 97%);
+  --bg-color: hsl(0 0% 0%);
+  --pre-bg-color: hsl(0 0% 20%);
+  --fg-color: hsl(30 100% 97%);
   --decoration-color: var(--fg-color);
   --link-color: var(--fg-color);
   --link-u-color: var(--fg-color);
   --link-vis-color: var(--fg-color);
-  --link-vis-u-color: hsl(0, 0%, 67%);
-  --line-color: hsl(0, 0%, 67%);
+  --link-vis-u-color: hsl(0 0% 67%);
+  --line-color: hsl(0 0% 67%);
 }
 
 ::selection {
-  background-color: hsl(0, 0%, 100%, 0.5);
+  background-color: hsl(0 0% 100% / 0.5);
 }

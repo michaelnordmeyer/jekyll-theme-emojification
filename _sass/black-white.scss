@@ -3,9 +3,9 @@
 
 :root {
   color-scheme: light;
-  --bg-color: hsl(0, 0%, 100%);
-  --fg-color: hsl(0, 0%, 0%);
-  --decoration-color: hsl(0, 0%, 100%);
+  --bg-color: hsl(0 0% 100%);
+  --fg-color: hsl(0 0% 0%);
+  --decoration-color: hsl(0 0% 100%);
   --link-color: var(--fg-color);
   --link-u-color: var(--decoration-color);
   --link-vis-color: var(--fg-color);
@@ -24,6 +24,6 @@ body > main > article > div > h3 > a {
 }
 
 ::selection {
-  background-color: hsl(0, 0%, 0%, 0.5);
+  background-color: hsl(0 0% 0% / 0.5);
   color: var(--decoration-color);
 }
