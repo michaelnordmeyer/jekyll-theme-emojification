@@ -30,6 +30,7 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 - Hidden semantic info for embedding and SEO like Open Graph, JSON-LD, and inline Microdata. No need for the `jekyll-seo-tag` plugin
 - Minimal build and load times
 - Custom header and footer to add snippets
+- Cache buster for CSS and favicon files
 
 ## Additional Features
 
@@ -165,3 +166,11 @@ If some posts or pages should not appear in search engines, they can be removed 
 sitemap: false
 ---
 ```
+
+### Custom header and footer to add snippets
+
+WHen put in the directory `_includes`, `custom-header.html` and `custom-footer.html` allow to put custom snippets in it.
+
+### Cache buster for CSS and favicon files
+
+The option `cache_buster: true` in `_config.yml` allows for turning on a postfix for the CSS and favicon URLs, which make browsers to request it again, even though the cache time hasn't expired. It is useful to turn it on for a limited after changing those.
