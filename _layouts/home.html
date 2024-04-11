@@ -3,7 +3,7 @@ layout: default
 ---
   <main aria-label="Content" itemscope itemtype="https://schema.org/Blog">
     {%- if site.title %}
-    <h1>{{ site.title | smartify }}</h1>
+    <h1 itemprop="headline name">{{ site.title | smartify }}</h1>
     {% endif %}
 
     {%- assign content_without_newlines = content | strip_newlines -%}
