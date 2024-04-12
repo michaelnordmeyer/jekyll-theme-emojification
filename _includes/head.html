@@ -1,6 +1,6 @@
 {%- comment -%} Compared to former versions all smartify filter miss a following `| escape` {%- endcomment -%}
 {%- if site.cache_buster -%}
-  {%- assign cache_buster = site.time | date: '?%Y%m%d%H%M' -%}
+  {%- assign cache_buster = site.time | date: '?v=%Y%m%d%H%M' -%}
 {%- endif -%}
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
