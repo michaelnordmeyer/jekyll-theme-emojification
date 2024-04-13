@@ -1,7 +1,6 @@
 {% include head.html %}
   <meta http-equiv="refresh" content="0; url={{ page.redirect.to | absolute_url }}">
   <title>{{ site.theme_settings.redirect_page_title | default: "Redirecting…" | smartify }}</title>
-  <meta name="description" content="{{ site.theme_settings.redirect_page_description | default: 'Redirect Page' }}">
   <link rel="canonical" href="{{ page.redirect.to | absolute_url }}">
 </head>
 <body>
