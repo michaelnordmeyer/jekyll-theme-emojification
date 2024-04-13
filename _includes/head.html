@@ -29,7 +29,9 @@
 {%- else %}
   <link rel="stylesheet" href="{{ '/assets/css/none.css' | append: cache_buster | relative_url }}">
 {%- endif %}
+{%- if site.author.copyright %}
+  <meta name="copyright" content="Copyright © {{ site.author.name }}">
+{%- endif %}
 {%- if page.sitemap == false %}
   <meta name="robots" content="noindex">
-{%- endif %}
-{% include custom-head.html %}
+{%- endif -%}

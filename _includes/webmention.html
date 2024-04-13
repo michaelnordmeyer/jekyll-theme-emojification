@@ -1,0 +1,6 @@
+{%- if site.theme_settings.webmention_url -%}
+  {%- for link in site.social.links -%}
+  <link rel="me{% if forloop.first %} authn{% endif %}" href="{{ link }}">
+  {% endfor -%}
+  <link rel="webmention" href="{{ site.theme_settings.webmention_url }}">
+{%- endif -%}
