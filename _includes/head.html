@@ -7,14 +7,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-{%- if site.favicon %}
-  {%- if site.favicon_dark %}
-  <link rel="icon" type="{{ site.favicon_media_type }}" media="(prefers-color-scheme: light)" href="{{ site.favicon | append: cache_buster | relative_url }}">
-  <link rel="icon" type="{{ site.favicon_media_type }}" media="(prefers-color-scheme: dark)" href="{{ site.favicon_dark | append: cache_buster | relative_url }}">
-  {%- else %}
-  <link rel="icon" type="{{ site.favicon_media_type }}" href="{{ site.favicon | append: cache_buster | relative_url }}">
-  {%- endif %}
-{%- endif %}
 {%- assign theme_color = page.theme_color | default: site.theme_settings.theme_color -%}
 {%- if theme_color %}
   {%- if theme_color != 'none' %}
@@ -22,12 +14,11 @@
     {%- if theme_color contains '#' %}
       {%- assign theme_color = theme_color | replace: '#', '' %}
     {%- endif %}
-  {%- else %}
-  <meta name="color-scheme" content="light dark">
   {%- endif %}
-  <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css' | append: cache_buster | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css' | append: cache_buster }}">
+  <link rel="icon" type="image/webp" href="{{ '/assets/icons/' | append: theme_color | append: '.webp' | append: cache_buster }}">
 {%- else %}
-  <link rel="stylesheet" href="{{ '/assets/css/none.css' | append: cache_buster | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/none.css' | append: cache_buster }}">
 {%- endif %}
 {%- if site.author.copyright %}
   <meta name="copyright" content="Copyright © {{ site.author.name }}">

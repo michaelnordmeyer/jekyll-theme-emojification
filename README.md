@@ -24,6 +24,7 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 - Pages
 - Category pages
 - A styled redirection page, which will be used by the optional plugin [Jekyll Redirect From](https://github.com/jekyll/jekyll-redirect-from)
+- Theme-color matching favicons
 - Header images
 - Optional excerpts in feed, SEO tags, category and home pages
 - Content warnings for embedded videos
@@ -31,13 +32,13 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 - Minimal build and load times
 - Custom header and footer to add snippets
 - Cache buster for CSS and favicon files
+- Basic [Webmention](https://indieweb.org/Webmention) support (needs third-party service like [Webmention.io](https://webmention.io) or additional server software), which allows subscribing to a feed of Webmentions, which are cross-site notifications
 
 ## Additional Features
 
 Some features cannot applied automatically due to how Jekyll integrates remote themes. They have to be copied manually.
 
 - Custom error pages
-- Automatic dark mode favicon
 - An [in-browser styled Atom feed](/feed.xml) through a feed XSLT, which is automatically applied by the `jekyll-feed` plugin. It educates people about feeds.
 - An [in-browser styled sitemap](/sitemap.xml) through a sitemap XSLT, which is automatically applied by the `jekyll-sitemap` plugin. Probably only the site owner might look at it every once in a while.
 
@@ -97,7 +98,35 @@ theme_settings:
 
 ### Favicons
 
-`icon.webp` is the favicon for the light mode, and there's also a dark variant `icon-dark.webp` for dark mode. If you want to use them, these files have to be copied manually from the demo's repository root to your site's repository root.
+There can be several favicons for a site running this theme, because it is possible to use different background colors, and the favicon should reflect the color theme. But there is also a site-wide favicon, which should reflect the style of the home page, and is used in the Atom feed.
+
+Icons should be named `<color>.webp`, be in `webp` format at 180×180 resolution, and be located in `/assets/icons/`. [Theme-matching icons can be easily generated from Unicode glyphs](https://michaelnordmeyer.com/generating-favicons-from-unicode-glyphs), if custom colors are used. Icons for the default theme colors are included.
+
+### Styled Atom Feed and Sitemap.xml
+
+Both are included in the demo. For a standard Jekyll installation, they work out-of-the-box if the files `feed.xslt.xml` and `sitemap.xsl` are copied to the site’s Jekyll directory.
+
+The XSLT files style the XML files. If a user selects the link to the feed, a styled version of the feed will be shown in the browser with an explainer of what web feeds are.
+
+Because feeds are generated once, they can only support one icon. The light variant was chosen for the feed.
+
+### Remove Content from Search Engine
+
+If some posts or pages should not appear in search engines, they can be removed from the `sitemap.xml`, which helps search engines to find content. Additionally, a hidden header disallowing the indexing is added to the content, which respectable search engines follow. Add this to frontmatter to achieve this:
+
+```yaml
+---
+sitemap: false
+---
+```
+
+### Custom header and footer to add snippets
+
+When put in the directory `_includes`, `custom-header.html` and `custom-footer.html` allow to put custom snippets in it.
+
+### Cache buster for CSS and favicon files
+
+The option `cache_buster: true` in `_config.yml` allows for turning on a postfix for the CSS and favicon URLs, which make browsers to request it again, even though the cache time hasn't expired. It is useful to turn it on for a long as the cache expiration was after changing those.
 
 ## Installation
 
@@ -148,29 +177,3 @@ remote_theme: michaelnordmeyer/jekyll-theme-emojification
 ```
 
 Make sure that this is the only `remote_theme:` in `_config.yml`, and that there are no other `theme:`.
-
-### Styled Atom Feed and Sitemap.xml
-
-Both are included in the demo. For a standard Jekyll installation, they work out-of-the-box if the files `feed.xslt.xml` and `sitemap.xsl` are copied to the site’s Jekyll directory.
-
-The XSLT files style the XML files. If a user selects the link to the feed, a styled version of the feed will be shown in the browser with an explainer of what web feeds are.
-
-Because feeds are generated once, they can only support one icon. The light variant was chosen for the feed.
-
-### Remove Content from Search Engine
-
-If some posts or pages should not appear in search engines, they can be removed from the `sitemap.xml`, which helps search engines to find content. Additionally, a hidden header disallowing the indexing is added to the content, which respectable search engines follow. Add this to frontmatter to achieve this:
-
-```yaml
----
-sitemap: false
----
-```
-
-### Custom header and footer to add snippets
-
-WHen put in the directory `_includes`, `custom-header.html` and `custom-footer.html` allow to put custom snippets in it.
-
-### Cache buster for CSS and favicon files
-
-The option `cache_buster: true` in `_config.yml` allows for turning on a postfix for the CSS and favicon URLs, which make browsers to request it again, even though the cache time hasn't expired. It is useful to turn it on for a limited after changing those.
