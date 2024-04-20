@@ -21,7 +21,10 @@
   <link rel="stylesheet" href="{{ '/assets/css/none.css' | append: cache_buster }}">
 {%- endif %}
 {%- if site.author.copyright %}
-  <meta name="copyright" content="Copyright © {{ site.author.name }}">
+  <meta name="copyright" content="{{ site.author.copyright }}">
+{%- endif %}
+{%- if site.author.license_link %}
+  <link rel="license" href="{{ site.author.license_link }}">
 {%- endif %}
 {%- if page.sitemap == false %}
   <meta name="robots" content="noindex">
