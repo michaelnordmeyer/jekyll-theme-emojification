@@ -36,11 +36,12 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 
 ## Additional Features
 
-Some features cannot applied automatically due to how Jekyll integrates remote themes. They have to be copied manually.
+Some features cannot applied automatically due to how Jekyll integrates remote themes. They have to be copied manually and are included in the demo repository.
 
+- Category pages
 - Custom error pages
-- An [in-browser styled Atom feed](/feed.xml) through a feed XSLT, which is automatically applied by the `jekyll-feed` plugin. It educates people about feeds.
-- An [in-browser styled sitemap](/sitemap.xml) through a sitemap XSLT, which is automatically applied by the `jekyll-sitemap` plugin. Probably only the site owner might look at it every once in a while.
+- An in-browser styled Atom feed through a feed XSLT, which is automatically applied by the `jekyll-feed` plugin. It educates people about feeds.
+- An in-browser styled sitemap through a sitemap XSLT, which is automatically applied by the `jekyll-sitemap` plugin. Probably only the site owner might look at it every once in a while.
 
 ## Minutiae
 
@@ -58,7 +59,18 @@ layout: category
 ---
 ```
 
-The title and permalink have to match the corresponding filename and category name.
+The title and permalink have to match the corresponding filename and category name. Permalink, sitemap, and layout can be declared in `_config.yml` to void repetition.
+
+```yaml
+defaults:
+  - scope:
+      path: "category"
+      type: pages
+    values:
+      layout: category
+      permalink: /:path/:basename
+      sitemap: false
+```
 
 Used categories have to be linked manually, because there is no menu.
 
@@ -104,11 +116,9 @@ Icons should be named `<color>.webp`, be in `webp` format at 180×180 resolution
 
 ### Styled Atom Feed and Sitemap.xml
 
-Both are included in the demo. For a standard Jekyll installation, they work out-of-the-box if the files `feed.xslt.xml` and `sitemap.xsl` are copied to the site’s Jekyll directory.
+For a standard Jekyll installation, they work out-of-the-box if the files `feed.xslt.xml` and `sitemap.xsl` are copied to the site’s Jekyll directory.
 
 The XSLT files style the XML files. If a user selects the link to the feed, a styled version of the feed will be shown in the browser with an explainer of what web feeds are.
-
-Because feeds are generated once, they can only support one icon. The light variant was chosen for the feed.
 
 ### Remove Content from Search Engine
 
