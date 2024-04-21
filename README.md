@@ -120,7 +120,7 @@ For a standard Jekyll installation, they work out-of-the-box if the files `feed.
 
 The XSLT files style the XML files. If a user selects the link to the feed, a styled version of the feed will be shown in the browser with an explainer of what web feeds are.
 
-### Remove Content from Search Engine
+### Remove Content from Search Engines
 
 If some posts or pages should not appear in search engines, they can be removed from the `sitemap.xml`, which helps search engines to find content. Additionally, a hidden header disallowing the indexing is added to the content, which respectable search engines follow. Add this to frontmatter to achieve this:
 
