@@ -47,7 +47,7 @@ Some features cannot applied automatically due to how Jekyll integrates remote t
 
 ### Category Navigation Links
 
-For categories to be properly linked, the site needs a `category` folder having separate markdown files for each category. E.g. for the category "Features" a file called `features.md` in the folder `category` with the following content:
+For categories to be properly linked, the site needs a `category` directory having separate markdown files for each category. E.g. for the category "Features" a file called `features.md` in the directory `category` with the following content:
 
 ```yaml
 ---
@@ -112,7 +112,7 @@ theme_settings:
 
 There can be several favicons for a site running this theme, because it is possible to use different background colors, and the favicon should reflect the color theme. But there is also a site-wide favicon, which should reflect the style of the home page, and is used in the Atom feed.
 
-Icons should be named `<color>.webp`, be in `webp` format at 180×180 resolution, and be located in `/assets/icons/`. [Theme-matching icons can be easily generated from Unicode glyphs](https://michaelnordmeyer.com/generating-favicons-from-unicode-glyphs), if custom colors are used. Icons for the default theme colors are included.
+Icons should be named `<color>.webp` without the preceding hash of a hex color, be in `webp` format at 180×180 resolution, and be located in `/assets/icons/`. [Theme-matching icons can be easily generated from Unicode glyphs](https://michaelnordmeyer.com/generating-favicons-from-unicode-glyphs), if custom colors are used. Icons for the default theme colors are included.
 
 ### Styled Atom Feed and Sitemap.xml
 
