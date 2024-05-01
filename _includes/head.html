@@ -19,6 +19,7 @@
   <link rel="icon" type="image/webp" href="{{ '/assets/icons/' | append: theme_color | append: '.webp' | append: cache_buster }}">
 {%- else %}
   <link rel="stylesheet" href="{{ '/assets/css/none.css' | append: cache_buster }}">
+  <link rel="icon" href="data:;base64,=">
 {%- endif %}
 {%- if site.author.copyright %}
   <meta name="copyright" content="{{ site.author.copyright }}">
