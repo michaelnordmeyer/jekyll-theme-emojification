@@ -112,7 +112,15 @@ theme_settings:
 
 There can be several favicons for a site running this theme, because it is possible to use different background colors, and the favicon should reflect the color theme. But there is also a site-wide favicon, which should reflect the style of the home page, and is used in the Atom feed.
 
-Icons should be named `<color>.webp` without the preceding hash of a hex color, be in `webp` format at 180×180 resolution, and be located in `/assets/icons/`. [Theme-matching icons can be easily generated from Unicode glyphs](https://michaelnordmeyer.com/generating-favicons-from-unicode-glyphs), if custom colors are used. Icons for the default theme colors are included.
+Icons are embedded in pixel format and as SVG in a data URL. Pixel format for Safari browsers, SVG for the rest. Because your favicons are displayed in many 3rd-party apps, websites, and other places, a SVG-only or data-URL-only version wouldn't suffice. I recommend to use webp as the pixel format as it is widely supported and has the best file size to image quality ratio.
+
+#### Customizing Favicons
+
+Icons should be named `<color>.<image-type-extension>` without the preceding hash of a hex color, be in either jpg, png, webp image pixel format and SVG format at 180×180 resolution, and be located in `/assets/icons/`. [Theme-matching icons can be easily generated from Unicode glyphs](https://michaelnordmeyer.com/generating-favicons-from-unicode-glyphs), if custom colors are used.
+
+Shell scripts for creating those icons are included in the directory `_tools`. They use the star (★) by default. As mentioned in the linked article above, for other fonts or glyphs it might need some positioning to adjust for the metrics of the used font. For the SVG variant a custom representation has to be drawn. These scripts need the free `convert` from ImageMagick to create the webp icons and `base64` to create the data URL.
+
+Icons for the default theme colors are included in webp and SVG format.
 
 ### Styled Atom Feed and Sitemap.xml
 
