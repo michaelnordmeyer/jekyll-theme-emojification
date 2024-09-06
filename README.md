@@ -142,10 +142,6 @@ sitemap: false
 
 When put in the directory `_includes`, `custom-header.html` and `custom-footer.html` allow to put custom snippets in it.
 
-### Cache buster for CSS and favicon files
-
-The option `cache_buster: true` in `_config.yml` allows for turning on a postfix for the CSS and favicon URLs, which make browsers to request it again, even though the cache time hasn't expired. It is useful to turn it on for a long as the cache expiration was after changing those.
-
 ## Installation
 
 Installation from Gem is recommended, but using a remote theme is also possible, even though it will increase build times a little, depending on your internet connection and the size of the theme download, because it will be downloaded during each build. Gems are installed locally.

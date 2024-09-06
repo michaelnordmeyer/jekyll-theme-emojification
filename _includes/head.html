@@ -1,7 +1,4 @@
 {%- comment -%} Compared to former versions all smartify filter miss a following `| escape` {%- endcomment -%}
-{%- if site.cache_buster -%}
-  {%- assign cache_buster = site.time | date: '?v=%Y%m%d%H%M' -%}
-{%- endif -%}
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
 <head>
@@ -17,9 +14,9 @@
   {% include_cached icons/{{ theme_color }}.html %}
   {% include_cached icons/{{ theme_color }}.svg.html %}
   {%- endif %}
-  <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css' | append: cache_buster }}">
+  <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css' }}">
 {%- else %}
-  <link rel="stylesheet" href="{{ '/assets/css/none.css' | append: cache_buster }}">
+  <link rel="stylesheet" href="{{ '/assets/css/none.css' }}">
   <link rel="icon" href="data:;base64,=">
 {%- endif %}
 {%- if site.author.copyright %}
