@@ -2,13 +2,18 @@
   <title>{{ page.title | smartify }} {{ site.title_separator | default: '|' }} {{ site.title | smartify }}</title>
 {%- else -%}
   <title>{{ site.title | smartify }} {{ site.title_separator | default: '|' }} {{ site.description | smartify }}</title>
+{%- endif -%}
+{%- if page.excerpt -%}
+  {%- assign description = page.excerpt | strip_html | smartify -%}
+{%- else -%}
+  {%- assign description = site.description | smartify -%}
 {%- endif %}
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | smartify }}{% else %}{{ site.description | smartify }}{% endif %}">
+  <meta name="description" content="{{ description }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <meta name="author" content="{{ site.author.name }}">
-  <meta property="og:title" content="{% if page.title %}{{ page.title | smartify }}{% else %}{{ site.title | smartify }}{% endif %}">
-  <meta property="og:locale" content="{% if page.lang %}{{ page.lang | replace:'-','_' }}{% elsif site.lang %}{{ site.lang | replace:'-','_' }}{% else %}{{ 'en' }}{% endif %}">
-  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | smartify }}{% else %}{{ site.description | smartify }}{% endif %}">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:locale" content="{% if page.lang %}{{ page.lang | replace: '-', '_' }}{% elsif site.lang %}{{ site.lang | replace: '-', '_' }}{% else %}{{ 'en' }}{% endif %}">
+  <meta property="og:description" content="{{ description }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
   <meta property="og:site_name" content="{{ site.title | smartify }}">
 {%- if page.date %}
@@ -31,31 +36,24 @@
   <meta property="og:image:width" content="180">
 {%- endif %}
   <script type="application/ld+json">{
+{%- if page.layout == 'post' -%}
+  {%- assign type = 'BlogPosting' -%}
+{%- elsif page.layout == 'page' -%}
+  {%- assign type = 'WebPage' -%}
+{%- else -%}
+  {%- assign type = 'Blog' -%}
+{%- endif %}
     "@context": "https://schema.org",
-
-    {%- if page.layout == 'post' %}
-    "@type": "BlogPosting",
-    "@id": "{{ page.url | absolute_url }}#BlogPosting",
-    {%- elsif page.layout == 'page' %}
-    "@type": "WebPage",
-    "@id": "{{ page.url | absolute_url }}#WebPage",
-    {%- else %}
-    "@type": "Blog",
-    "@id": "{{ page.url | absolute_url }}#Blog",
-    {%- endif %}
+    "@type": "{{ type }}",
+    "@id": "{{ page.url | absolute_url }}#{{ type }}",
     "url": "{{ page.url | absolute_url }}",
-    {%- if page.title %}
-    "headline": "{{ page.title | smartify }}",
-    {%- else %}
-    "headline": "{{ site.title | smartify }}",
-    {%- endif -%}
-
-    {%- if page.date %}
+    "headline": "{{ page.title }}",
+  {%- if page.date %}
     "datePublished": "{{ page.date | date_to_xmlschema }}",
-      {%- if page.last_modified_at %}
+    {%- if page.last_modified_at %}
     "dateModified": "{{ page.last_modified_at | date_to_xmlschema }}",
-      {%- endif -%}
-    {%- endif %}
+    {%- endif -%}
+  {%- endif %}
     "author": {
       "@type": "Person",
       "@id": "{{ site.url | absolute_url }}/#Person",
@@ -67,25 +65,22 @@
         {%- endfor %}
       ]
     },
-
-    {%- if page.excerpt %}
+  {%- if page.excerpt %}
     "abstract": "{{ page.excerpt | strip_html | smartify }}",
-    {%- endif -%}
-
-    {%- if page.image %}
+  {%- endif -%}
+  {%- if page.image.path %}
     "image": {
       "@type": "ImageObject",
       "url": "{{ site.url | absolute_url }}{{ page.image.path }}"
     },
-    {%- endif -%}
-
-    {%- if page.layout == 'post' %}
+  {%- endif -%}
+  {%- if page.layout == 'post' %}
     "wordCount": "{{ page.content | strip_html | number_of_words }}",
     "isPartOf": {
       "@type" : "Blog",
       "@id": "{{ site.url | absolute_url }}/#Blog"
     },
-    {%- endif %}
+  {%- endif %}
     "publisher": {
       "@type": "Person",
       "@id": "{{ site.url | absolute_url }}/#Person",
