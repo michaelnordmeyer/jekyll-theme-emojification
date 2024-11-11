@@ -13,9 +13,9 @@
     {%- endif %}
   {% include_cached icons/{{ theme_color }}.html %}
   {%- endif %}
-  <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css' }}">
+  <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css' | relative_url }}">
 {%- else %}
-  <link rel="stylesheet" href="{{ '/assets/css/none.css' }}">
+  <link rel="stylesheet" href="{{ '/assets/css/none.css' | relative_url }}">
   <link rel="icon" href="data:;base64,=">
 {%- endif %}
 {%- if site.author.copyright %}
