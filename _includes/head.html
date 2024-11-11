@@ -12,7 +12,6 @@
       {%- assign theme_color = theme_color | replace: '#', '' %}
     {%- endif %}
   {% include_cached icons/{{ theme_color }}.html %}
-  {% include_cached icons/{{ theme_color }}.svg.html %}
   {%- endif %}
   <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css' }}">
 {%- else %}
