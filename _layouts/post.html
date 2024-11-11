@@ -5,7 +5,7 @@ layout: default
     <article itemscope itemtype="https://schema.org/BlogPosting">
       <header>
         <h1 itemprop="headline name">{{ page.title | smartify }}</h1>
-        {%- assign date_format = site.date_format | default: "%Y-%m-%d" %}
+        {%- assign date_format = site.date_format | default: '%Y-%m-%d' %}
         <time itemprop="datePublished" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: date_format }}</time>
       </header>
       <div itemprop="articleBody">

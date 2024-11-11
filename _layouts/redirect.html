@@ -1,6 +1,6 @@
 {% include head.html %}
   <meta http-equiv="refresh" content="0; url={{ page.redirect.to | absolute_url }}">
-  <title>{{ site.theme_settings.redirect_page_title | default: "Redirecting…" | smartify }}</title>
+  <title>{{ site.theme_settings.redirect_page_title | default: 'Redirecting…' | smartify }}</title>
   <link rel="canonical" href="{{ page.redirect.to | absolute_url }}">
 </head>
 <body>
@@ -8,14 +8,14 @@
   <main aria-label="Content">
     <article itemscope itemtype="https://schema.org/WebPage">
       <header>
-        <h1 itemprop="headline name">{{ site.theme_settings.redirect_page_title | default: "Redirecting…" | smartify }}</h1>
+        <h1 itemprop="headline name">{{ site.theme_settings.redirect_page_title | default: 'Redirecting…' | smartify }}</h1>
       </header>
       <div itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/WebPageElement">
         <p>
-          {{ site.theme_settings.redirect_page_from | default: "Redirecting from" | smartify }} {{ page.redirect.from | relative_url }} {{ site.theme_settings.redirect_page_to | default: "to" | smartify }} {{ page.redirect.to | absolute_url }}.
+          {{ site.theme_settings.redirect_page_from | default: 'Redirecting from' | smartify }} {{ page.redirect.from | relative_url }} {{ site.theme_settings.redirect_page_to | default: 'to' | smartify }} {{ page.redirect.to | absolute_url }}.
         </p>
         <p>
-          <a href="{{ page.redirect.to | absolute_url }}">{{ site.theme_settings.redirect_page_text | default: "Click here if you are not being redirected." | smartify }}</a>
+          <a href="{{ page.redirect.to | absolute_url }}">{{ site.theme_settings.redirect_page_text | default: 'Click here if you are not being redirected.' | smartify }}</a>
         </p>
       </div>
     </article>

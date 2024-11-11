@@ -7,7 +7,7 @@ layout: default
     {% endif %}
 
     {%- assign content_without_newlines = content | strip_newlines -%}
-    {% if content_without_newlines != "" %}
+    {% if content_without_newlines != '' %}
     <section aria-label="Introduction">
 {{ content }}
     </section>
@@ -20,12 +20,12 @@ layout: default
     <section aria-labelledby="{{ page.list_title | downcase | url_encode }}">
       <h2 id="{{ page.list_title | downcase | url_encode }}">{{ page.list_title | smartify }}</h2>
       {%- endif -%}
-      {%- assign date_format = site.date_format | default: "%Y-%m-%d" -%}
-      {%- assign year = "" -%}
+      {%- assign date_format = site.date_format | default: '%Y-%m-%d' -%}
+      {%- assign year = '' -%}
       {%- for post in site.posts -%}
-        {%- assign current_year = post.date | date: "%Y" -%}
+        {%- assign current_year = post.date | date: '%Y' -%}
         {%- if year != current_year -%}
-          {%- if year != "" %}
+          {%- if year != '' %}
       </section>
           {%- endif -%}
           {%- assign year = current_year %}
@@ -39,7 +39,7 @@ layout: default
         {%- unless page.hide_dates %}
             <time itemprop="datePublished" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
         {%- endunless %}
-            <h4 itemprop="headline name">{% if page.colorful_index %}{% unless post.hide_list_icon %}{{ post.icon | default: site.theme_settings.icon }}&nbsp;{% endunless %}{% endif %}<a href="{{ post.url | relative_url }}">{{ post.title | smartify }}</a>{%- if post.content_warnings contains "video" -%}&nbsp;📽️{%- endif -%}</h4>
+            <h4 itemprop="headline name">{% if page.colorful_index %}{% unless post.hide_list_icon %}{{ post.icon | default: site.theme_settings.icon }}&nbsp;{% endunless %}{% endif %}<a href="{{ post.url | relative_url }}">{{ post.title | smartify }}</a>{%- if post.content_warnings contains 'video' -%}&nbsp;📽️{%- endif -%}</h4>
           </header>
         {%- if site.theme_settings.show_excerpts -%}
           {%- unless page.hide_excerpts %}
