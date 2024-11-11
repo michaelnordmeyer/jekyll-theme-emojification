@@ -58,5 +58,6 @@ body > main > section > article { margin-bottom: calc(var(--spacing) * 2); }
 body > main > article > header > h1:has(+time) { margin: 0 0 calc(var(--spacing) * 1/2); }
 body > main > article > header > h1 + time { display: block; margin-bottom: calc(var(--spacing) * 2); text-align: center; font-size: var(--font-size); }
 body > main img { display: block; margin: 0 auto var(--spacing); max-width: 100%; height: auto; }
+body > main > article > div[itemprop="articleBody"] > p:first-of-type { text-align: center; }
 figure:has(iframe) > figcaption { margin-top: var(--spacing); }
 .footnotes { margin: calc(var(--spacing) * 2) 0 var(--spacing); border-top: var(--border-size) solid var(--line-color); font-size: var(--small-font-size); line-height: var(--line-height); }
