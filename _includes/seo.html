@@ -55,8 +55,8 @@
   {%- endif %}
     "author": {
       "@type": "Person",
-      "@id": "{{ site.url | absolute_url }}/#Person",
-      "url": "{{ site.url | absolute_url }}/",
+      "@id": "{{ site.url }}/#Person",
+      "url": "{{ site.url }}/",
       "name": "{{ site.author.name }}",
       "sameAs": [
         {%- for link in site.social.links %}
@@ -70,20 +70,20 @@
   {%- if page.image.path %}
     "image": {
       "@type": "ImageObject",
-      "url": "{{ site.url | absolute_url }}{{ page.image.path }}"
+      "url": "{{ page.image.path | absolute_url }}"
     },
   {%- endif -%}
   {%- if page.layout == 'post' %}
     "wordCount": "{{ page.content | strip_html | number_of_words }}",
     "isPartOf": {
       "@type" : "Blog",
-      "@id": "{{ site.url | absolute_url }}/#Blog"
+      "@id": "{{ '/' | absolute_url }}#Blog"
     },
   {%- endif %}
     "publisher": {
       "@type": "Person",
-      "@id": "{{ site.url | absolute_url }}/#Person",
-      "url": "{{ site.url | absolute_url }}/",
+      "@id": "{{ site.url }}/#Person",
+      "url": "{{ site.url }}/",
       "name": "{{ site.author.name }}",
       "sameAs": [
         {%- for link in site.social.links %}
