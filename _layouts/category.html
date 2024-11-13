@@ -51,7 +51,7 @@ layout: default
 
       {%- assign category_titleized = page.title | replace: '-', ' ' | titleize -%}
       {%- assign category_text = ' of category “' | append: category_titleized | append: '”' -%}
-      {%- assign category_dc = page.title | downcase -%}
+      {%- assign category_dc = page.title | replace: ' ', '-' | downcase -%}
       {%- assign link = site.feed.category_path | default: '/feed/' | append: category_dc | append: '.xml' %}
     {% include feed-subscription.html category_text=category_text link=link %}
     {%- endif %}
