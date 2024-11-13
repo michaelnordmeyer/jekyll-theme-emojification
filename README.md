@@ -18,16 +18,17 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
   - Single-column
   - Single-author
   - No visible authors, categories, or tags on posts or pages
-  - No header or footer
+  - No header, footer, or menu
   - No pagination for the home page to effectively be the archive and allow for searching all titles in-browser
 - Posts
 - Pages
-- Category pages
+- Fancy category pages (also on GitHub Pages, where additional plugins are not allowed)
 - A styled redirection page, which will be used by the optional plugin [Jekyll Redirect From](https://github.com/jekyll/jekyll-redirect-from)
-- Built-in feed and sitemap creation (no dependency to jekyll-feed and jekyll-sitemap)
+- Built-in feed and sitemap creation with styling (no dependency to jekyll-feed and jekyll-sitemap)
 - Theme-color matching favicons
+- Optional colorful index pages
 - Header images
-- Optional excerpts in feed, SEO tags, category and home pages
+- Optional excerpts in feed, SEO tags, and on category and home pages
 - Content warnings for embedded videos
 - Hidden semantic info for embedding and SEO like Open Graph, JSON-LD, and inline Microdata. No need for the `jekyll-seo-tag` plugin
 - Minimal build and load times
@@ -36,12 +37,13 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 
 ## Additional Features
 
-Some features cannot applied automatically due to how Jekyll integrates remote themes. They have to be copied manually and are included in the demo repository.
+Some features cannot applied automatically due to how Jekyll integrates gem-based or remote themes. They have to be copied manually to your site’s root directory and are included in the [demo repository](https://github.com/michaelnordmeyer/jekyll-theme-emojification-demo).
 
-- Category pages
-- Custom error pages
-- An in-browser styled Atom feed through a feed XSLT, which is automatically applied by the `jekyll-feed` plugin. It educates people about feeds.
-- An in-browser styled sitemap through a sitemap XSLT, which is automatically applied by the `jekyll-sitemap` plugin. Probably only the site owner might look at it every once in a while.
+- Category pages from `/category/`
+- Category feed pages from `/feeds/`, if some or all categories should have feeds
+- Custom error pages from `/error/`
+
+Only the categories and custom error pages need to be edited, if you want to (category name, color, emoji, title, permalink, maybe extra textual content).
 
 ## Minutiae
 
@@ -123,8 +125,6 @@ Shell scripts for creating those icons are included in the directory `_tools`. T
 Icons for the default theme colors are included in webp and SVG format.
 
 ### Styled Atom Feed and Sitemap.xml
-
-For a standard Jekyll installation, they work out-of-the-box if the files `feed.xslt.xml` and `sitemap.xsl` are copied to the site’s Jekyll directory.
 
 The XSLT files style the XML files. If a user selects the link to the feed, a styled version of the feed will be shown in the browser with an explainer of what web feeds are.
 

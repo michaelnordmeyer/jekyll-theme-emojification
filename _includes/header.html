@@ -1,5 +1,16 @@
   <header>
     <nav>
-      <a href="{{ '/' | relative_url }}" title="Home" aria-label="Home Link" accesskey="h">{% unless page.hide_icon %}{{ page.icon | default: site.theme_settings.icon }}{% endunless %}</a>
+      {%- if page.icon -%}
+        {%- assign icon = page.icon -%}
+      {%- elsif page.layout == 'category' -%}
+        {%- assign page_title = page.title | slugify -%}
+        {%- assign icon = site.data.category-icons[page_title] -%}
+      {%- elsif page.collection and page.collection == 'posts' -%}
+        {%- assign page_category = page.category | downcase -%}
+        {%- assign icon = site.data.category-icons[page_category] -%}
+        {%- assign category_root = site.theme_settings.category_dir | default: '/category' -%}
+        {%- assign back_link = category_root | append: '/' | append: page_category -%}
+      {%- endif %}
+      <a href="{{ back_link | default: '/' | relative_url }}" title="Home" aria-label="Home Link" accesskey="h">{% unless page.hide_icon %}{{ icon | default: site.theme_settings.icon }}{% endunless %}</a>
     </nav>
   </header>

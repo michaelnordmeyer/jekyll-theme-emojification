@@ -14,14 +14,11 @@ Gem::Specification.new do |spec|
 
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r!^(assets|_data|_layouts|_includes|_sass|(CODE_OF_CONDUCT|LICENSE|README)((\.(txt|md|markdown)|$))|_config\.yml)!i) }
 
-  spec.required_ruby_version = '>= 3.1'
+  spec.required_ruby_version = '>= 2.7.0' # according to jekyll.gemspec
 
   spec.add_runtime_dependency "jekyll", ">= 3.9.3", "< 5.0"
-  # spec.add_runtime_dependency "jekyll-feed", "~> 0.17.0"
-  spec.add_runtime_dependency "jekyll-feed", "~> 0.18.0.pre.mn"
   spec.add_runtime_dependency "jekyll-include-cache", "~> 0.2"
-  spec.add_runtime_dependency "jekyll-seo-tag", "~> 3.0.0.pre.mn"
-  spec.add_runtime_dependency "jekyll-sitemap", "~> 1.4.1.pre.mn"
+  spec.add_runtime_dependency "jekyll-titleize", "~> 0.1"
 
   spec.add_development_dependency "bundler", "~> 2.4"
   spec.add_development_dependency "rake", "~> 13.0"
