@@ -39,7 +39,7 @@ layout: default
         {%- unless page.hide_dates %}
             <time itemprop="datePublished" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
         {%- endunless %}
-            <h4 itemprop="headline name">{% if page.colorful_index %}{% unless post.hide_list_icon %}{{ post.icon | default: site.theme_settings.icon }}&nbsp;{% endunless %}{% endif %}<a href="{{ post.url | relative_url }}">{{ post.title | smartify }}</a>{%- if post.content_warnings contains 'video' -%}&nbsp;📽️{%- endif -%}</h4>
+            <h4 itemprop="headline name">{% if page.colorful_index %}{% unless post.hide_list_icon %}{{ post.icon | default: site.theme_settings.icon }}&nbsp;{% endunless %}{% endif %}<a href="{{ post.url | relative_url }}">{{ post.title | smartify }}</a>{% if post.content_warnings contains 'video' %}&nbsp;📽️{% endif %}</h4>
           </header>
         {%- if site.theme_settings.show_excerpts -%}
           {%- unless page.hide_excerpts %}
@@ -52,7 +52,7 @@ layout: default
       {%- endfor %}
       </section>
 
-      {% include_cached feed-subscription.html %}
+      {% include feed-subscription.html %}
     </section>
     {%- endif %}
   </main>

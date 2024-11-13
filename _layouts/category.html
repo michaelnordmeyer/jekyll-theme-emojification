@@ -2,10 +2,13 @@
 layout: default
 ---
   <main aria-label="Content" itemscope itemtype="https://schema.org/Blog">
-    <h1>{{ site.theme_settings.category_title_prefix }}{{ page.title | smartify }}&nbsp;({{ site.categories[page.title].size }})</h1>
+    {%- assign category_name_parts = page.name | split: '.' %}
+    {%- assign category_name = category_name_parts[0] %}
+    {%- assign category_name_titleized = category_name | replace: '-', ' ' | titleize %}
+    <h1>{{ site.theme_settings.category_title_prefix | default: 'Category: ' }}{{ category_name_titleized | smartify }}&nbsp;({{ site.categories[category_name_titleized].size }})</h1>
 
     {%- assign content_without_newlines = content | strip_newlines -%}
-    {%- if content_without_newlines != '' %}
+    {% if content_without_newlines != '' %}
     <section aria-label="Introduction">
 {{ content }}
     </section>
@@ -33,7 +36,7 @@ layout: default
           {%- unless page.hide_dates %}
           <time itemprop="datePublished" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
           {%- endunless %}
-          <h3 itemprop="headline name">{% if page.colorful_index %}{% unless post.hide_list_icon %}{{ post.icon | default: site.theme_settings.icon }}&nbsp;{% endunless %}{% endif %}<a href="{{ post.url | relative_url }}">{{ post.title | smartify }}</a>{%- if post.content_warnings contains 'video' -%}&nbsp;📽️{%- endif -%}</h3>
+          <h3 itemprop="headline name">{% if page.colorful_index %}{% unless post.hide_list_icon %}{{ post.icon | default: site.theme_settings.icon }}&nbsp;{% endunless %}{% endif %}<a href="{{ post.url | relative_url }}">{{ post.title | smartify }}</a>{% if post.content_warnings contains 'video' %}&nbsp;📽️{% endif %}</h3>
         </header>
         {% if site.theme_settings.show_excerpts -%}
           {%- unless page.hide_excerpts -%}
@@ -45,7 +48,11 @@ layout: default
       </article>
       {%- endfor %}
     </section>
-    
-    {% include_cached feed-subscription.html %}
+
+      {%- assign category_titleized = page.title | replace: '-', ' ' | titleize -%}
+      {%- assign category_text = ' of category “' | append: category_titleized | append: '”' -%}
+      {%- assign category_dc = page.title | downcase -%}
+      {%- assign link = site.feed.category_path | default: '/feed/' | append: category_dc | append: '.xml' %}
+    {% include feed-subscription.html category_text=category_text link=link %}
     {%- endif %}
   </main>

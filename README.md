@@ -24,6 +24,7 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 - Pages
 - Category pages
 - A styled redirection page, which will be used by the optional plugin [Jekyll Redirect From](https://github.com/jekyll/jekyll-redirect-from)
+- Built-in feed and sitemap creation (no dependency to jekyll-feed and jekyll-sitemap)
 - Theme-color matching favicons
 - Header images
 - Optional excerpts in feed, SEO tags, category and home pages
@@ -31,7 +32,6 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 - Hidden semantic info for embedding and SEO like Open Graph, JSON-LD, and inline Microdata. No need for the `jekyll-seo-tag` plugin
 - Minimal build and load times
 - Custom header and footer to add snippets
-- Cache buster for CSS and favicon files
 - Basic [Webmention](https://indieweb.org/Webmention) support (needs third-party service like [Webmention.io](https://webmention.io) or additional server software), which allows subscribing to a feed of Webmentions, which are cross-site notifications
 
 ## Additional Features

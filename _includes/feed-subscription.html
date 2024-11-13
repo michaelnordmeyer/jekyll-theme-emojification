@@ -1,2 +1,1 @@
-{% capture feed_url -%}{% feed_url %}{%- endcapture -%}
-<footer aria-label="Feed Subscription Offer">Subscribe to updates via <a href="{{ feed_url | relative_url }}" rel="alternate nofollow" type="application/atom+xml">Atom feed</a></footer>
+<footer aria-label="Feed Subscription Offer">Subscribe to updates{{ include.category_text }} via <a href="{{ include.link | default: site.feed.path | relative_url }}" rel="alternate nofollow noindex">Atom feed</a></footer>

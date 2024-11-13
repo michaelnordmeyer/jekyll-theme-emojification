@@ -1,0 +1,25 @@
+{%- assign category_feed_all_name = site.theme_settings.category_feed_all_name | default: "All" -%}
+{%- assign category_feed_all_name_titleized = category_feed_all_name | replace: '-', ' ' | titleize %}
+  <link type="application/atom+xml" rel="alternate" href="{{ site.feed.path | default: '/feed.xml' | relative_url }}" title="{{ site.title | append: site.feed.title_separator | append: category_feed_all_name_titleized | smartify }}">
+{%- if page.categories.size > 0 -%}
+  {%- assign sorted_categories = page.categories | sort -%}
+  {%- for category in sorted_categories -%}
+    {%- assign category_dc = category | downcase | replace: ' ', '-' -%}
+    {%- assign category_feed_url = site.feed.category_path | default: '/feed/' | append: category_dc | append: '.xml' -%}
+    {%- assign category_titleized = category | replace: '-', ' ' | titleize %}
+  <link type="application/atom+xml" rel="alternate" href="{{ category_feed_url | relative_url }}" title="{{ site.title | append: site.feed.title_separator | append: category_titleized | smartify }}">
+  {%- endfor -%}
+{%- elsif page.layout == 'category' -%}
+  {%- assign category_dc = page.title | downcase | replace: ' ', '-' -%}
+  {%- assign category_feed_url = site.feed.category_path | default: '/feed/' | append: category_dc | append: '.xml' -%}
+  {%- assign category_titleized = page.title | replace: '-', ' ' | titleize %}
+  <link type="application/atom+xml" rel="alternate" href="{{ category_feed_url | relative_url }}" title="{{ site.title | append: site.feed.title_separator | append: category_titleized | smartify }}">
+{%- elsif site.categories.size > 0 -%}
+  {%- assign sorted_categories = site.categories | sort -%}
+  {%- for category in sorted_categories -%}
+    {%- assign category_dc = category[0] | downcase | replace: ' ', '-' -%}
+    {%- assign category_feed_url = site.feed.category_path | default: '/feed/' | append: category_dc | append: '.xml' -%}
+    {%- assign category_titleized = category[0] | replace: '-', ' ' | titleize %}
+  <link type="application/atom+xml" rel="alternate" href="{{ category_feed_url | relative_url }}" title="{{ site.title | append: site.feed.title_separator | append: category_titleized | smartify }}">
+  {%- endfor -%}
+{%- endif -%}
