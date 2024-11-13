@@ -42,6 +42,7 @@ Some features cannot applied automatically due to how Jekyll integrates gem-base
 - Category pages from `/category/`
 - Category feed pages from `/feeds/`, if some or all categories should have feeds
 - Custom error pages from `/error/`
+- Draft, build, and deploy support via `/Rakefile.rb`, including creating a UUID for posts
 
 Only the categories and custom error pages need to be edited, if you want to (category name, color, emoji, title, permalink, maybe extra textual content).
 
