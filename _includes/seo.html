@@ -1,17 +1,20 @@
 {%- if page.title -%}
-  <title>{{ page.title | smartify }} {{ site.title_separator | default: '|' }} {{ site.title | smartify }}</title>
+  {%- capture html_title -%}{{ page.title | smartify }} {{ site.title_separator | default: '|' }} {{ site.title | smartify }}{%- endcapture -%}
+  {%- capture meta_title -%}{{ page.title | smartify }}{%- endcapture -%}
 {%- else -%}
-  <title>{{ site.title | smartify }} {{ site.title_separator | default: '|' }} {{ site.description | smartify }}</title>
+  {%- capture html_title -%}{{ site.title | smartify }} {{ site.title_separator | default: '|' }} {{ site.description | smartify }}{%- endcapture -%}
+  {%- assign meta_title = html_title -%}
 {%- endif -%}
 {%- if page.excerpt -%}
   {%- assign description = page.excerpt | strip_html | smartify -%}
 {%- else -%}
   {%- assign description = site.description | smartify -%}
-{%- endif %}
+{%- endif -%}
+  <title>{{ html_title }}</title>
   <meta name="description" content="{{ description }}">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <meta name="author" content="{{ site.author.name }}">
-  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:title" content="{{ meta_title }}">
   <meta property="og:locale" content="{% if page.lang %}{{ page.lang | replace: '-', '_' }}{% elsif site.lang %}{{ site.lang | replace: '-', '_' }}{% else %}{{ 'en' }}{% endif %}">
   <meta property="og:description" content="{{ description }}">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
@@ -43,7 +46,7 @@
     "@type": "{{ type }}",
     "@id": "{{ page.url | absolute_url }}#{{ type }}",
     "url": "{{ page.url | absolute_url }}",
-    "headline": "{{ page.title }}",
+    "headline": "{{ meta_title }}",
   {%- if page.date %}
     "datePublished": "{{ page.date | date_to_xmlschema }}",
     {%- if page.last_modified_at %}
