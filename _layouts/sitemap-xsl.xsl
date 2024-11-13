@@ -11,7 +11,7 @@
         <link rel="icon" type="image/webp" href="{{ site.favicon }}" />
           {%- elsif site.favicon contains '.png' %}
         <link rel="icon" type="image/png" href="{{ site.favicon }}" />
-          {%- elsif icon contains '.svg' %}
+          {%- elsif site.favicon contains '.svg' %}
         <link rel="icon" type="image/svg+xml" href="{{ site.favicon }}" />
           {%- elsif site.favicon contains '.jpg' or site.favicon contains '.jpeg' %}
         <link rel="icon" type="image/jpeg" href="{{ site.favicon }}" />
