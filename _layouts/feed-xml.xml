@@ -5,11 +5,15 @@
   <generator uri="https://jekyllrb.com/" version="{{ jekyll.version }}">Jekyll</generator>
   {%- endunless %}
   <link href="{{ page.url | absolute_url }}" rel="self" type="application/atom+xml" />
-  {%- assign category_feed_root = site.theme_settings.category_dir | default: '/category' -%}
-  {%- assign feed_name_parts = page.name | split: '.' %}
-  {%- assign feed_name = feed_name_parts[0] %}
-  {%- assign feed_title = feed_name | replace: '-', ' ' | titleize %}
-  <link href="{{ site.url | absolute_url | append: site.baseurl }}{% if page.url == site.feed.path %}/{% else %}{{ category_feed_root }}/{{ feed_name }}{% endif %}" rel="alternate" type="text/html" {% if site.lang %}hreflang="{{ site.lang }}" {% endif %}/>
+  {%- if page.dir == '/' -%}
+    {%- assign feed_title = site.theme_settings.category_feed_all_name %}
+  {%- else -%}
+    {%- assign feed_dir_parts = page.dir | split: '/' -%}
+    {%- assign feed_name_index = feed_dir_parts.size | minus: 1 -%}
+    {%- assign feed_name = feed_dir_parts[feed_name_index] -%}
+    {%- assign feed_title = feed_name | replace: '-', ' ' | titleize -%}
+  {%- endif %}
+  <link href="{{ site.url | absolute_url | append: site.baseurl }}{{ page.dir }}" rel="alternate" type="text/html" {% if site.lang %}hreflang="{{ site.lang }}" {% endif %}/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>{{ page.url | absolute_url | xml_escape }}</id>
   {%- if site.feed.icon %}
@@ -26,7 +30,7 @@
     {%- assign title = title | append: title_separator | append: category -%}
   {%- endif -%}
   {%- if title %}
-  <title>{{ title | smartify | strip_html | normalize_whitespace }}{{ site.feed.title_separator }}{{ feed_title }}</title>
+  <title>{{ title | smartify | strip_html | normalize_whitespace }}{% if feed_title != '' %}{{ site.feed.title_separator }}{% endif %}{{ feed_title }}</title>
   {%- endif -%}
   {%- if site.description %}
   <subtitle>{{ site.description | smartify | strip_html | normalize_whitespace }}</subtitle>

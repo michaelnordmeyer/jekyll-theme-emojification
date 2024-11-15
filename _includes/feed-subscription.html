@@ -1,1 +1,2 @@
-<footer aria-label="Feed Subscription Offer">Subscribe to updates{{ include.category_text }} via <a href="{{ include.link | default: site.feed.path | relative_url }}" rel="alternate nofollow noindex">Atom feed</a></footer>
+{%- assign feed_filename = site.theme_settings.feed_filename | default: 'feed.xml' %}
+<footer aria-label="Feed Subscription Offer">Subscribe to updates{{ include.category_text }} via <a href="{{ page.url | append: feed_filename | relative_url }}" rel="alternate nofollow noindex">Atom feed</a></footer>

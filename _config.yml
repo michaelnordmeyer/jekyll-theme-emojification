@@ -25,35 +25,3 @@ strict_front_matter: true # default: false
 # remote_theme: michaelnordmeyer/jekyll-theme-emojification
 # theme: jekyll-theme-emojification
 # timezone: Europe/Berlin # default: local timezone
-
-## https://jekyllrb.com/docs/configuration/front-matter-defaults/
-defaults:
-  - scope:
-      path: "" # an empty string here means all files in the project (allows globs, but is slow)
-      type: posts # type (optional): posts, pages, drafts, or any collection
-    values:
-      layout: post
-  - scope:
-      path: ""
-      type: pages
-    values:
-      layout: page
-  - scope:
-      path: "category"
-      type: pages
-    values:
-      layout: category
-      permalink: /:path/:basename
-      sitemap: false
-  - scope:
-      path: "error"
-      type: pages
-    values:
-      layout: error
-      permalink: /:path/:basename
-      sitemap: false
-      icon: 😩
-  - scope:
-      path: ""
-    values:
-      layout: default

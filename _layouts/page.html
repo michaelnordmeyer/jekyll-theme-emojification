@@ -10,8 +10,11 @@ layout: default
         {%- if page.image %}
         <img itemprop="image" src="{{ page.image.path | relative_url }}" alt="{{ page.image.alt }}" title="{{ page.image.title }}">
         {%- endif %}
-        {%- if page.excerpt %}
+
+        {%- if page.excerpt and site.theme_settings.show_excerpts -%}
+          {%- unless page.hide_excerpts %}
         <p itemprop="abstract"><strong>{{ page.excerpt | smartify }}</strong></p>
+          {%- endunless %}
         {%- endif %}
 {{ content }}
       </div>

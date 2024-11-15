@@ -5,7 +5,7 @@ layout: default
     {%- assign category_name_parts = page.name | split: '.' %}
     {%- assign category_name = category_name_parts[0] %}
     {%- assign category_name_titleized = category_name | replace: '-', ' ' | titleize %}
-    <h1>{{ site.theme_settings.category_title_prefix | default: 'Category: ' }}{{ category_name_titleized | smartify }}&nbsp;({{ site.categories[category_name_titleized].size }})</h1>
+    <h1>{{ site.theme_settings.category_title_prefix | default: 'Category: ' }}{{ page.title | smartify }}&nbsp;({{ site.categories[page.title].size }})</h1>
 
     {%- assign content_without_newlines = content | strip_newlines -%}
     {% if content_without_newlines != '' %}
@@ -49,10 +49,7 @@ layout: default
       {%- endfor %}
     </section>
 
-      {%- assign category_titleized = page.title | replace: '-', ' ' | titleize -%}
-      {%- assign category_text = ' of category “' | append: category_titleized | append: '”' -%}
-      {%- assign category_dc = page.title | replace: ' ', '-' | downcase -%}
-      {%- assign link = site.feed.category_path | default: '/feed/' | append: category_dc | append: '.xml' %}
-    {% include feed-subscription.html category_text=category_text link=link %}
+    {% assign category_text = ' of category “' | append: page.title | append: '”' -%}
+    {% include feed-subscription.html category_text=category_text %}
     {%- endif %}
   </main>

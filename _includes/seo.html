@@ -5,7 +5,9 @@
   {%- capture html_title -%}{{ site.title | smartify }} {{ site.title_separator | default: '|' }} {{ site.description | smartify }}{%- endcapture -%}
   {%- assign meta_title = html_title -%}
 {%- endif -%}
-{%- if page.excerpt -%}
+{%- if page.description -%}
+  {%- assign description = page.description | smartify -%}
+{%- elsif page.excerpt -%}
   {%- assign description = page.excerpt | strip_html | smartify -%}
 {%- else -%}
   {%- assign description = site.description | smartify -%}
@@ -64,7 +66,9 @@
         {%- endfor %}
       ]
     },
-  {%- if page.excerpt %}
+  {%- if page.description %}
+    "abstract": "{{ page.description | smartify }}",
+  {%- elsif page.excerpt %}
     "abstract": "{{ page.excerpt | strip_html | smartify }}",
   {%- endif -%}
   {%- if page.image.path %}
