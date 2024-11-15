@@ -13,8 +13,8 @@ layout: default
 
         {%- if page.excerpt and site.theme_settings.show_excerpts -%}
           {%- unless page.hide_excerpts %}
-        <p itemprop="abstract"><strong>{{ page.excerpt | smartify }}</strong></p>
-          {%- endunless %}
+        <p aria-label="Abstract" itemprop="abstract"><strong>{{ page.excerpt | smartify }}</strong></p>
+          {%- endunless -%}
         {%- endif %}
 {{ content }}
       </div>
