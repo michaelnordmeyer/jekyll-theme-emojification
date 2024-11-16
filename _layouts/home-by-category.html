@@ -16,9 +16,10 @@ layout: default
     {%- assign date_format = site.date_format | default: '%Y-%m-%d'-%}
     {%- assign sorted_categories = site.categories | sort -%}
     {%- for category in sorted_categories -%}
-      {%- assign category_posts = site.posts | where: 'categories', category[0] | sort %}
-    <section aria-labelledby="{{ category[0] | replace: '-', ' ' | titleize }}">
-      <h2>{{ category[0] | replace: '-', ' ' | titleize }}</h2>
+      {%- assign category_title = category[0] -%}
+      {%- assign category_posts = site.posts | where: 'categories', category_title | sort %}
+    <section aria-labelledby="{{ category_title }}">
+      <h2>{{ category_title }}</h2>
       {%- for post in category_posts %}
       <article itemscope itemtype="https://schema.org/BlogPosting"{% if page.colorful_index %} style="margin-bottom: {% if forloop.last %}1em{% else %}0{% endif %}; padding: 1em; background-color: {{ post.theme_color }};"{% endif %}>
         <header>
@@ -36,12 +37,10 @@ layout: default
         {%- endif %}
       </article>
       {%- endfor %}
+
+      {% include feed-subscription.html category_title=category_title %}
     </section>
     {%- endfor %}
 
-    {%- assign category_titleized = page.title | replace: '-', ' ' | titleize -%}
-    {%- assign category_text = ' of category “' | append: category_titleized | append: '”' -%}
-    {%- assign category_dc = page.title -%}
-    {%- assign link = site.feed.category_path | default: '/feed/' | append: category_dc | append: '.xml' %}
-    {% include feed-subscription.html category_text=category_text link=link %}
+    {% include feed-subscription.html %}
   </main>

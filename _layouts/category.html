@@ -49,7 +49,6 @@ layout: default
       {%- endfor %}
     </section>
 
-    {% assign category_text = ' of category “' | append: page.title | append: '”' -%}
-    {% include feed-subscription.html category_text=category_text %}
+    {% include feed-subscription.html category_title=page.title %}
     {%- endif %}
   </main>
