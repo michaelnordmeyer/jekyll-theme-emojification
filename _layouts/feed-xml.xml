@@ -20,7 +20,7 @@
   <icon>{{ site.feed.icon | absolute_url | xml_escape }}</icon>
   {%- endif -%}
   {%- assign title = site.title | default: site.name -%}
-  {%- assign title_separator = site.title_separator | default: '|' -%}
+  {%- assign title_separator = site.title_separator | default: ' | ' -%}
   {%- if page.collection and page.collection != 'posts' -%}
     {%- assign collection = page.collection | titleize -%}
     {%- assign title = title | append: title_separator | append: collection -%}

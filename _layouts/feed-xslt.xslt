@@ -5,7 +5,7 @@
     <html>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Feed {{ site.title_separator | default: '|' }} <xsl:value-of select="/atom:feed/atom:title" /></title>
+        <title>Feed{{ site.title_separator | default: ' | ' }}<xsl:value-of select="/atom:feed/atom:title" /></title>
         {%- assign icon = site.feed.icon | default: site.favicon %}
         {%- if icon %}
           {%- if icon contains '.webp' %}

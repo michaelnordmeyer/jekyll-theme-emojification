@@ -1,8 +1,8 @@
 {%- if page.title -%}
-  {%- capture html_title -%}{{ page.title | smartify }} {{ site.title_separator | default: '|' }} {{ site.title | smartify }}{%- endcapture -%}
+  {%- capture html_title -%}{{ page.title | smartify }}{{ site.title_separator | default: ' | ' }}{{ site.title | smartify }}{%- endcapture -%}
   {%- capture meta_title -%}{{ page.title | smartify }}{%- endcapture -%}
 {%- else -%}
-  {%- capture html_title -%}{{ site.title | smartify }} {{ site.title_separator | default: '|' }} {{ site.description | smartify }}{%- endcapture -%}
+  {%- capture html_title -%}{{ site.title | smartify }}{{ site.title_separator | default: ' | ' }}{{ site.description | smartify }}{%- endcapture -%}
   {%- assign meta_title = html_title -%}
 {%- endif -%}
 {%- if page.description -%}
