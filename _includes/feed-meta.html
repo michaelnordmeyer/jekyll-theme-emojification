@@ -4,20 +4,20 @@
   {%- assign sorted_categories = page.categories | sort -%}
   {%- for category in sorted_categories -%}
     {%- assign category_dc = category | downcase | replace: ' ', '-' -%}
-    {%- assign category_feed_url = site.feed.category_dir | default: '/category' | append: '/' | append: category_dc | append: '/' | append: feed_filename -%}
+    {%- assign category_feed_url = site.theme_settings.category_dir | default: '/category' | append: '/' | append: category_dc | append: '/' | append: feed_filename -%}
     {%- assign category_titleized = category | replace: '-', ' ' | titleize %}
   <link type="application/atom+xml" rel="alternate" href="{{ category_feed_url | relative_url }}" title="{{ site.title | append: site.feed.title_separator | append: category_titleized | smartify }}">
   {%- endfor -%}
 {%- elsif page.layout == 'category' -%}
   {%- assign category_dc = page.title | downcase | replace: ' ', '-' -%}
-  {%- assign category_feed_url = site.feed.category_dir | default: '/category' | append: '/' | append: category_dc | append: '/' | append: feed_filename -%}
+  {%- assign category_feed_url = site.theme_settings.category_dir | default: '/category' | append: '/' | append: category_dc | append: '/' | append: feed_filename -%}
   {%- assign category_titleized = page.title | replace: '-', ' ' | titleize %}
   <link type="application/atom+xml" rel="alternate" href="{{ category_feed_url | relative_url }}" title="{{ site.title | append: site.feed.title_separator | append: category_titleized | smartify }}">
 {%- elsif site.categories.size > 0 -%}
   {%- assign sorted_categories = site.categories | sort -%}
   {%- for category in sorted_categories -%}
     {%- assign category_dc = category[0] | downcase | replace: ' ', '-' -%}
-    {%- assign category_feed_url = site.feed.category_dir | default: '/category' | append: '/' | append: category_dc | append: '/' | append: feed_filename -%}
+    {%- assign category_feed_url = site.theme_settings.category_dir | default: '/category' | append: '/' | append: category_dc | append: '/' | append: feed_filename -%}
     {%- assign category_titleized = category[0] | replace: '-', ' ' | titleize %}
   <link type="application/atom+xml" rel="alternate" href="{{ category_feed_url | relative_url }}" title="{{ site.title | append: site.feed.title_separator | append: category_titleized | smartify }}">
   {%- endfor -%}
