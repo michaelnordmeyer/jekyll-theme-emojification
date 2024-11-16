@@ -28,7 +28,7 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 - Theme-color matching favicons
 - Optional colorful index pages
 - Header images
-- Optional excerpts in feed, SEO tags, and on category and home pages
+- Optional descriptions or excerpts in feed, SEO tags, and on category and home pages
 - Content warnings for embedded videos
 - Hidden semantic info for embedding and SEO like Open Graph, JSON-LD, and inline Microdata. No need for the `jekyll-seo-tag` plugin
 - Minimal build and load times
@@ -55,7 +55,7 @@ For categories to be properly working, the site needs a `category` directory hav
 ```yaml
 ---
 title: "Features"
-excerpt: A description for the head's meta description tag created by this theme
+description: "A description for the head's meta description tag created by this theme"
 sitemap: false
 layout: category
 ---
@@ -96,23 +96,23 @@ image:
 
 This image is also used in `feed.xml` and SEO tags as the displayed image.
 
-### Excerpts
+### Descriptions
 
-The excerpts are declared in the post's frontmatter:
+The descriptions are declared in the post's frontmatter:
 
 ```yaml
-excerpt: "A helpful excerpt."
+description: "A helpful description."
 ```
 
-They should be limited to 160 characters, because some of the places where they are used are effectively limited in length. If no excerpts are declared, then Jekyll will create one automatically.
+They should be limited to 160 characters, because some of the places where they are used are effectively limited in length. If no descriptions are declared, then page’s `excerpt` will be used. This is either the manual declared one or Jekyll will create one automatically.
 
-#### Enabling Excerpts on the Home Page
+#### Enabling Descriptions on the Home Page
 
-To display post excerpts on the home page, simply add the following to your `_config.yml`:
+To display post descriptions on the home page, simply add the following to your `_config.yml`:
 
 ```yaml
 theme_settings:
-  show_excerpts: true
+  show_descriptions: true
 ```
 
 ### Favicons

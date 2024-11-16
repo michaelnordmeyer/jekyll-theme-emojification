@@ -41,10 +41,10 @@ layout: default
         {%- endunless %}
             <h4 itemprop="headline name">{% if page.colorful_index %}{% unless post.hide_list_icon %}{{ post.icon | default: site.theme_settings.icon }}&nbsp;{% endunless %}{% endif %}<a href="{{ post.url | relative_url }}">{{ post.title | smartify }}</a>{% if post.content_warnings contains 'video' %}&nbsp;📽️{% endif %}</h4>
           </header>
-        {%- if site.theme_settings.show_excerpts -%}
-          {%- unless page.hide_excerpts %}
+        {%- if site.theme_settings.show_descriptions and post.description -%}
+          {%- unless page.hide_descriptions %}
           <p aria-label="Abstract" itemprop="abstract">
-            {{ post.excerpt | strip_html | smartify }}
+            {{ post.description | strip_html | smartify }}
           </p>
           {%- endunless -%}
         {%- endif %}

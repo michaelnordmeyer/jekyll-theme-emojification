@@ -32,8 +32,8 @@
   {%- if title %}
   <title>{{ title | smartify | strip_html | normalize_whitespace }}{% if feed_title != '' %}{{ site.feed.title_separator }}{% endif %}{{ feed_title }}</title>
   {%- endif -%}
-  {%- if site.description %}
-  <subtitle>{{ site.description | smartify | strip_html | normalize_whitespace }}</subtitle>
+  {%- if page.description or site.description %}
+  <subtitle>{{ page.description | default: site.description | smartify | strip_html | normalize_whitespace }}</subtitle>
   {%- endif -%}
   {%- if site.author %}
   <author>
