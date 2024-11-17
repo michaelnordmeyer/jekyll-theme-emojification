@@ -1,20 +1,19 @@
   <header>
     <nav>
       {%- if page.layout == 'category' -%}
-        {%- assign page_title = page.title | slugify -%}
-        {%- assign icon = site.data.category-icons[page_title] -%}
+        {%- assign icon = site.data.categories[page.category].icon -%}
       {%- elsif page.collection and page.collection == 'posts' -%}
-        {%- if page.category -%}
-          {%- assign page_category = page.category | downcase -%}
-          {%- assign icon = site.data.category-icons[page_category] -%}
-          {%- assign back_link = site.theme_settings.category_dir | default: '/category' | append: '/' | append: page_category | append: '/' -%}
+        {%- if page.categories[0] -%}
+          {%- assign category = page.categories[0] -%}
+          {%- assign icon = site.data.categories[category].icon -%}
+          {%- assign home_link = '/' | append: category | append: '/' -%}
         {%- else -%}
-          {%- assign back_link = '/' -%}
+          {%- assign home_link = '/' -%}
         {%- endif -%}
       {%- endif -%}
       {%- if page.icon -%}
         {%- assign icon = page.icon -%}
       {%- endif %}
-      <a href="{{ back_link | default: '/' | relative_url }}" title="Home" aria-label="Home Link" accesskey="h">{% unless page.hide_icon %}{{ icon | default: site.theme_settings.icon }}{% endunless %}</a>
+      <a href="{{ home_link | default: '/' | relative_url }}" title="Home" aria-label="Home Link" accesskey="h">{% unless page.hide_icon %}{{ icon | default: site.theme_settings.icon }}{% endunless %}</a>
     </nav>
   </header>

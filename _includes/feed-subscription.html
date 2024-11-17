@@ -1,10 +1,9 @@
-{%- if include.category_title -%}
-  {%- assign category_text = ' of category “' | append: include.category_title | append: '”' -%}
-  {%- assign category_slug = include.category_title | slugify -%}
+{%- if include.category -%}
+  {%- assign category_text = ' category “' | append: site.data.categories[include.category].title | append: '”' -%}
   {%- assign feed_filename = site.theme_settings.feed_filename | default: 'feed.xml' -%}
-  {%- assign feed_link = site.theme_settings.category_dir | default: '/category' | append: '/' | append: category_slug | append: '/' | append: feed_filename -%}
+  {%- assign feed_link = '/' | append: include.category | append: '/' | append: feed_filename -%}
 {%- else -%}
-  {%- assign category_text = ' of all categories' -%}
+  {%- assign category_text = ' all categories' -%}
   {%- assign feed_link = site.feed.path | default: '/feed.xml' -%}
 {%- endif -%}
-<footer aria-label="Feed Subscription Offer">Subscribe to updates{{ category_text }} via <a href="{{ feed_link | relative_url }}" rel="alternate nofollow noindex">Atom feed</a></footer>
+<footer aria-label="Feed Subscription Offer">Subscribe to updates of {{ category_text }} via <a href="{{ feed_link | relative_url }}" rel="alternate nofollow noindex">Atom feed</a></footer>

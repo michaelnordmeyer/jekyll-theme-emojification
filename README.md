@@ -39,10 +39,10 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 
 Some features cannot be applied automatically due to how Jekyll integrates gem-based or remote themes. They have to be copied manually to your site’s root directory and are included in the [demo repository](https://github.com/michaelnordmeyer/jekyll-theme-emojification-demo).
 
-- Category and feed pages from `/category/`
-- Custom error pages from `/error/`
-- Settings from `/_config.yml`
-- Draft, build, and deploy support via `/Rakefile.rb`, including creating a UUID for posts
+- Category settings, and category and feed pages, e.g. `_data/categories.yml`, `colors/index.md`, and `colors/feed.xml`
+- Custom error pages from directory `error`
+- Settings from `_config.yml`
+- Draft, build, and deploy support via `Rakefile.rb`, including creating a UUID for posts
 
 Only the categories and custom error pages need to be edited, if you want to (category name, color, emoji, title, permalink, maybe extra textual content).
 
@@ -50,36 +50,27 @@ Only the categories and custom error pages need to be edited, if you want to (ca
 
 ### Category Pages and Feeds
 
-For categories to be properly working, the site needs a `category` directory having separate markdown files for each category. E.g. for the category "Features" a directory called `features` with an `index.md` in the directory `category` with at least the following content:
+For categories to be properly working, the site needs category directories having index and feed files for each category. E.g. for the category "Features" a directory called `features` with an `index.md` and `feed.xml` with at least the following content:
 
 ```yaml
 ---
-title: "Features"
 description: "A description for the head's meta description tag created by this theme"
-sitemap: false
+category: manuals
 layout: category
+permalink: /:path/
+sitemap: false
 ---
 ```
 
-The title has to match the corresponding directory and category name. Sitemap and layout can be declared in `_config.yml` to void repetition. The permalink cannot be changed without editing templates. Better leave it alone.
-
-```yaml
-  - scope:
-      path: category/*/index.md
-      type: pages
-    values:
-      layout: category
-      permalink: /:path/
-      sitemap: false
-```
+The name of the category has to match the corresponding category in `_data/categories.yml` and the category itself. The category is either declared by adding the key `category` to a post's front matter, but it is more convenient to have all posts of a certain category in a `_posts` subdirectory of the category, e.g. `features/_posts` for category `features`.
 
 Used categories have to be linked manually, because there is no menu.
 
-The category icons are defined in `_data/category-icons.yml` and have to match the category name’s slug as well.
+The category icons and displayed titles are defined in `_data/categories.yml` and have to match the category name’s slug as well.
 
 Feeds for categories are automatically linked on the bottom of index pages and are embedded in the HTML page’s `<head>`. They have to exist next to the above mentioned `index.md` as `feed.xml`.
 
-For this automatism to work, posts and pages can only belong to a single category, which has to be declared with the key `category:`. `categories:` doesn’t work.
+For this automatism to work, posts and pages can only belong to a single category, which, if it is to be declared manually, with the key `category:`. `categories:` doesn’t work.
 
 ### Header Image Support
 

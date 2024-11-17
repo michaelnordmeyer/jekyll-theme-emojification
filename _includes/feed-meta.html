@@ -3,19 +3,20 @@
 {%- if page.categories.size > 0 -%}
   {%- assign sorted_categories = page.categories | sort -%}
   {%- for category in sorted_categories -%}
-    {%- assign category_slugified = category | slugify -%}
-    {%- assign category_feed_url = site.theme_settings.category_dir | default: '/category' | append: '/' | append: category_slugified | append: '/' | append: feed_filename %}
-  <link type="application/atom+xml" rel="alternate" href="{{ category_feed_url | relative_url }}" title="{{ site.title | append: site.feed.title_separator | append: category | smartify }}">
+    {%- assign category_feed_url = '/' | append: category | append: '/' | append: feed_filename -%}
+  {%- assign category_title = site.data.categories[category].title %}
+  <link type="application/atom+xml" rel="alternate" href="{{ category_feed_url | relative_url }}" title="{{ site.title | append: site.feed.title_separator | append: category_title | smartify }}">
   {%- endfor -%}
 {%- elsif page.layout == 'category' -%}
-  {%- assign category_slugified = page.title | slugify -%}
-  {%- assign category_feed_url = site.theme_settings.category_dir | default: '/category' | append: '/' | append: category_slugified | append: '/' | append: feed_filename %}
-  <link type="application/atom+xml" rel="alternate" href="{{ category_feed_url | relative_url }}" title="{{ site.title | append: site.feed.title_separator | append: page.title | smartify }}">
+  {%- assign category_feed_url = '/' | append: page.category | append: '/' | append: feed_filename -%}
+  {%- assign category_title = site.data.categories[page.category].title %}
+  <link type="application/atom+xml" rel="alternate" href="{{ category_feed_url | relative_url }}" title="{{ site.title | append: site.feed.title_separator | append: category_title | smartify }}">
 {%- elsif site.categories.size > 0 -%}
   {%- assign sorted_categories = site.categories | sort -%}
   {%- for category in sorted_categories -%}
-    {%- assign category_slugified = category[0] | slugify -%}
-    {%- assign category_feed_url = site.theme_settings.category_dir | default: '/category' | append: '/' | append: category_slugified | append: '/' | append: feed_filename %}
-  <link type="application/atom+xml" rel="alternate" href="{{ category_feed_url | relative_url }}" title="{{ site.title | append: site.feed.title_separator | append: category[0] | smartify }}">
+    {%- assign category_feed_url = '/' | append: category[0] | append: '/' | append: feed_filename -%}
+    {%- assign category_slug = category[0] -%}
+    {%- assign category_title = site.data.categories[category_slug].title %}
+  <link type="application/atom+xml" rel="alternate" href="{{ category_feed_url | relative_url }}" title="{{ site.title | append: site.feed.title_separator | append: category_title | smartify }}">
   {%- endfor -%}
 {%- endif -%}

@@ -4,8 +4,7 @@ layout: default
   <main aria-label="Content" itemscope itemtype="https://schema.org/Blog">
     {%- assign category_name_parts = page.name | split: '.' -%}
     {%- assign category_name = category_name_parts[0] -%}
-    {%- assign category_name_titleized = category_name | replace: '-', ' ' | titleize %}
-    <h1>{{ site.theme_settings.category_title_prefix | default: 'Category: ' }}{{ page.title | smartify }}&nbsp;({{ site.categories[page.title].size }})</h1>
+    <h1>{{ site.theme_settings.category_title_prefix | default: 'Category: ' }}{{ site.data.categories[page.category].title | smartify }}&nbsp;({{ site.categories[page.category].size }})</h1>
 
     {%- assign content_without_newlines = content | strip_newlines -%}
     {% if content_without_newlines != '' %}
@@ -16,10 +15,10 @@ layout: default
     <hr>
     {%- endif %}
 
-    {%- if site.categories[page.title].size > 0 -%}
+    {%- if site.categories[page.category].size > 0 -%}
       {%- assign date_format = site.date_format | default: '%Y-%m-%d' -%}
       {%- assign year = '' -%}
-      {%- for post in site.categories[page.title] -%}
+      {%- for post in site.categories[page.category] -%}
         {%- assign current_year = post.date | date: '%Y' -%}
         {%- if year != current_year -%}
           {%- if year != '' %}
@@ -49,6 +48,6 @@ layout: default
       {%- endfor %}
     </section>
 
-    {% include feed-subscription.html category_title=page.title %}
+    {% include feed-subscription.html category=page.category %}
     {%- endif %}
   </main>
