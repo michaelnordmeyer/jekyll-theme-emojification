@@ -59,3 +59,9 @@ task :iconbuild do
   puts "==> Building #{artefact} icons..."
   system "cd _tools && ./generate-icons.sh webp && ./generate-icons.sh svg"
 end
+
+desc "Cleans the working dir"
+task :clean do
+  puts "==> Cleaning #{domain}..."
+  system "bundle exec jekyll clean"
+end
