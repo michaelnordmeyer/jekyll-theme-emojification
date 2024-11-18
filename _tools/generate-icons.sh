@@ -42,7 +42,7 @@ for scss in ../assets/css/*; do
       fi
     fi
   else
-    # Hash symbol cannot be part of the scss filename, otherwise is cannot be HTTP-served
+    # Hash symbol cannot be part of the scss filename, otherwise it cannot be HTTP-served
     if [ ${image_format} == "svg" ]; then
       ./generate-svg-icon.sh \#${theme_color} white ${theme_color}.svg
     else
