@@ -27,26 +27,26 @@ for scss in ../assets/css/*; do
   if [[ ${named_colors} =~ (^|[[:space:]])${theme_color}($|[[:space:]]) ]]; then
     if [ ${theme_color} == "white" ]; then
       if [ ${image_format} == "svg" ]; then
-        ./generate-svg-icon.sh white black ${theme_color}.svg
+        ./generate-icon-svg.sh white black ${theme_color}.svg
       else
-        ./generate-unicode-icon.sh white black "${font}" ${glyph} ${image_format}
+        ./generate-icon-unicode.sh white black "${font}" ${glyph} ${image_format}
       fi
     elif [ ${theme_color} == "grey" ] && [ ${image_format} != "svg" ]; then
       # Grey is much lighter in convert
-      ./generate-unicode-icon.sh \#808080 white "${font}" ${glyph} ${image_format} grey
+      ./generate-icon-unicode.sh \#808080 white "${font}" ${glyph} ${image_format} grey
     else
       if [ ${image_format} == "svg" ]; then
-        ./generate-svg-icon.sh ${theme_color} white ${theme_color}.svg
+        ./generate-icon-svg.sh ${theme_color} white ${theme_color}.svg
       else
-        ./generate-unicode-icon.sh ${theme_color} white "${font}" ${glyph} ${image_format}
+        ./generate-icon-unicode.sh ${theme_color} white "${font}" ${glyph} ${image_format}
       fi
     fi
   else
     # Hash symbol cannot be part of the scss filename, otherwise it cannot be HTTP-served
     if [ ${image_format} == "svg" ]; then
-      ./generate-svg-icon.sh \#${theme_color} white ${theme_color}.svg
+      ./generate-icon-svg.sh \#${theme_color} white ${theme_color}.svg
     else
-      ./generate-unicode-icon.sh \#${theme_color} white "${font}" ${glyph} ${image_format} ${theme_color}
+      ./generate-icon-unicode.sh \#${theme_color} white "${font}" ${glyph} ${image_format} ${theme_color}
     fi
   fi
 
