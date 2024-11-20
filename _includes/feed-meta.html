@@ -1,5 +1,5 @@
 {%- assign feed_filename = site.theme_settings.feed_filename | default: 'feed.xml' -%}
-  <link type="application/atom+xml" rel="alternate" href="{{ site.feed.path | default: '/feed.xml' | relative_url }}" title="{{ site.title | smartify }}{% if site.theme_settings.category_feed_all_name != '' %}{{ site.feed.title_separator }}{% endif %}{{ site.theme_settings.category_feed_all_name | smartify }}">
+  <link type="application/atom+xml" rel="alternate" href="{{ site.feed.path | default: '/feed.xml' | relative_url }}" title="{{ site.title | smartify }}{% if site.theme_settings.category_feed_all_name != '' %}{{ site.feed.title_separator }}{{ site.theme_settings.category_feed_all_name | smartify }}{% endif %}">
 {%- if page.categories.size > 0 -%}
   {%- assign sorted_categories = page.categories | sort -%}
   {%- for category in sorted_categories -%}
