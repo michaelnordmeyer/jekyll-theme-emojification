@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+## Deployment settings
 artefact = "jekyll-theme-emojification"
 gemspec = File.absolute_path("#{artefact}.gemspec")
 version = Gem::Specification::load(gemspec).version
@@ -13,11 +14,19 @@ task :icons do
   sh "cd _tools && ./generate-icons.sh svg"
 end
 
-desc "Builds the site"
+desc "Builds the site for deployment"
 task :build do
   Rake::Task[:icons].invoke
   puts "==> Building #{artefact}..."
   sh "JEKYLL_ENV=\"production\" bundle exec jekyll build"
+end
+
+desc "Builds the demo site for deployment"
+task :demobuild do
+  Rake::Task[:gembuild].invoke
+  Rake::Task[:geminstall].invoke
+  puts "==> Building #{artefact} demo..."
+  sh "cd _demo && rake build"
 end
 
 desc "Serves the site locally"
@@ -25,20 +34,6 @@ task :serve do
   Rake::Task[:icons].invoke
   puts "==> Building and serving #{artefact} locally..."
   sh "bundle exec jekyll serve"
-end
-
-desc "Cleans the source dir"
-task :clean do
-  puts "==> Cleaning #{artefact}..."
-  sh "bundle exec jekyll clean"
-end
-
-desc "Builds the demo site"
-task :demobuild do
-  Rake::Task[:gembuild].invoke
-  Rake::Task[:geminstall].invoke
-  puts "==> Building #{artefact} demo..."
-  sh "cd _demo && rake build"
 end
 
 desc "Serves the demo site locally"
@@ -61,6 +56,12 @@ desc "Builds and deploys the demo robots.txt"
 task :demodeployrobots do
   puts "==> Building and deploying #{artefact} demo robots.txt..."
   sh "cd _demo && rake deployrobots"
+end
+
+desc "Cleans the source dir"
+task :clean do
+  puts "==> Cleaning #{artefact}..."
+  sh "bundle exec jekyll clean"
 end
 
 desc "Cleans the demo source dir"
