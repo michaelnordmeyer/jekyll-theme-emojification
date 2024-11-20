@@ -7,7 +7,7 @@ description: >-
   A simple and minimal single-author theme with configurable big emoji as the header link, and configurable background colors, which can be chosen for each post or page
 
 ## Jekyll build settings
-exclude: [CODE_OF_CONDUCT.md, jekyll-theme-emojification*, LICENSE, Rakefile.rb, README.md, TODO.md]
+exclude: [CODE_OF_CONDUCT.md, jekyll-theme-emojification*, LICENSE, Rakefile.rb, README.md, repo-card.png, TODO.md]
 # ignore_theme_config: true # Since Jekyll 4.0, see: https://jekyllrb.com/docs/themes/#pre-configuring-theme-gems40, https://jekyllrb.com/docs/configuration/options/
 kramdown:
   show_warnings: true
