@@ -9,8 +9,6 @@ layout: default
     <section aria-label="Introduction">
 {{ content }}
     </section>
-
-    <hr>
     {%- endif %}
 
     {%- assign date_format = site.date_format | default: '%Y-%m-%d'-%}
@@ -19,7 +17,7 @@ layout: default
       {%- assign category_title = category[0] -%}
       {%- assign category_posts = site.posts | where: 'categories', category_title | sort %}
     <section aria-labelledby="{{ category_title }}">
-      <h2>{{ category_title }}</h2>
+      <h2>{{ site.data.categories[category_title].title }}</h2>
       {%- for post in category_posts %}
       <article itemscope itemtype="https://schema.org/BlogPosting"{% if page.colorful_index %} style="margin-bottom: {% if forloop.last %}1em{% else %}0{% endif %}; padding: 1em; background-color: {{ post.theme_color }};"{% endif %}>
         <header>
