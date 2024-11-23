@@ -83,6 +83,7 @@
       "@type" : "Blog",
       "@id": "{{ '/' | absolute_url }}#Blog"
     },
+    "inLanguage": "{% if page.lang %}{{ page.lang }}{% else %}{{ site.lang | default: 'en' }}{% endif %}",
   {%- endif %}
     "publisher": {
       "@type": "Person",
