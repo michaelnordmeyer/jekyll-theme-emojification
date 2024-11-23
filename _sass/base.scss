@@ -61,4 +61,5 @@ body > main > article > header > h1 + time { display: block; margin-bottom: calc
 body > main img { display: block; margin: 0 auto var(--spacing); max-width: 100%; height: auto; }
 body > main > article > div[itemprop="articleBody"] > p:first-of-type { text-align: center; }
 figure:has(iframe) > figcaption { margin-top: var(--spacing); }
-.footnotes { margin: calc(var(--spacing) * 2) 0 var(--spacing); border-top: var(--border-size) solid var(--line-color); font-size: var(--small-font-size); line-height: var(--line-height); }
+hr:has(+div[role="doc-endnotes"]) { margin-bottom: var(--spacing); }
+div[role="doc-endnotes"] { margin-top: 0; font-size: var(--small-font-size); line-height: var(--line-height); }
