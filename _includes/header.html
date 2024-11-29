@@ -1,5 +1,8 @@
   <header>
     <nav>
+      {%- assign home_link = '/' -%}
+      {%- assign home_link_title = 'Home' -%}
+      {%- assign home_link_aria_label = 'Home Link' -%}
       {%- if page.layout == 'category' -%}
         {%- assign icon = site.data.categories[page.category].icon -%}
       {%- elsif page.collection and page.collection == 'posts' -%}
@@ -7,13 +10,13 @@
           {%- assign category = page.categories[0] -%}
           {%- assign icon = site.data.categories[category].icon -%}
           {%- assign home_link = '/' | append: category | append: '/' -%}
-        {%- else -%}
-          {%- assign home_link = '/' -%}
+          {%- assign home_link_title = 'Category Home' -%}
+          {%- assign home_link_aria_label = 'Category Home Link' -%}
         {%- endif -%}
       {%- endif -%}
       {%- if page.icon -%}
         {%- assign icon = page.icon -%}
       {%- endif %}
-      <a href="{{ home_link | default: '/' | relative_url }}" title="Home" aria-label="Home Link" accesskey="h">{% unless page.hide_icon %}{{ icon | default: site.theme_settings.icon }}{% endunless %}</a>
+      <a href="{{ home_link | default: '/' | relative_url }}" title="{{ home_link_title }}" aria-label="{{ home_link_aria_label }}">{% unless page.hide_icon %}{{ icon | default: site.theme_settings.icon }}{% endunless %}</a>
     </nav>
   </header>
