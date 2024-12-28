@@ -6,7 +6,7 @@ A simple and minimal single-author theme with configurable big emoji as the head
 
 [Demo site with examples](https://jekyll-theme-emojification.michaelnordmeyer.com/)
 
-The demo site has useful samples and shows how many color/emoji combinations are possible.
+The demo site has useful samples and shows how many color/emoji combinations are possible. [I run a muted version of the theme using `grey` as the main color on my own site](https://michaelnordmeyer.com/).
 
 ## Compatibility
 
