@@ -51,6 +51,8 @@ layout: default
       </section>
 
       {% include feed-subscription.html %}
+      {%- if page.list_title %}
     </section>
+      {%- endif -%}
     {%- endif %}
   </main>
