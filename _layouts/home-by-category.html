@@ -1,11 +1,12 @@
 ---
 layout: default
 ---
+  {%- assign title = page.title | default: site.title | smartify -%}
   <main aria-label="Content" itemscope itemtype="https://schema.org/Blog">
-    <h1>{{ page.title | smartify }}</h1>
+    <h1 itemprop="headline name">{{ title }}</h1>
 
     {%- assign content_without_newlines = content | strip_newlines -%}
-    {% if content_without_newlines != '' %}
+    {%- if content_without_newlines != '' %}
     <section aria-label="Introduction">
 {{ content }}
     </section>
@@ -17,13 +18,14 @@ layout: default
       {%- assign category_title = category[0] -%}
       {%- assign category_posts = site.posts | where: 'categories', category_title | sort %}
     <section aria-labelledby="{{ category_title }}">
-      <h2>{{ site.data.categories[category_title].title }}</h2>
+      <h2 id="{{ category_title }}">{{ site.data.categories[category_title].title }}</h2>
+
       {%- for post in category_posts %}
       <article itemscope itemtype="https://schema.org/BlogPosting"{% if page.colorful_index %} style="margin-bottom: {% if forloop.last %}1em{% else %}0{% endif %}; padding: 1em; background-color: {{ post.theme_color }};"{% endif %}>
         <header>
-          {%- unless page.hide_dates %}
+        {%- unless page.hide_dates %}
           <time itemprop="datePublished" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
-          {%- endunless %}
+        {%- endunless %}
           <h3 itemprop="headline name">{% if page.colorful_index %}{% unless post.hide_list_icon %}{{ post.icon | default: site.theme_settings.icon }}&nbsp;{% endunless %}{% endif %}<a href="{{ post.url | relative_url }}">{{ post.title | smartify }}</a>{% if post.content_warnings contains 'video' %}&nbsp;📽️{% endif %}</h3>
         </header>
         {%- if site.theme_settings.show_descriptions and post.description -%}

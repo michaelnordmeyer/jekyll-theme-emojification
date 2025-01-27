@@ -1,0 +1,62 @@
+  <main aria-label="Content" itemscope itemtype="https://schema.org/Blog">
+    <h1 itemprop="headline name">{{ title }}</h1>
+
+    {%- assign content_without_newlines = content | strip_newlines -%}
+    {%- if content_without_newlines != '' %}
+    <section aria-label="Introduction">
+{{ content }}
+    </section>
+    {%- endif %}
+
+    {%- if posts.size > 0 -%}
+      {%- if page.list_title %}
+    <section aria-labelledby="{{ page.list_title | downcase | url_encode }}">
+      <h2 id="{{ page.list_title | downcase | url_encode }}">{{ page.list_title | smartify }}</h2>
+        {%- assign heading_year_open = "<h3" -%}
+        {%- assign heading_year_close = "</h3>" -%}
+        {%- assign heading_post_link_open = "<h4" -%}
+        {%- assign heading_post_link_close = "</h4>" -%}
+      {%- else -%}
+        {%- assign heading_year_open = "<h2" -%}
+        {%- assign heading_year_close = "</h2>" -%}
+        {%- assign heading_post_link_open = "<h3" -%}
+        {%- assign heading_post_link_close = "</h3>" -%}
+      {%- endif -%}
+      {%- assign date_format = site.date_format | default: '%Y-%m-%d' -%}
+      {%- assign year = '' -%}
+      {%- for post in posts -%}
+        {%- assign current_year = post.date | date: '%Y' -%}
+        {%- if year != current_year -%}
+          {%- if year != '' %}
+      </section>
+          {%- endif -%}
+          {%- assign year = current_year %}
+
+      <section aria-labelledby="{{ year }}">
+        {{ heading_year_open }} id="{{ year }}">{{ year }}{{ heading_year_close }}
+        {%- endif %}
+
+        <article itemscope itemtype="https://schema.org/BlogPosting"{% if page.colorful_index %} style="margin-bottom: {% if forloop.last %}1em{% else %}0{% endif %}; padding: 1em; background-color: {{ post.theme_color }};"{% endif %}>
+          <header>
+        {%- unless page.hide_dates %}
+            <time itemprop="datePublished" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
+        {%- endunless %}
+          {{ heading_post_link_open }} itemprop="headline name">{% if page.colorful_index %}{% unless post.hide_list_icon %}{{ post.icon | default: site.theme_settings.icon }}&nbsp;{% endunless %}{% endif %}<a href="{{ post.url | relative_url }}">{{ post.title | smartify }}</a>{% if post.content_warnings contains 'video' %}&nbsp;📽️{% endif %}{{ heading_post_link_close }}
+          </header>
+        {%- if site.theme_settings.show_descriptions and post.description -%}
+          {%- unless page.hide_descriptions %}
+          <p aria-label="Abstract" itemprop="abstract">
+            {{ post.description | strip_html | smartify }}
+          </p>
+          {%- endunless -%}
+        {%- endif %}
+        </article>
+      {%- endfor %}
+      </section>
+
+      {% include feed-subscription.html category=page.category %}
+      {%- if page.list_title %}
+    </section>
+      {%- endif -%}
+    {%- endif %}
+  </main>
