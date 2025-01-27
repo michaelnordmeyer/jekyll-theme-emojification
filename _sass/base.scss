@@ -59,7 +59,7 @@ body > main > footer { font-size: var(--small-font-size); }
 body > main > article > header > h1:has(+time) { margin: 0 0 calc(var(--spacing) * 1/2); }
 body > main > article > header > h1 + time { display: block; margin-bottom: calc(var(--spacing) * 2); text-align: center; font-size: var(--font-size); }
 body > main img { display: block; margin: 0 auto var(--spacing); max-width: 100%; height: auto; }
-body > main > article > div[itemprop="articleBody"] > p:first-of-type { text-align: center; }
+body > main > article > div[itemprop="articleBody"] > p:first-of-type { text-align: center; text-wrap: balance; }
 figure:has(iframe) > figcaption { margin-top: var(--spacing); }
 hr:has(+div[role="doc-endnotes"]) { margin-bottom: var(--spacing); }
 div[role="doc-endnotes"] { margin-top: 0; font-size: var(--small-font-size); line-height: var(--line-height); }
