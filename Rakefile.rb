@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 ## Deployment settings
-artefact = "jekyll-theme-emojification"
-gemspec = File.absolute_path("#{artefact}.gemspec")
+gemspec = File.absolute_path(File.basename(File.dirname(__FILE__)) + ".gemspec")
+artefact = Gem::Specification::load(gemspec).name
 version = Gem::Specification::load(gemspec).version
 
 task :default => ["gembuild"]
