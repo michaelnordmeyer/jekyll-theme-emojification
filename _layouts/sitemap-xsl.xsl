@@ -8,17 +8,17 @@
         <title>Sitemap{{ site.title_separator | default: ' | ' }}{{ site.title | smartify }}</title>
         {%- if site.favicon %}
           {%- if site.favicon contains '.webp' %}
-        <link rel="icon" type="image/webp" href="{{ site.favicon }}" />
+        <link rel="icon" type="image/webp" href="{{ '/assets/icons/' | append: site.favicon | relative_url }}" />
           {%- elsif site.favicon contains '.png' %}
-        <link rel="icon" type="image/png" href="{{ site.favicon }}" />
+        <link rel="icon" type="image/png" href="{{ '/assets/icons/' | append: site.favicon | relative_url }}" />
           {%- elsif site.favicon contains '.svg' %}
-        <link rel="icon" type="image/svg+xml" href="{{ site.favicon }}" />
+        <link rel="icon" type="image/svg+xml" href="{{ '/assets/icons/' | append: site.favicon | relative_url }}" />
           {%- elsif site.favicon contains '.jpg' or site.favicon contains '.jpeg' %}
-        <link rel="icon" type="image/jpeg" href="{{ site.favicon }}" />
+        <link rel="icon" type="image/jpeg" href="{{ '/assets/icons/' | append: site.favicon | relative_url }}" />
           {%- elsif site.favicon contains '.gif' %}
-        <link rel="icon" type="image/gif" href="{{ site.favicon }}" />
+        <link rel="icon" type="image/gif" href="{{ '/assets/icons/' | append: site.favicon | relative_url }}" />
           {%- elsif site.favicon contains '.ico' %}
-        <link rel="icon" type="image/x-icon" href="{{ site.favicon }}" />
+        <link rel="icon" type="image/x-icon" href="{{ '/assets/icons/' | append: site.favicon | relative_url }}" />
           {%- endif %}
         {%- endif %}
         <meta name="author" content="{{ site.author.name }}" />
@@ -43,7 +43,7 @@
       <body>
         <h1>Sitemap</h1>
         <p>This is the sitemap.xml (<a href="https://sitemaps.org/">what are sitemaps?</a>), which is only used by search engines.</p>
-        <p><a href="{{ '/' | absolute_url }}">Visit the website of this sitemap →</a></p>
+        <p><a href="{{ '/' | relative_url }}">Visit the website of this sitemap →</a></p>
         <ul>
           <xsl:for-each select="/sitemap:urlset/sitemap:url">
             <li>

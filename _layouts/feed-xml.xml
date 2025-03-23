@@ -13,8 +13,9 @@
   <link href="{{ site.url | absolute_url | append: site.baseurl }}{{ page.dir }}" rel="alternate" type="text/html" {% if site.lang %}hreflang="{{ site.lang }}" {% endif %}/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>{{ page.url | absolute_url | xml_escape }}</id>
-  {%- if site.feed.icon %}
-  <icon>{{ site.feed.icon | absolute_url | xml_escape }}</icon>
+  {%- assign icon = site.feed.icon | default: site.favicon -%}
+  {%- if icon %}
+  <icon>{{ '/assets/icons/' | append: icon | absolute_url | xml_escape }}</icon>
   {%- endif -%}
   {%- assign title = site.title | default: site.name -%}
   {%- assign title_separator = site.title_separator | default: ' | ' -%}

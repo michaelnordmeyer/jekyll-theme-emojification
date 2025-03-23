@@ -9,17 +9,17 @@
         {%- assign icon = site.feed.icon | default: site.favicon %}
         {%- if icon %}
           {%- if icon contains '.webp' %}
-        <link rel="icon" type="image/webp" href="{{ icon }}" />
+        <link rel="icon" type="image/webp" href="{{ '/assets/icons/' | append: icon | relative_url }}" />
           {%- elsif icon contains '.png' %}
-        <link rel="icon" type="image/png" href="{{ icon }}" />
+        <link rel="icon" type="image/png" href="{{ '/assets/icons/' | append: icon | relative_url }}" />
           {%- elsif icon contains '.svg' %}
-        <link rel="icon" type="image/svg+xml" href="{{ icon }}" />
+        <link rel="icon" type="image/svg+xml" href="{{ '/assets/icons/' | append: icon | relative_url }}" />
           {%- elsif icon contains '.jpg' or icon contains '.jpeg' %}
-        <link rel="icon" type="image/jpeg" href="{{ icon }}" />
+        <link rel="icon" type="image/jpeg" href="{{ '/assets/icons/' | append: icon | relative_url }}" />
           {%- elsif icon contains '.gif' %}
-        <link rel="icon" type="image/gif" href="{{ icon }}" />
+        <link rel="icon" type="image/gif" href="{{ '/assets/icons/' | append: icon | relative_url }}" />
           {%- elsif icon contains '.ico' %}
-        <link rel="icon" type="image/x-icon" href="{{ icon }}" />
+        <link rel="icon" type="image/x-icon" href="{{ '/assets/icons/' | append: icon | relative_url }}" />
           {%- endif %}
         {%- endif %}
         <xsl:text disable-output-escaping="yes">&lt;meta name="author" content="</xsl:text>
