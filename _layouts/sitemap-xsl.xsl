@@ -21,6 +21,8 @@
         <link rel="icon" type="image/x-icon" href="{{ '/assets/icons/' | append: site.favicon | relative_url }}" />
           {%- endif %}
         {%- endif %}
+        <meta name="copyright" content="{{ site.author.copyright | smartify }}" />
+        <link rel="license" href="{{ site.author.license_link }}" />
         <meta name="author" content="{{ site.author.name }}" />
         <link rel="canonical" href="{{ '/' | absolute_url }}" />
         <style>
