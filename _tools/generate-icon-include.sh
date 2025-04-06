@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
-if [ "${#}" -lt 2 ]; then
-  echo "Generates HTML include of icon in _includes/icons/"
-  echo "Usage: $(basename ${0}) <theme-color> <image-format>"
+output_dir="../_includes/icons"
+
+if [[ ${#} -ne 2 ]]; then
+  echo "Generates HTML include of icon in ${output_dir}"
+  echo "Usage: $(basename "${0}") <theme-color> <image-format>"
   exit 1
 fi
 
@@ -25,17 +27,18 @@ fi
 
 icon="../assets/icons/${theme_color}.${image_format}"
 base64_cmd="base64 ${parameters} ${icon}"
+mkdir -p ${output_dir}
 
 if [ ${image_format} == "svg" ]; then
   media_type="image/svg+xml"
   # printf "<link rel=\"icon\" type=\"${media_type}\" href=\"{{ '/assets/icons/${theme_color}.svg' | relative_url }}\">" \
-  #   > ../_includes/icons/${theme_color}.svg.html
+  #   > ${output_dir}/${theme_color}.svg.html
   printf "<link rel=\"icon\" type=\"${media_type}\" href=\"data:${media_type};base64,$(eval ${base64_cmd})\">" \
-    > ../_includes/icons/${theme_color}.svg.html
+    > ${output_dir}/${theme_color}.svg.html
 else
   media_type=$(file -b --mime-type ${icon})
   printf "<link rel=\"icon\" type=\"${media_type}\" href=\"{{ '/assets/icons/${theme_color}.${image_format}' | relative_url }}\">" \
-    > ../_includes/icons/${theme_color}.html
+    > ${output_dir}/${theme_color}.html
   # printf "<link rel=\"icon\" type=\"${media_type}\" href=\"data:${media_type};base64,$(eval ${base64_cmd})\">" \
-  #   > ../_includes/icons/${theme_color}.html
+  #   > ${output_dir}/${theme_color}.html
 fi

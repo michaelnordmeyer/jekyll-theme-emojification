@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-if [ ${#} -lt 4 ]; then
+if [ ${#} -lt 5 ]; then
   echo "Creates a 180×180 icon from a Unicode glyph, like ★"
   echo "Sets filename to background color if not set as parameter"
   echo "Usage: $(basename ${0}) <background-color> <foreground-color> <font> <unicode-glyph> <file-extension> [filename]"

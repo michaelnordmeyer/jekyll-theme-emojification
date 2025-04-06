@@ -6,7 +6,7 @@ glyph="★"
 
 set -e
 
-if [ "${#}" -lt 1 ]; then
+if [[ "${#}" -ne 1 ]]; then
   echo "Generates icons in assets/icons/ and HTML include of icons in _includes/icons/"
   echo "Usage: $(basename ${0}) <image-format>"
   echo "<image-format> can be one of: jpg png webp svg"
@@ -20,7 +20,7 @@ for scss in ../assets/css/*; do
   basename=$(basename ${scss})
   theme_color=${basename%.*}
 
-  if [ ${theme_color} == "none" ]; then
+  if [[ ${theme_color} == "none" ]]; then
     continue
   fi
 
