@@ -4,13 +4,13 @@
   {%- unless site.feed.hide_generator %}
   <generator uri="https://jekyllrb.com/" version="{{ jekyll.version }}">Jekyll</generator>
   {%- endunless %}
-  <link href="{{ page.url | absolute_url }}" rel="self" type="application/atom+xml" />
+  <link rel="self" type="application/atom+xml" href="{{ page.url | absolute_url }}" />
   {%- if page.url == site.feed.path -%}
     {%- assign feed_title = site.theme_settings.category_feed_all_name %}
   {%- else -%}
     {%- assign feed_title = site.data.categories[page.category].title -%}
   {%- endif %}
-  <link href="{{ site.url | absolute_url | append: site.baseurl }}{{ page.dir }}" rel="alternate" type="text/html" {% if site.lang %}hreflang="{{ site.lang }}" {% endif %}/>
+  <link rel="alternate" type="text/html" href="{{ site.url | absolute_url | append: site.baseurl }}{{ page.dir }}" {% if site.lang %}hreflang="{{ site.lang }}" {% endif %}/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>{{ page.url | absolute_url | xml_escape }}</id>
   {%- assign icon = site.feed.icon | default: site.favicon -%}
