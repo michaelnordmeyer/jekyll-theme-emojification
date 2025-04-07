@@ -17,6 +17,6 @@
       {%- if page.icon -%}
         {%- assign icon = page.icon -%}
       {%- endif %}
-      <a href="{{ home_link | default: '/' | relative_url }}" title="{{ home_link_title }}" aria-label="{{ home_link_aria_label }}">{% unless page.hide_icon %}{{ icon | default: site.theme_settings.icon }}{% endunless %}</a>
+      <a href="{{ home_link | relative_url }}" title="{{ home_link_title }}" aria-label="{{ home_link_aria_label }}">{% unless page.hide_icon %}{{ icon | default: site.theme_settings.icon }}{% endunless %}</a>
     </nav>
   </header>
