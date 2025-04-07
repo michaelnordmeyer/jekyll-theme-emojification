@@ -57,8 +57,8 @@
   {%- endif %}
     "author": {
       "@type": "Person",
-      "@id": "{{ site.url }}/#Person",
-      "url": "{{ site.url }}/",
+      "@id": "{{ '/' | absolute_url }}#Person",
+      "url": "{{ '/' | absolute_url }}",
       "name": "{{ site.author.name }}",
       "sameAs": [
         {%- for link in site.social.links %}
@@ -87,8 +87,8 @@
   {%- endif %}
     "publisher": {
       "@type": "Person",
-      "@id": "{{ site.url }}/#Person",
-      "url": "{{ site.url }}/",
+      "@id": "{{ '/' | absolute_url }}#Person",
+      "url": "{{ '/' | absolute_url }}",
       "name": "{{ site.author.name }}",
       "sameAs": [
         {%- for link in site.social.links %}

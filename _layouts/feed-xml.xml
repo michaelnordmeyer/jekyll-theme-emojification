@@ -10,7 +10,7 @@
   {%- else -%}
     {%- assign feed_title = site.data.categories[page.category].title -%}
   {%- endif %}
-  <link rel="alternate" type="text/html" href="{{ site.url | absolute_url | append: site.baseurl }}{{ page.dir }}" {% if site.lang %}hreflang="{{ site.lang }}" {% endif %}/>
+  <link rel="alternate" type="text/html" href="{{ '/' | absolute_url }}" {% if site.lang %}hreflang="{{ site.lang }}" {% endif %}/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>{{ page.url | absolute_url | xml_escape }}</id>
   {%- assign icon = site.feed.icon | default: site.favicon -%}
