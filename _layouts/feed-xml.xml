@@ -18,7 +18,7 @@
   <icon>{{ '/assets/icons/' | append: icon | absolute_url | xml_escape }}</icon>
   {%- endif -%}
   {%- assign title = site.title | default: site.name -%}
-  {%- assign title_separator = site.title_separator | default: ' | ' -%}
+  {%- assign title_separator = site.feed.title_separator | default: ': ' -%}
   {%- if page.collection and page.collection != 'posts' -%}
     {%- assign collection = page.collection | replace: '-', ' ' | titleize -%}
     {%- assign title = title | append: title_separator | append: collection -%}
@@ -103,7 +103,7 @@
     {%- assign post_image = post.image.path | default: post.image -%}
     {%- if post_image -%}
       {%- unless post_image contains '://' -%}
-        {%- assign post_image = post_image | absolute_url | xml_escape -%}
+        {%- assign post_image = post_image | absolute_url -%}
       {%- endunless %}
     <media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="{{ post_image | xml_escape }}" />
     <media:content xmlns:media="http://search.yahoo.com/mrss/" url="{{ post_image | xml_escape }}" medium="image" />
