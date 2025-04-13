@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 :root {
   --default-font-px: 16;
   --font-size: 1rem;
@@ -14,6 +15,7 @@
   --small-font-size:   calc(var(--font-size) * 14/var(--default-font-px));
   --pre-font-size:     calc(var(--font-size) * 15/var(--default-font-px));
 }
+
 html {
   max-width: 720px; // 720px (= 66.182ch in system-ui macOS Sonoma), use 1440w images for 2x displays
   margin: 0 auto;
@@ -61,6 +63,6 @@ body > main > footer { margin-top: calc(var(--spacing) * 2); font-size: var(--sm
 body > main > article > header > h1:has(+time) { margin: 0 0 calc(var(--spacing) * 1/2); } // Baseline 2023-12
 body > main > article > header > h1 + time { display: block; margin-bottom: calc(var(--spacing) * 2); text-align: center; font-size: var(--font-size); }
 body > main img { display: block; margin: 0 auto var(--spacing); max-width: 100%; height: auto; }
-body > main > article > div[itemprop="articleBody"] > p:first-of-type { text-align: center; text-wrap: balance; } // Baseline 2024-05
+body > main > article > div[itemprop="articleBody"] > p[itemprop="abstract"] { text-align: center; text-wrap: balance; } // Baseline 2024-05
 hr:has(+div[role="doc-endnotes"]) { margin-bottom: var(--spacing); } // Baseline 2023-12
 div[role="doc-endnotes"] { margin-top: 0; font-size: var(--small-font-size); line-height: var(--line-height); }
