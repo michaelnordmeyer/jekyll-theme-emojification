@@ -8,12 +8,15 @@
   --spacing: 1em;
   --line-height: 1.5;
   /* Calculate integer pixel values depending on the font size (1rem = 16px) */
-  --border-size:       calc(var(--font-size) *  1/var(--default-font-px));
-  --border-size-thick: calc(var(--font-size) *  2/var(--default-font-px));
-  --border-radius:     calc(var(--font-size) *  3/var(--default-font-px));
-  --x-script:          calc(var(--font-size) * 11/var(--default-font-px));
-  --small-font-size:   calc(var(--font-size) * 14/var(--default-font-px));
-  --pre-font-size:     calc(var(--font-size) * 15/var(--default-font-px));
+  --border-size:            calc(var(--font-size) *  1/var(--default-font-px));
+  --border-size-thick:      calc(var(--font-size) *  2/var(--default-font-px));
+  --border-radius:          calc(var(--font-size) *  3/var(--default-font-px));
+  --x-script:               calc(var(--font-size) * 11/var(--default-font-px));
+  --small-font-size:        calc(var(--font-size) * 14/var(--default-font-px));
+  --pre-font-size:          calc(var(--font-size) * 15/var(--default-font-px));
+  --list-heading-font-size: calc(var(--font-size) * 24/var(--default-font-px));
+  --big-font-size:          calc(var(--font-size) * 32/var(--default-font-px));
+  --emoji-font-size:        calc(var(--font-size) * 96/var(--default-font-px));
 }
 
 html {
@@ -28,7 +31,7 @@ html {
 }
 body { margin: 0; }
 h1, h2, h3, h4, h5, h6 { line-height: 1.2; text-wrap: balance; } // Baseline 2024-05
-h1 { margin: 0 0 var(--spacing); font-size: calc(var(--font-size) *  2); text-align: center; }
+h1 { margin: 0 0 var(--spacing); font-size: var(--big-font-size); text-align: center; }
 p { text-align: justify; hyphens: auto; } // Baseline 2023-09
 ul, ol { padding: 0 calc(var(--spacing) ) 0 calc(var(--spacing) * 2); }
 ul > ul, ol > ol, ul > ol, ol > ul, li > ul, li > ol { padding-left: calc(var(--spacing) * 5/4); }
@@ -47,7 +50,7 @@ tbody th, tbody td { border-top: var(--border-size) solid var(--line-color); }
 tbody + tbody,
 tfoot th, tfoot td { border-top: var(--border-size-thick) solid var(--line-color); }
 hr { margin: calc(var(--spacing) * 2) 0; border: none; border-top: var(--border-size) solid var(--line-color); }
-body > header { margin: calc(var(--spacing) * 1/2) auto; text-align: center; font-size: calc(var(--font-size) *  6); line-height: 1; }
+body > header { margin: calc(var(--spacing) * 1/2) auto; text-align: center; font-size: var(--emoji-font-size); line-height: 1; }
 body > header a { text-decoration: none; }
 body > main { margin-bottom: calc(var(--spacing) * 3); }
 body > main > section > section > article,
@@ -55,7 +58,7 @@ body > main > section > article { margin-bottom: calc(var(--spacing) * 2); }
 body > main > section > section > article > header > time,
 body > main > section > article > header > time { display: block; font-size: var(--small-font-size); line-height: 1.2; }
 body > main > section > section > article > header > h4,
-body > main > section > article > header > h3 { margin: calc(var(--spacing) * 1/5) 0; font-size: calc(var(--font-size) * 3/2); font-weight: 500; line-height: 1.1; }
+body > main > section > article > header > h3 { margin: calc(var(--spacing) * 1/5) 0; font-size: var(--list-heading-font-size); font-weight: 500; line-height: 1.1; }
 body > main > section > section > article > p,
 body > main > section > article > p { margin: 0; line-height: 1.3; }
 body > main > section > footer,
