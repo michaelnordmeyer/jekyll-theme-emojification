@@ -11,12 +11,8 @@
         <h1 itemprop="headline name">{{ site.theme_settings.redirect_page_title | default: 'Redirecting…' | smartify }}</h1>
       </header>
       <div itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/WebPageElement">
-        <p>
-          {{ site.theme_settings.redirect_page_from | default: 'Redirecting from' | smartify }} {{ page.redirect.from | relative_url }} {{ site.theme_settings.redirect_page_to | default: 'to' | smartify }} {{ page.redirect.to | absolute_url }}.
-        </p>
-        <p>
-          <a href="{{ page.redirect.to | absolute_url }}">{{ site.theme_settings.redirect_page_text | default: 'Click here if you are not being redirected.' | smartify }}</a>
-        </p>
+        <p>{{ site.theme_settings.redirect_page_from | default: 'Redirecting from' | smartify }} {{ page.redirect.from | relative_url }} {{ site.theme_settings.redirect_page_to | default: 'to' | smartify }} {{ page.redirect.to | absolute_url }}.</p>
+        <p><a href="{{ page.redirect.to | absolute_url }}">{{ site.theme_settings.redirect_page_text | default: 'Click here if you are not being redirected.' | smartify }}</a></p>
       </div>
     </article>
   </main>
