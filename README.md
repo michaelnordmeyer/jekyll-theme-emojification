@@ -74,11 +74,11 @@ For this automatism to work, posts and pages can only belong to a single categor
 
 ### Header Image Support
 
-A header image is displayed after the title on posts and pages, if `image` is added to the file's frontmatter.
+A header image is displayed after the title on posts and pages, if `featured_image` is added to the file's frontmatter.
 
 ```yaml
 ---
-image:
+featured_image:
   path: /images/sample-image.jpg
   alt: The description of the image
   title: The title of the image

@@ -100,7 +100,7 @@
     <category term="{{ tag | xml_escape }}" />
       {%- endunless -%}
     {%- endfor -%}
-    {%- assign post_image = post.image.path | default: post.image -%}
+    {%- assign post_image = post.featured_image.path | default: post.featured_image -%}
     {%- if post_image -%}
       {%- unless post_image contains '://' -%}
         {%- assign post_image = post_image | absolute_url -%}

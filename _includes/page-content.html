@@ -1,5 +1,5 @@
-{%- if page.image -%}
-<img itemprop="image" src="{{ page.image.path | relative_url }}" alt="{{ page.image.alt }}" title="{{ page.image.title }}">
+{%- if page.featured_image -%}
+<img itemprop="image" src="{{ page.featured_image.path | relative_url }}" alt="{{ page.featured_image.alt }}" title="{{ page.featured_image.title }}">
 {%- endif -%}
 {%- if site.theme_settings.show_descriptions and page.description -%}
   {%- unless page.hide_descriptions %}

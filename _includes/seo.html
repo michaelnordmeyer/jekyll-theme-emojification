@@ -37,10 +37,10 @@
   <meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}">
   {%- endif -%}
 {%- endif %}
-{%- if page.image.path %}
-  <meta property="og:image" content="{{ page.image.path | absolute_url }}">
-  {%- if page.image.alt %}
-  <meta property="og:image:alt" content="{{ page.image.alt }}">
+{%- if page.featured_image.path %}
+  <meta property="og:image" content="{{ page.featured_image.path | absolute_url }}">
+  {%- if page.featured_image.alt %}
+  <meta property="og:image:alt" content="{{ page.featured_image.alt }}">
   {%- endif %}
 {%- endif %}
   <script type="application/ld+json">{
@@ -72,10 +72,10 @@
   {%- elsif page.excerpt %}
     "abstract": "{{ page.excerpt | strip_html | smartify }}",
   {%- endif -%}
-  {%- if page.image.path %}
+  {%- if page.featured_image.path %}
     "image": {
       "@type": "ImageObject",
-      "url": "{{ page.image.path | absolute_url }}"
+      "url": "{{ page.featured_image.path | absolute_url }}"
     },
   {%- endif -%}
   {%- if json_ld_type == 'BlogPosting' %}
