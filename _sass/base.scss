@@ -7,6 +7,7 @@
   --font-family-monospace: ui-monospace, 'Segoe UI Mono', 'Roboto Mono', 'Ubuntu Monospace', 'Noto Sans Mono', 'Liberation Mono', 'SF Mono', SFMono-Regular, monospace, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --spacing: 1em;
   --line-height: 1.5;
+  --reduced-line-height: 1.2;
   /* Calculate integer pixel values depending on the font size (1rem = 16px) */
   --border-size:            calc(var(--font-size) *  1/var(--default-font-px));
   --border-size-thick:      calc(var(--font-size) *  2/var(--default-font-px));
@@ -30,7 +31,7 @@ html {
   text-size-adjust: none;
 }
 body { margin: 0; }
-h1, h2, h3, h4, h5, h6 { line-height: 1.2; text-wrap: balance; } /* Baseline 2024-05 */
+h1, h2, h3, h4, h5, h6 { line-height: var(--reduced-line-height); text-wrap: balance; } /* Baseline 2024-05 */
 h1 { margin: 0 0 var(--spacing); font-size: var(--big-font-size); text-align: center; }
 p { text-align: justify; hyphens: auto; } /* Baseline 2023-09 */
 ul, ol { padding: 0 calc(var(--spacing) ) 0 calc(var(--spacing) * 2); }
@@ -56,7 +57,7 @@ body > main { margin-bottom: calc(var(--spacing) * 3); }
 body > main > section > section > article,
 body > main > section > article { margin-bottom: calc(var(--spacing) * 2); }
 body > main > section > section > article > header > time,
-body > main > section > article > header > time { display: block; font-size: var(--small-font-size); line-height: 1.2; }
+body > main > section > article > header > time { display: block; font-size: var(--small-font-size); line-height: var(--reduced-line-height); }
 body > main > section > section > article > header > h4,
 body > main > section > article > header > h3 { margin: calc(var(--spacing) * 1/5) 0; font-size: var(--list-heading-font-size); font-weight: 500; line-height: 1.1; }
 body > main > section > section > article > p,
