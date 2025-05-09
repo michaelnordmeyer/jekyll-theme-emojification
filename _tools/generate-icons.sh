@@ -8,7 +8,7 @@ set -e
 
 if [[ "${#}" -ne 1 ]]; then
   echo "Generates icons in assets/icons/ and HTML include of icons in _includes/icons/"
-  echo "Usage: $(basename ${0}) <image-format>"
+  echo "Usage: ${0##*/} <image-format>"
   echo "<image-format> can be one of: jpg png webp svg"
   exit 1
 fi
@@ -16,7 +16,8 @@ fi
 image_format=${1,,}
 named_colors="aliceblue antiquewhite aqua aquamarine azure beige bisque black blanchedalmond blue blueviolet brown burlywood cadetblue chartreuse chocolate coral cornflowerblue cornsilk crimson cyan darkblue darkcyan darkgoldenrod darkgray darkgreen darkgrey darkkhaki darkmagenta darkolivegreen darkorange darkorchid darkred darksalmon darkseagreen darkslateblue darkslategray darkslategrey darkturquoise darkviolet deeppink deepskyblue dimgray dimgrey dodgerblue firebrick floralwhite forestgreen fuchsia gainsboro ghostwhite gold goldenrod gray green greenyellow grey honeydew hotpink indianred indigo ivory khaki lavender lavenderblush lawngreen lemonchiffon lightblue lightcoral lightcyan lightgoldenrodyellow lightgray lightgreen lightgrey lightpink lightsalmon lightseagreen lightskyblue lightslategray lightslategrey lightsteelblue lightyellow lime limegreen linen magenta maroon mediumaquamarine mediumblue mediumorchid mediumpurple mediumseagreen mediumslateblue mediumspringgreen mediumturquoise mediumvioletred midnightblue mintcream mistyrose moccasin navajowhite navy oldlace olive olivedrab orange orangered orchid palegoldenrod palegreen paleturquoise palevioletred papayawhip peachpuff peru pink plum powderblue purple rebeccapurple red rosybrown royalblue saddlebrown salmon sandybrown seagreen seashell sienna silver skyblue slateblue slategray slategrey snow springgreen steelblue tan teal thistle tomato turquoise violet wheat white whitesmoke yellow yellowgreen"
 
-for scss in ../assets/css/*; do
+shopt -s nullglob
+for scss in ../assets/css/*.scss; do
   basename=$(basename ${scss})
   theme_color=${basename%.*}
 
@@ -52,3 +53,4 @@ for scss in ../assets/css/*; do
 
   ./generate-icon-include.sh ${theme_color} ${image_format}
 done
+shopt -u nullglob

@@ -6,7 +6,7 @@ output_dir="../_includes/icons"
 
 if [[ ${#} -ne 2 ]]; then
   echo "Generates HTML include of icon in ${output_dir}"
-  echo "Usage: $(basename "${0}") <theme-color> <image-format>"
+  echo "Usage: ${0##*/} <theme-color> <image-format>"
   exit 1
 fi
 

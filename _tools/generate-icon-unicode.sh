@@ -3,8 +3,8 @@
 if [ ${#} -lt 5 ]; then
   echo "Creates a 180×180 icon from a Unicode glyph, like ★"
   echo "Sets filename to background color if not set as parameter"
-  echo "Usage: $(basename ${0}) <background-color> <foreground-color> <font> <unicode-glyph> <file-extension> [filename]"
-  echo "Example: $(basename ${0}) hotpink white /System/Library/Fonts/Apple\ Symbols.ttf ★ webp"
+  echo "Usage: ${0##*/} <background-color> <foreground-color> <font> <unicode-glyph> <file-extension> [filename]"
+  echo "Example: ${0##*/} hotpink white /System/Library/Fonts/Apple\ Symbols.ttf ★ webp"
   exit 1
 fi
 

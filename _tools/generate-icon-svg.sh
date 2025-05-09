@@ -2,7 +2,7 @@
 
 if [ ${#} -ne 3 ]; then
   echo "Creates a 180×180 SVG icon of a five-point star"
-  echo "Usage: $(basename ${0}) <background-color> <foreground-color> <filename>"
+  echo "Usage: ${0##*/} <background-color> <foreground-color> <filename>"
   exit 1
 fi
 
