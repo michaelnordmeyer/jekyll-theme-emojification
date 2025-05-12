@@ -18,7 +18,7 @@ named_colors="aliceblue antiquewhite aqua aquamarine azure beige bisque black bl
 
 shopt -s nullglob
 for scss in ../assets/css/*.scss; do
-  basename=$(basename ${scss})
+  basename=$(basename "${scss}")
   theme_color=${basename%.*}
 
   if [[ ${theme_color} == "none" ]]; then
