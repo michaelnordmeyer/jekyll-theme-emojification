@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, h6 { line-height: var(--reduced-line-height); text-wrap: bal
 h1 { margin: 0 0 var(--spacing); font-size: var(--big-font-size); text-align: center; }
 p { text-align: justify; hyphens: auto; } /* Baseline 2023-09 */
 ul, ol { padding: 0 calc(var(--spacing) ) 0 calc(var(--spacing) * 2); }
-ul > ul, ol > ol, ul > ol, ol > ul, li > ul, li > ol { padding-left: calc(var(--spacing) * 5/4); }
+ul > ul, ol > ol, ul > ol, ol > ul, li > ul, li > ol { padding-left: calc(var(--spacing) * 5/4); padding-right: 0; }
 blockquote { margin-left: calc(var(--spacing) * 1/2); padding-left: calc(var(--spacing) * 3/4); border-left: var(--border-size) solid var(--line-color); }
 pre, code { border: var(--border-size) solid var(--pre-bg-color); border-radius: var(--border-radius); background-color: var(--pre-bg-color); font-family: var(--font-family-monospace); font-size: var(--pre-font-size); }
 pre { padding: calc(var(--spacing) * 1/2) calc(var(--spacing) * 3/4); overflow-x: auto; }
