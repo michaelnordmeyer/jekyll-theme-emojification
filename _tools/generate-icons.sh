@@ -26,17 +26,17 @@ for scss in ../assets/css/*.scss; do
   fi
 
   if [[ ${named_colors} =~ (^|[[:space:]])${theme_color}($|[[:space:]]) ]]; then
-    if [ ${theme_color} == "white" ]; then
-      if [ ${image_format} == "svg" ]; then
+    if [[ ${theme_color} == "white" ]]; then
+      if [[ ${image_format} == "svg" ]]; then
         ./generate-icon-svg.sh white black ${theme_color}.svg
       else
         ./generate-icon-unicode.sh white black "${font}" ${glyph} ${image_format}
       fi
-    elif [ ${theme_color} == "grey" ] && [ ${image_format} != "svg" ]; then
+    elif [[ ${theme_color} == "grey" && ${image_format} != "svg" ]]; then
       # Grey is much lighter in convert
       ./generate-icon-unicode.sh \#808080 white "${font}" ${glyph} ${image_format} grey
     else
-      if [ ${image_format} == "svg" ]; then
+      if [[ ${image_format} == "svg" ]]; then
         ./generate-icon-svg.sh ${theme_color} white ${theme_color}.svg
       else
         ./generate-icon-unicode.sh ${theme_color} white "${font}" ${glyph} ${image_format}
@@ -44,7 +44,7 @@ for scss in ../assets/css/*.scss; do
     fi
   else
     # Hash symbol cannot be part of the scss filename, otherwise it cannot be HTTP-served
-    if [ ${image_format} == "svg" ]; then
+    if [[ ${image_format} == "svg" ]]; then
       ./generate-icon-svg.sh \#${theme_color} white ${theme_color}.svg
     else
       ./generate-icon-unicode.sh \#${theme_color} white "${font}" ${glyph} ${image_format} ${theme_color}

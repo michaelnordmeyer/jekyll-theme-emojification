@@ -8,6 +8,9 @@ if [ ${#} -lt 5 ]; then
   exit 1
 fi
 
+output_dir="../assets/icons"
+mkdir -p "${output_dir}"
+
 if [ -z "${6+x}" ]; then
   filename=${1}
 else
@@ -31,4 +34,4 @@ convert \
   -pointsize 256 \
   -annotate +1+12 "${4}" \
   label:' ' \
-  ../assets/icons/${filename}.${5}
+  "${output_dir}/${filename}.${5}"
