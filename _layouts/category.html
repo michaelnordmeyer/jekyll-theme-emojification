@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
-  {%- capture title -%}{{ site.theme_settings.category_title_prefix | default: 'Category: ' }}{{ site.data.categories[page.category].title | smartify }}&nbsp;({{ site.categories[page.category].size }}){%- endcapture -%}
+  {%- assign category_downcased = page.category | downcase -%}
+  {%- capture title -%}{{ site.theme_settings.category_title_prefix | default: 'Category: ' }}{{ site.data.categories[category_downcased].title | smartify }}&nbsp;({{ site.categories[page.category].size }}){%- endcapture -%}
   {%- assign posts = site.categories[page.category] -%}
   {% include post-index.html %}

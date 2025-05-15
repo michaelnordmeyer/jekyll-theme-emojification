@@ -8,7 +8,8 @@
   {%- if page.url == site.feed.path -%}
     {%- assign feed_title = site.theme_settings.category_feed_all_name %}
   {%- else -%}
-    {%- assign feed_title = site.data.categories[page.category].title -%}
+    {%- assign category_downcased = page.category | downcase -%}
+    {%- assign feed_title = site.data.categories[category_downcased].title -%}
   {%- endif %}
   <link rel="alternate" type="text/html" href="{{ '/' | absolute_url }}" {% if site.lang %}hreflang="{{ site.lang }}" {% endif %}/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
@@ -25,7 +26,8 @@
   {%- endif -%}
   {%- comment -%}
   {%- if page.category -%}
-    {%- assign category = site.data.categories[page.category].title -%}
+    {%- assign category_downcased = page.category | downcase -%}
+    {%- assign category = site.data.categories[category_downcased].title -%}
     {%- assign title = title | append: title_separator | append: category -%}
   {%- endif -%}
   {%- endcomment -%}
@@ -88,11 +90,13 @@
       <uri>{{ post_author_uri | xml_escape }}</uri>
       {%- endif %}
     </author>
-    {%- if post.category %}
-    <category term="{{ site.data.categories[post.category].title | xml_escape }}" />
+    {%- if post.category -%}
+      {%- assign category_downcased = post.category | downcase %}
+    <category term="{{ site.data.categories[category_downcased].title | xml_escape }}" />
     {%- elsif post.categories -%}
-      {%- for category in post.categories %}
-    <category term="{{ site.data.categories[category].title | xml_escape }}" />
+      {%- for category in post.categories -%}
+        {%- assign category_downcased = category | downcase %}
+    <category term="{{ site.data.categories[category_downcased].title | xml_escape }}" />
       {%- endfor -%}
     {%- endif %}
     {%- for tag in post.tags -%}

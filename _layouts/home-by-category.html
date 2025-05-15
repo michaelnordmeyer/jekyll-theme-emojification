@@ -15,10 +15,10 @@ layout: default
     {%- assign date_format = site.date_format | default: '%Y-%m-%d'-%}
     {%- assign sorted_categories = site.categories | sort -%}
     {%- for category in sorted_categories -%}
-      {%- assign category_title = category[0] -%}
-      {%- assign category_posts = site.posts | where: 'categories', category_title | sort %}
+      {%- assign category_downcased = category[0] | downcase -%}
+      {%- assign category_posts = site.posts | where: 'categories', category[0] | sort %}
     <section aria-labelledby="{{ category_title }}">
-      <h2 id="{{ category_title }}">{{ site.data.categories[category_title].title }}</h2>
+      <h2 id="{{ category_title }}">{{ site.data.categories[category_downcased].title }}</h2>
 
       {%- for post in category_posts %}
       <article itemscope itemtype="https://schema.org/BlogPosting"{% if page.colorful_index %} style="margin-bottom: {% if forloop.last %}1em{% else %}0{% endif %}; padding: 1em; background-color: {{ post.theme_color }};"{% endif %}>

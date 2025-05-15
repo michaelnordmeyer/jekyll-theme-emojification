@@ -1,7 +1,8 @@
 {%- if include.category -%}
-  {%- assign category_text = 'category “' | append: site.data.categories[include.category].title | append: '”' -%}
+  {%- assign category_downcased = include.category | downcase -%}
+  {%- assign category_text = 'category “' | append: site.data.categories[category_downcased].title | append: '”' -%}
   {%- assign feed_filename = site.theme_settings.feed_filename | default: 'feed.xml' -%}
-  {%- assign feed_link = '/' | append: include.category | append: '/' | append: feed_filename -%}
+  {%- assign feed_link = '/' | append: category_downcased | append: '/' | append: feed_filename -%}
 {%- else -%}
   {%- assign category_text = 'all categories' -%}
   {%- assign feed_link = site.feed.path | default: '/feed.xml' -%}
