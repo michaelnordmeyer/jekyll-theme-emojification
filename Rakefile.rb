@@ -76,19 +76,19 @@ task :gembuild do
   sh "gem build #{artefact}.gemspec"
 end
 
-desc "Installs the gem locally according to the gemspec’s version"
+desc "Installs the gem locally according to the gemspec's version"
 task :geminstall do
   puts "==> Installing #{artefact} gem locally..."
   sh "gem install --local #{artefact}-#{version}.gem"
 end
 
-desc "Uninstalls the gem according to the gemspec’s version"
+desc "Uninstalls the gem according to the gemspec's version"
 task :gemuninstall do
   puts "==> Uninstalling #{artefact} gem..."
   sh "gem uninstall #{artefact} --version #{version}"
 end
 
-desc "Pushes the gem to rubygems.org according to the gemspec’s version"
+desc "Pushes the gem to rubygems.org according to the gemspec's version"
 task :gempush do
   puts "==> Pushing #{artefact} to rubygems.org..."
   sh "gem push #{artefact}-#{version}.gem"
