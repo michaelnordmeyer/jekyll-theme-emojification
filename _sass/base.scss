@@ -30,9 +30,10 @@ html {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
+
 body { margin: 0; }
 h1, h2, h3, h4, h5, h6 { line-height: var(--reduced-line-height); text-wrap: balance; } /* Baseline 2024-05 */
-h1 { margin: 0 0 var(--spacing); font-size: var(--big-font-size); text-align: center; }
+h1 { margin-block: 0.67em; margin: 0 0 var(--spacing); font-size: var(--big-font-size); text-align: center; }
 p { text-align: justify; hyphens: auto; } /* Baseline 2023-09 */
 ul, ol { padding: 0 calc(var(--spacing) ) 0 calc(var(--spacing) * 2); }
 ul > ul, ol > ol, ul > ol, ol > ul, li > ul, li > ol { padding-left: calc(var(--spacing) * 5/4); padding-right: 0; }
