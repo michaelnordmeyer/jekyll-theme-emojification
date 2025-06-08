@@ -3,7 +3,7 @@
 {%- endif -%}
 {%- if site.theme_settings.show_descriptions and page.description -%}
   {%- unless page.hide_descriptions %}
-<p aria-label="Abstract" itemprop="abstract"><strong>{{ page.description | smartify }}</strong></p>
+<p itemprop="abstract"><strong>{{ page.description | smartify }}</strong></p>
   {%- endunless -%}
 {%- endif %}
 {{ content }}

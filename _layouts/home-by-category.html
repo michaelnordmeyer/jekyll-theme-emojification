@@ -30,7 +30,7 @@ layout: default
         </header>
         {%- if site.theme_settings.show_descriptions and post.description -%}
           {%- unless page.hide_descriptions %}
-        <p aria-label="Abstract" itemprop="abstract">
+        <p itemprop="abstract">
           {{ post.description | strip_html | smartify }}
         </p>
           {%- endunless -%}
