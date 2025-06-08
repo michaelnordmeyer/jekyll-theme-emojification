@@ -3,13 +3,13 @@
 {%- if page.categories.size > 0 -%}
   {%- assign sorted_categories = page.categories | sort -%}
   {%- for category in sorted_categories -%}
-    {%- assign category_downcased = category | downcase -%}
+    {%- assign category_downcased = category | downcase | replace: ' ', '-' -%}
     {%- assign category_feed_url = '/' | append: category_downcased | append: '/' | append: feed_filename -%}
   {%- assign category_title = site.data.categories[category_downcased].title %}
   <link rel="alternate" type="application/atom+xml" href="{{ category_feed_url | relative_url }}"{% if site.lang %} hreflang="{{ site.lang }}"{% endif %} title="{{ site.title | append: site.feed.title_separator | append: category_title | smartify }}">
   {%- endfor -%}
 {%- elsif page.layout == 'category' -%}
-  {%- assign category_downcased = page.category | downcase -%}
+  {%- assign category_downcased = page.category | downcase | replace: ' ', '-' -%}
   {%- assign category_feed_url = '/' | append: category_downcased | append: '/' | append: feed_filename -%}
   {%- assign category_title = site.data.categories[category_downcased].title %}
   <link rel="alternate" type="application/atom+xml" href="{{ category_feed_url | relative_url }}"{% if site.lang %} hreflang="{{ site.lang }}"{% endif %} title="{{ site.title | append: site.feed.title_separator | append: category_title | smartify }}">

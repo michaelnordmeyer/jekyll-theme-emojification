@@ -6,7 +6,7 @@ glyph="★"
 
 set -e
 
-if [[ "${#}" -ne 1 ]]; then
+if [[ ${#} -ne 1 ]]; then
   echo "Generates icons in assets/icons/ and HTML include of icons in _includes/icons/"
   echo "Usage: ${0##*/} <image-format>"
   echo "<image-format> can be one of: jpg png webp svg"
