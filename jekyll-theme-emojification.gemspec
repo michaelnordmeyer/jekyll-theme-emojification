@@ -17,8 +17,9 @@ Gem::Specification.new do |spec|
   end
 
   spec.required_ruby_version = '>= 2.7.0' # according to jekyll.gemspec
+  spec.required_rubygems_version = ">= 3.4.0"
 
-  spec.add_runtime_dependency "jekyll", ">= 3.9.3", "< 5.0"
+  spec.add_runtime_dependency "jekyll", ">= 3.10.0", "< 5.0"
   spec.add_runtime_dependency "jekyll-include-cache", "~> 0.2"
   spec.add_runtime_dependency "jekyll-titleize", "~> 0.1"
 
