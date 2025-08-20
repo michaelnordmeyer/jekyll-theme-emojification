@@ -46,11 +46,6 @@
     h3 { margin-top: 0; }
     ul { list-style-type: none; padding-left: 0; }
     li { margin: 0.5rem 0; }
-    @media (prefers-color-scheme: dark) {
-      html { background-color: black; color: white; }
-      a { color: lightskyblue; }
-      a:visited { color: plum; }
-    }
   </style>
 </head>
 <body>
