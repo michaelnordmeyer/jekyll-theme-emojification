@@ -13,7 +13,6 @@
   - Inoreader, available for Web, iOS, and Android (free)
   - Feedbin, available for Web, iOS, iPadOS, macOS, Windows, and Android (paid)
 -->
-<?xml-stylesheet type="application/xml" href="{{ site.feed.path_xslt | default: '/feed.xslt.xml' | absolute_url }}"?>
 <feed xmlns="http://www.w3.org/2005/Atom" {% if site.lang %}xml:lang="{{ site.lang }}"{% endif %}>
   {%- unless site.feed.hide_generator %}
   <generator uri="https://jekyllrb.com/" version="{{ jekyll.version }}">Jekyll</generator>

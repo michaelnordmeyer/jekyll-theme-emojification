@@ -24,7 +24,7 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 - Pages
 - Fancy category pages (also on GitHub Pages, where additional plugins are not allowed)
 - A styled redirection page, which will be used by the optional plugin [Jekyll Redirect From](https://github.com/jekyll/jekyll-redirect-from)
-- Built-in feed and sitemap creation with styling (no dependency to jekyll-feed and jekyll-sitemap)
+- Built-in feed and sitemap creation (no dependency to jekyll-feed and jekyll-sitemap)
 - Theme-color matching favicons
 - Optional colorful index pages
 - Header images
@@ -119,10 +119,6 @@ Icons should be named `<color>.<image-type-extension>` without the preceding has
 Shell scripts for creating those icons are included in the directory `_tools`. They use the star (★) by default. As mentioned in the linked article above, for other fonts or glyphs it might need some positioning to adjust for the metrics of the used font. For the SVG variant a custom representation has to be drawn. These scripts need the free `convert` from ImageMagick to create the webp icons and `base64` to create the data URL.
 
 Icons for the default theme colors are included in webp and SVG format.
-
-### Styled Atom Feed and Sitemap.xml
-
-The XSLT files style the XML files. If a user selects the link to the feed, a styled version of the feed will be shown in the browser with an explainer of what web feeds are.
 
 ### Remove Content from Search Engines
 
