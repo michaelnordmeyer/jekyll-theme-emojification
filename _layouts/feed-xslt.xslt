@@ -8,21 +8,22 @@
   <xsl:text disable-output-escaping="yes">&lt;title&gt;Feed{{ site.title_separator | default: ' | ' }}</xsl:text>
   <xsl:value-of select="/atom:feed/atom:title" />
   <xsl:text disable-output-escaping="yes">&lt;/title&gt;</xsl:text>
-  {%- assign icon = site.feed.icon | default: site.favicon %}
+  {%- assign icon = site.feed.icon | default: site.favicon -%}
   {%- if icon %}
-    {%- if icon contains '.webp' %}
-  <link rel="icon" type="image/webp" href="{{ '/assets/icons/' | append: icon | relative_url }}" />
-    {%- elsif icon contains '.png' %}
-  <link rel="icon" type="image/png" href="{{ '/assets/icons/' | append: icon | relative_url }}" />
-    {%- elsif icon contains '.svg' %}
-  <link rel="icon" type="image/svg+xml" href="{{ '/assets/icons/' | append: icon | relative_url }}" />
-    {%- elsif icon contains '.jpg' or icon contains '.jpeg' %}
-  <link rel="icon" type="image/jpeg" href="{{ '/assets/icons/' | append: icon | relative_url }}" />
-    {%- elsif icon contains '.gif' %}
-  <link rel="icon" type="image/gif" href="{{ '/assets/icons/' | append: icon | relative_url }}" />
-    {%- elsif icon contains '.ico' %}
-  <link rel="icon" type="image/x-icon" href="{{ '/assets/icons/' | append: icon | relative_url }}" />
+    {%- if icon contains '.webp' -%}
+      {%- assign icon_media_type = "image/webp" -%}
+    {%- elsif icon contains '.png' -%}
+      {%- assign icon_media_type = "image/png" -%}
+    {%- elsif icon contains '.svg' -%}
+      {%- assign icon_media_type = "image/svg+xml" -%}
+    {%- elsif icon contains '.jpg' or icon contains '.jpeg' -%}
+      {%- assign icon_media_type = "image/jpeg" -%}
+    {%- elsif icon contains '.gif' -%}
+      {%- assign icon_media_type = "image/gif" -%}
+    {%- elsif icon contains '.ico' -%}
+      {%- assign icon_media_type = "image/x-icon" -%}
     {%- endif %}
+  <link rel="icon" type="{{ icon_media_type }}" href="{{ '/assets/icons/' | append: icon | relative_url }}" />
   {%- endif %}
   <xsl:text disable-output-escaping="yes">&lt;meta name="copyright" content="</xsl:text>
   <xsl:value-of select="/atom:feed/atom:rights" />
@@ -59,6 +60,7 @@
   <ul>
     <li><a href="https://netnewswire.com/">NetNewsWire for iOS, iPadOS, and macOS (free)</a></li>
     <li><a href="https://play.google.com/store/apps/details?id=com.nononsenseapps.feeder.play">Feeder for Android (free)</a></li>
+    <li><a href="https://hyliu.me/fluent-reader/">Fluent Reader, avilable for Windows, and macOS (free)</a></li>
     <li><a href="https://www.inoreader.com/">Inoreader for Web, iOS, and Android (free)</a></li>
     <li><a href="https://feedbin.com/">Feedbin for Web and with seperate syncing apps for iOS, iPadOS, macOS, Windows, and Android (paid)</a></li>
   </ul>
