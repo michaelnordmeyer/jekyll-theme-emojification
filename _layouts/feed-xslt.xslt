@@ -55,7 +55,7 @@
   <ul>
     <li><a href="https://netnewswire.com/">NetNewsWire for iOS, iPadOS, and macOS (free)</a></li>
     <li><a href="https://play.google.com/store/apps/details?id=com.nononsenseapps.feeder.play">Feeder for Android (free)</a></li>
-    <li><a href="https://hyliu.me/fluent-reader/">Fluent Reader, avilable for Windows, and macOS (free)</a></li>
+    <li><a href="https://hyliu.me/fluent-reader/">Fluent Reader for Windows, and macOS (free)</a></li>
     <li><a href="https://www.inoreader.com/">Inoreader for Web, iOS, and Android (free)</a></li>
     <li><a href="https://feedbin.com/">Feedbin for Web and with seperate syncing apps for iOS, iPadOS, macOS, Windows, and Android (paid)</a></li>
   </ul>
