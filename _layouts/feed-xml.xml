@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  This is a web feed, also called RSS feed or Atom feed. You can subscribe to
+  this feed for free to get notified about new posts. Notifications need a
+  feedreader app, also called a newsreader app.
+
+  To subscribe to this feed, copy this URL from the URL bar and add it to your
+  feedreader. Here are some feedreader examples:
+
+  - NetNewsWire, available for iOS, iPadOS, and macOS (free)
+  - Feeder, available for Android (free)
+  - Fluent Reader, avilable for Windows, and macOS (free)
+  - Inoreader, available for Web, iOS, and Android (free)
+  - Feedbin, available for Web, iOS, iPadOS, macOS, Windows, and Android (paid)
+-->
 <?xml-stylesheet type="application/xml" href="{{ site.feed.path_xslt | default: '/feed.xslt.xml' | absolute_url }}"?>
 <feed xmlns="http://www.w3.org/2005/Atom" {% if site.lang %}xml:lang="{{ site.lang }}"{% endif %}>
   {%- unless site.feed.hide_generator %}
