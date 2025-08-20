@@ -28,6 +28,7 @@
   <xsl:text disable-output-escaping="yes">&lt;meta name="copyright" content="</xsl:text>
   <xsl:value-of select="/atom:feed/atom:rights" />
   <xsl:text disable-output-escaping="yes">" /&gt;</xsl:text>
+  <link rel="license" href="{{ site.author.license_link }}" />
   <xsl:text disable-output-escaping="yes">&lt;meta name="author" content="</xsl:text>
   <xsl:value-of select="/atom:feed/atom:author/atom:name" />
   <xsl:text disable-output-escaping="yes">" /&gt;</xsl:text>
