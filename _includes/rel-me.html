@@ -1,10 +1,7 @@
 {%- for link in site.social.links -%}
   {%- comment -%}Comment only for whitesapce{%- endcomment %}
-  <link rel="me{% if forloop.first %} authn{% endif %}" href="{{ link }}">
+  <link rel="me" href="{{ link }}">
 {%- endfor -%}
 {%- if site.social.fediverse_creator %}
   <meta name="fediverse:creator" content="{{ site.social.fediverse_creator }}">
-{%- endif -%}
-{%- if site.theme_settings.webmention_url %}
-  <link rel="webmention" href="{{ site.theme_settings.webmention_url }}">
 {%- endif -%}

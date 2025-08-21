@@ -33,7 +33,6 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 - Hidden semantic info for embedding and SEO like Open Graph, JSON-LD, and inline Microdata. No need for the `jekyll-seo-tag` plugin
 - Minimal build and load times
 - Custom header and footer to add snippets
-- Basic [Webmention](https://indieweb.org/Webmention) support (needs third-party service like [Webmention.io](https://webmention.io) or additional server software), which allows subscribing to a feed of Webmentions, which are cross-site notifications
 
 ## Additional Features
 
