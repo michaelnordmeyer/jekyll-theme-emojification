@@ -1,20 +1,22 @@
 #!/usr/bin/env sh
 
-if [ ${#} -lt 5 ]; then
+set -eu
+
+if [ ${#} -lt 6 ]; then
   echo "Creates a 180×180 icon from a Unicode glyph, like ★"
   echo "Sets filename to background color if not set as parameter"
-  echo "Usage: ${0##*/} <background-color> <foreground-color> <font> <unicode-glyph> <file-extension> [filename]"
-  echo "Example: ${0##*/} hotpink white /System/Library/Fonts/Apple\ Symbols.ttf ★ webp"
+  echo "Usage: ${0##*/} <output_dir> <background-color> <foreground-color> <font> <unicode-glyph> <file-extension> [filename]"
+  echo "Example: ${0##*/} static/assets/icons hotpink white /System/Library/Fonts/Apple\ Symbols.ttf ★ webp"
   exit 1
 fi
 
-output_dir="../assets/icons"
+output_dir="${1}"
 mkdir -p "${output_dir}"
 
-if [ -z "${6+x}" ]; then
-  filename=${1}
+if [ -z "${7+x}" ]; then
+  filename="${2}"
 else
-  filename=${6}
+  filename="${7}"
 fi
 
 # Depending on the font metrics the glyph has to be manually centered.
@@ -26,12 +28,12 @@ fi
 #   label:"${4}" \
 
 convert \
-  -background ${1} \
-  -fill ${2} \
+  -background "${2}" \
+  -fill "${3}" \
   -size 180x180 \
   -gravity center \
-  -font "${3}" \
+  -font "${4}" \
   -pointsize 256 \
-  -annotate +1+12 "${4}" \
+  -annotate +1+12 "${5}" \
   label:' ' \
-  "${output_dir}/${filename}.${5}"
+  "${output_dir}/${filename}.${6}"

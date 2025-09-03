@@ -10,8 +10,8 @@ task :default => ["gembuild"]
 desc 'Builds the icons'
 task :icons do
   puts "==> Building #{artefact} icons..."
-  sh 'cd _tools && ./generate-icons.sh webp'
-  sh 'cd _tools && ./generate-icons.sh svg'
+  sh '_tools/generate-icons.sh assets/css . webp'
+  sh '_tools/generate-icons.sh assets/css . svg'
 end
 
 desc 'Builds the site for deployment'
