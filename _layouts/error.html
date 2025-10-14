@@ -1,4 +1,7 @@
-{% include head.html %}
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
+<head>
+{% include default-head.html %}
   <title>{% if page.title %}{{ page.title | smartify }}{% else %}{{ site.title | smartify }}{% endif %}</title>
 {% include custom-head.html %}
 </head>

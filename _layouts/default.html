@@ -1,4 +1,7 @@
-{% include head.html %}
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
+<head>
+{% include default-head.html %}
   {% include feed-meta.html -%}
   {% include_cached rel-me.html %}
   {% include seo.html %}

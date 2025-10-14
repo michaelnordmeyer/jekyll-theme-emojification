@@ -1,9 +1,15 @@
 {%- comment -%} Compared to former versions all smartify filter miss a following `| escape` {%- endcomment -%}
-<!doctype html>
-<html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
-<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- if site.author.copyright %}
+  <meta name="copyright" content="{{ site.author.copyright }}">
+{%- endif %}
+{%- if site.author.license_link %}
+  <link rel="license" href="{{ site.author.license_link }}">
+{%- endif %}
+{%- if page.sitemap == false %}
+  <meta name="robots" content="noindex">
+{%- endif -%}
 {%- assign theme_color = page.theme_color | default: site.theme_settings.theme_color -%}
 {%- if theme_color %}
   {%- if theme_color != 'none' %}
@@ -17,13 +23,4 @@
 {%- else %}
   <link rel="stylesheet" href="{{ '/assets/css/none.css' | relative_url }}">
   <link rel="icon" href="data:;base64,=">
-{%- endif %}
-{%- if site.author.copyright %}
-  <meta name="copyright" content="{{ site.author.copyright }}">
-{%- endif %}
-{%- if site.author.license_link %}
-  <link rel="license" href="{{ site.author.license_link }}">
-{%- endif %}
-{%- if page.sitemap == false %}
-  <meta name="robots" content="noindex">
 {%- endif -%}
