@@ -133,6 +133,10 @@ sitemap: false
 
 When put in the directory `_includes`, `custom-header.html` and `custom-footer.html` allow to put custom snippets in it.
 
+### Language Direction
+
+Support for right-to-left languages through `lang_direction: rtl` in `_config.yml` under the key `theme_settings`.
+
 ## Installation
 
 Installation from Gem is recommended, but using a remote theme is also possible, even though it will increase build times a little, depending on your internet connection and the size of the theme download, because it will be downloaded during each build. Gems are installed locally.
