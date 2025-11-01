@@ -9,8 +9,8 @@
 
   - NetNewsWire, available for iOS, iPadOS, and macOS (free)
   - Feeder, available for Android (free)
-  - Fluent Reader, avilable for Windows, and macOS (free)
-  - Inoreader, available for Web, iOS, and Android (free)
+  - Fluent Reader, available for Windows and macOS (free)
+  - Inoreader, available for Web, iOS, and Android (free with paid upgrade)
   - Feedbin, available for Web, iOS, iPadOS, macOS, Windows, and Android (paid)
 -->
 <feed xmlns="http://www.w3.org/2005/Atom" {% if site.lang %}xml:lang="{{ site.lang }}"{% endif %}>
