@@ -39,7 +39,7 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 Some features cannot be applied automatically due to how Jekyll integrates gem-based or remote themes. They have to be copied manually to your site’s root directory and are included in the [demo repository](https://github.com/michaelnordmeyer/jekyll-theme-emojification-demo).
 
 - Category settings, and category and feed pages, e.g. `_data/categories.yml`, `colors/index.md`, and `colors/feed.xml`
-- Custom error pages from directory `error`
+- Custom error pages from directory `errors`
 - Settings from `_config.yml`
 - Draft, build, and deploy support via `Rakefile.rb`, including creating a UUID for posts
 
