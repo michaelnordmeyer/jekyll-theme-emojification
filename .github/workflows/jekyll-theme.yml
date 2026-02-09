@@ -20,7 +20,7 @@ jobs:
         # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#choosing-github-hosted-runners
         os: [ubuntu-latest, ubuntu-24.04-arm, macos-14, macos-latest, windows-latest]
         # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
-        ruby: ['2.7', '3.4', '4.0']
+        ruby: ['3.3', '3.4', '4.0']
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -73,7 +73,7 @@ jobs:
       fail-fast: false
       matrix:
         # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
-        ruby: ['3.4']
+        ruby: ['3.4', '4.0']
     # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#choosing-github-hosted-runners
     runs-on: windows-11-arm
     steps:
