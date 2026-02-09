@@ -22,6 +22,8 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "jekyll", ">= 3.10.0", "< 5.0"
   spec.add_runtime_dependency "jekyll-include-cache", "~> 0.2"
   spec.add_runtime_dependency "jekyll-titleize", "~> 0.1"
+  # Fix for Fix for Jekyll 4.4.1 on Ruby 4.0.0
+  spec.add_runtime_dependency "logger"
 
   spec.add_development_dependency "bundler", ">= 2.4"
   spec.add_development_dependency "rake", ">= 13.0"
