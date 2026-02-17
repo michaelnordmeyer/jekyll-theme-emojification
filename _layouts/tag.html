@@ -1,0 +1,6 @@
+---
+layout: default
+---
+  {%- capture title -%}{{ site.theme_settings.tag_title_prefix | default: 'Tag: ' }}{{ page.title | smartify }} ({{ page.posts.size }}){%- endcapture -%}
+  {%- assign posts = page.posts -%}
+  {% include post-index.html %}

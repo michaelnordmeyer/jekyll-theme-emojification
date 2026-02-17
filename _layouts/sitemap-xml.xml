@@ -17,13 +17,15 @@
   {%- endfor -%}
 
   {%- assign pages = site.html_pages | where_exp: 'doc', 'doc.sitemap != false' | where_exp: 'doc', 'doc.url != "/404.html"' -%}
-  {%- for page in pages %}
+  {%- for page in pages -%}
+    {%- if page.type != 'category' and page.type != 'tag' %}
   <url>
     <loc>{{ page.url | replace: '/index.html', '/' | absolute_url | xml_escape }}</loc>
-    {%- if page.last_modified_at %}
+      {%- if page.last_modified_at %}
     <lastmod>{{ page.last_modified_at | date_to_xmlschema }}</lastmod>
-    {%- endif %}
+      {%- endif %}
   </url>
+    {%- endif -%}
   {%- endfor -%}
 
   {%- assign static_files = page.static_files | where_exp: 'page', 'page.sitemap != false' | where_exp: 'page', 'page.name != "404.html"' -%}

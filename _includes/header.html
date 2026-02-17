@@ -3,9 +3,11 @@
       {%- assign home_link = '/' -%}
       {%- assign home_link_title = site.theme_settings.home_link_title | default: 'Home' -%}
       {%- assign home_link_aria_label = site.theme_settings.home_link_aria_label | default: 'Home Link' -%}
-      {%- if page.layout == 'category' -%}
-        {%- assign category_downcased = page.category | downcase | replace: ' ', '-' -%}
+      {%- if page.type == 'category' -%}
+        {%- assign category_downcased = page.title | downcase | replace: ' ', '-' -%}
         {%- assign icon = site.data.categories[category_downcased].icon -%}
+      {%- elsif page.type == 'tag' -%}
+        {%- assign icon = site.theme_settings.tag_icon -%}
       {%- elsif page.collection and page.collection == 'posts' -%}
         {%- if page.categories[0] -%}
           {%- assign category_downcased = page.categories[0] | downcase -%}

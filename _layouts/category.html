@@ -1,7 +1,13 @@
 ---
 layout: default
 ---
-  {%- assign category_downcased = page.category | downcase | replace: ' ', '-' -%}
-  {%- capture title -%}{{ site.theme_settings.category_title_prefix | default: 'Category: ' }}{{ site.data.categories[category_downcased].title | smartify }} ({{ site.categories[page.category].size }}){%- endcapture -%}
-  {%- assign posts = site.categories[page.category] -%}
+  {%- if page.category -%}
+    {%- assign category_downcased = page.category | downcase | replace: ' ', '-' -%}
+    {%- capture title -%}{{ site.theme_settings.category_title_prefix | default: 'Category: ' }}{{ site.data.categories[category_downcased].title | smartify }} ({{ site.categories[page.category].size }}){%- endcapture -%}
+    {%- assign posts = site.categories[page.category] -%}
+  {%- elsif page.type == 'category' %}
+    {%- assign category_downcased = page.title | downcase | replace: ' ', '-' -%}
+    {%- capture title -%}{{ site.theme_settings.category_title_prefix | default: 'Category: ' }}{{ site.data.categories[category_downcased].title | smartify }} ({{ page.posts.size }}){%- endcapture -%}
+    {%- assign posts = page.posts -%}
+  {%- endif %}
   {% include post-index.html %}

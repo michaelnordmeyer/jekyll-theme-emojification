@@ -7,7 +7,7 @@
 {%- if site.author.license_link %}
   <link rel="license" href="{{ site.author.license_link }}">
 {%- endif %}
-{%- if page.sitemap == false %}
+{%- if page.sitemap == false or page.type == 'category' or page.type == 'tag' %}
   <meta name="robots" content="noindex">
 {%- endif -%}
 {%- assign theme_color = page.theme_color | default: site.theme_settings.theme_color -%}

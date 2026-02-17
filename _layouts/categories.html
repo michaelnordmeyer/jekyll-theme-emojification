@@ -1,0 +1,41 @@
+---
+layout: default
+---
+  <main aria-label="Content">
+    <article itemscope itemtype="https://schema.org/WebPage">
+      <header>
+        <h1 itemprop="headline name">Categories&nbsp;({{ site.categories.size }})</h1>
+      </header>
+      {%- if site.categories.size > 0 %}
+      <div itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/WebPageElement" style="display: flex;">
+        <section style="flex: 50%;">
+          <h2>By Name</h2>
+          {%- assign sorted_categories = site.categories | sort %}
+          <ul>
+          {%- for category in sorted_categories -%}
+            {%- assign category_downcased = category[0] | downcase %}
+            <li><a href="/{{ category_downcased }}/">{{ category[0]}} ({{ category[1].size }})</a></li>
+          {%- endfor %}
+          </ul>
+        </section>
+
+        <section style="flex: 50%;">
+          <h2>By Post Count</h2>
+          {%- capture categories -%}
+            {%- for category in site.categories -%}
+              {{ category[1].size | plus: 1000 }}#{{ category[0] }}#{{ category[1].size }}$
+            {%- endfor -%}
+          {%- endcapture -%}
+          {%- assign sorted_categories = categories | split: '$' | sort %}
+          <ul>
+          {%- for category in sorted_categories reversed -%}
+            {%- assign category_items = category | split: '#' -%}
+            {%- assign category_downcased = category_items[1] | downcase %}
+            <li><a href="/{{ category_downcased }}/">{{ category_items[1] }} ({{ category_items[2] }})</a></li>
+          {%- endfor %}
+          </ul>
+        </section>
+      </div>
+      {%- endif %}
+    </article>
+  </main>

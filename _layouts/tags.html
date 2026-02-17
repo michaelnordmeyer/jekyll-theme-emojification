@@ -1,0 +1,39 @@
+---
+layout: default
+---
+  <main aria-label="Content">
+    <article itemscope itemtype="https://schema.org/WebPage">
+      <header>
+        <h1 itemprop="headline name">Tags&nbsp;({{ site.tags.size }})</h1>
+      </header>
+      {%- if site.tags.size > 0 %}
+      <div itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/WebPageElement" style="display: flex;">
+        <section style="flex: 50%;">
+          <h2>By Name</h2>
+          {%- assign sorted_tags = site.tags | sort %}
+          <ul>
+          {%- for tag in sorted_tags %}
+            <li><a href="{{ tag[0] | slugify }}/">{{ tag[0] }} ({{ tag[1].size }})</a></li>
+          {%- endfor %}
+          </ul>
+        </section>
+
+        <section style="flex: 50%;">
+          <h2>By Post Count</h2>
+          {%- capture tags -%}
+            {%- for tag in site.tags -%}
+              {{ tag[1].size | plus: 1000 }}#{{ tag[0] }}#{{ tag[1].size }}$
+            {%- endfor -%}
+          {%- endcapture -%}
+          {%- assign sorted_tags = tags | split: '$' | sort %}
+          <ul>
+          {%- for tag in sorted_tags reversed -%}
+            {%- assign tag_items = tag | split: '#' %}
+            <li><a href="{{ tag_items[1] | slugify }}/">{{ tag_items[1] }} ({{ tag_items[2] }})</a></li>
+          {%- endfor %}
+          </ul>
+        </section>
+      </div>
+      {%- endif %}
+    </article>
+  </main>

@@ -1,10 +1,12 @@
-{%- if include.category -%}
-  {%- assign category_downcased = include.category | downcase | replace: ' ', '-' -%}
-  {%- assign category_text = 'category “' | append: site.data.categories[category_downcased].title | append: '”' -%}
-  {%- assign feed_filename = site.theme_settings.feed_filename | default: 'feed.xml' -%}
-  {%- assign feed_link = '/' | append: category_downcased | append: '/' | append: feed_filename -%}
-{%- else -%}
-  {%- assign category_text = 'all categories' -%}
-  {%- assign feed_link = site.feed.path | default: '/feed.xml' -%}
-{%- endif -%}
+{%- if page.type != 'tag' -%}
+  {%- if page.type == 'category' -%}
+    {%- assign category_downcased = include.category | downcase | replace: ' ', '-' -%}
+    {%- assign category_text = 'category “' | append: site.data.categories[category_downcased].title | append: '”' -%}
+    {%- assign feed_filename = site.theme_settings.feed_filename | default: 'feed.xml' -%}
+    {%- assign feed_link = '/' | append: category_downcased | append: '/' | append: feed_filename -%}
+  {%- else -%}
+    {%- assign category_text = 'all categories' -%}
+    {%- assign feed_link = site.feed.path | default: '/feed.xml' -%}
+  {%- endif -%}
 <footer aria-label="Feed subscription offer for {{ category_text }}">Subscribe to updates of {{ category_text }} via <a href="{{ feed_link | relative_url }}" rel="alternate noindex">Atom feed</a></footer>
+{%- endif -%}
