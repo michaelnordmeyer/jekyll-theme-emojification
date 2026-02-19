@@ -1,6 +1,6 @@
 {%- if page.type != 'tag' -%}
   {%- if page.type == 'category' -%}
-    {%- assign category_downcased = include.category | downcase | replace: ' ', '-' -%}
+    {%- assign category_downcased = page.title | downcase | replace: ' ', '-' -%}
     {%- assign category_text = 'category “' | append: site.data.categories[category_downcased].title | append: '”' -%}
     {%- assign feed_filename = site.theme_settings.feed_filename | default: 'feed.xml' -%}
     {%- assign feed_link = '/' | append: category_downcased | append: '/' | append: feed_filename -%}
