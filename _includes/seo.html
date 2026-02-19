@@ -67,10 +67,8 @@
         {%- endfor %}
       ]
     },
-  {%- if page.description %}
-    "abstract": "{{ page.description | smartify }}",
-  {%- elsif page.excerpt %}
-    "abstract": "{{ page.excerpt | strip_html | smartify }}",
+  {%- if description %}
+    "abstract": "{{ description | smartify }}",
   {%- endif -%}
   {%- if page.featured_image.path %}
     "image": {
