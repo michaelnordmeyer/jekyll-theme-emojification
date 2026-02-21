@@ -14,7 +14,7 @@ layout: default
           <ul>
           {%- for category in sorted_categories -%}
             {%- assign category_downcased = category[0] | downcase %}
-            <li><a href="/{{ category_downcased }}/">{{ category[0]}} ({{ category[1].size }})</a></li>
+            <li><a href="/{{ category_downcased }}/">{{ category[0] }} ({{ category[1].size }})</a></li>
           {%- endfor %}
           </ul>
         </section>
