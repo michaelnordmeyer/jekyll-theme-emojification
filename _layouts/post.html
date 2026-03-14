@@ -13,7 +13,7 @@ layout: default
       </div>
       {%- if page.tags.size > 0 %}
       <footer>
-        <p><strong>Tags:</strong>{% for tag in page.tags %} <a href="/tags/{{ tag | slugify }}/" rel="noindex"><span>{{ tag }} ({{ site.tags[tag].size }})</span></a>{% endfor %}</p>
+        <p><strong>Tags:</strong>{% for tag in page.tags %} <a href="/tags/{{ tag | slugify }}/" rel="nofollow, noindex"><span>{{ tag }} ({{ site.tags[tag].size }})</span></a>{% endfor %}</p>
       </footer>
       {%- endif %}
     </article>
