@@ -32,6 +32,7 @@ html {
 }
 
 body { margin: 0; }
+a { text-decoration-thickness: 10%; }
 h1, h2, h3, h4, h5, h6 { line-height: var(--reduced-line-height); text-wrap: balance; } /* Baseline 2024-05 */
 h1 { margin-block: 0.67em; margin: 0 0 var(--spacing); font-size: var(--big-font-size); text-align: center; }
 p { text-align: justify; hyphens: auto; } /* Baseline 2023-09 */
