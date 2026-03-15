@@ -10,8 +10,9 @@ task :default => ["gembuild"]
 desc 'Builds the icons'
 task :icons do
   puts "==> Building #{artefact} icons..."
-  sh '_tools/generate-icons.sh assets/css . webp'
-  sh '_tools/generate-icons.sh assets/css . svg'
+  sh '_tools/generate-icons.sh . $(yq ".theme_settings.theme_color" _config.yml) webp "★" "/System/Library/Fonts/Apple Symbols.ttf"'
+  sh 'for color in $(find . -type f -iname "*.md" -exec grep -E "^theme_color: " {} \; | cut -d ":" -f 2 | cut -d " " -f 2 | sort | uniq); do _tools/generate-icons.sh . "${color//\"/}" webp "★" "/System/Library/Fonts/Apple Symbols.ttf"; done'
+  # sh 'for color in $(find . -type f -iname "*.md" -exec grep -E "^theme_color: " {} \; | cut -d ":" -f 2 | cut -d " " -f 2 | sort | uniq); do _tools/generate-icons.sh . "${color//\"/}" svg "M90,16,106.45798706418924,67.34752415750147,160.37818220584137,67.13274241625389,116.6295824562643,98.65247584249853,133.496108669643,149.8672575837461,90,118,46.50389133035699,149.8672575837461,63.3704175437357,98.65247584249853,19.621817794158645,67.13274241625388,73.54201293581075,67.34752415750148Z"; done'
 end
 
 desc 'Builds the site for deployment'
@@ -62,12 +63,13 @@ desc 'Cleans the source dir'
 task :clean do
   puts "==> Cleaning #{artefact}..."
   sh 'bundle exec jekyll clean'
+  sh 'rm -rf assets/icons/'
 end
 
 desc 'Cleans the demo source dir'
 task :democlean do
   puts "==> Cleaning #{artefact} demo..."
-  sh 'cd _demo && bundle exec jekyll clean'
+  sh 'cd _demo && rake clean'
 end
 
 desc 'Builds the gem'

@@ -2,19 +2,19 @@
 
 set -eu
 
-if [ ${#} -lt 6 ]; then
+if [ ${#} -lt 6 ] || [ ${#} -gt 7 ]; then
   echo "Creates a 180×180 icon from a Unicode glyph, like ★"
   echo "Sets filename to background color if not set as parameter"
-  echo "Usage: ${0##*/} <output_dir> <background-color> <foreground-color> <font> <unicode-glyph> <file-extension> [filename]"
-  echo "Example: ${0##*/} static/assets/icons hotpink white /System/Library/Fonts/Apple\ Symbols.ttf ★ webp"
+  echo "Usage: ${0##*/} <background-color> <foreground-color> <font> <unicode-glyph> <output_dir> <file-extension> [filename]"
+  echo "Example: ${0##*/} hotpink white /System/Library/Fonts/Apple\ Symbols.ttf ★ static/assets/icons webp"
   exit 1
 fi
 
-output_dir="${1}"
+output_dir="${5}"
 mkdir -p "${output_dir}"
 
 if [ -z "${7+x}" ]; then
-  filename="${2}"
+  filename="${1}"
 else
   filename="${7}"
 fi
@@ -28,12 +28,14 @@ fi
 #   label:"${4}" \
 
 convert \
-  -background "${2}" \
-  -fill "${3}" \
+  -background "${1}" \
+  -fill "${2}" \
   -size 180x180 \
   -gravity center \
-  -font "${4}" \
+  -font "${3}" \
   -pointsize 256 \
-  -annotate +1+12 "${5}" \
+  -annotate +1+12 "${4}" \
   label:' ' \
   "${output_dir}/${filename}.${6}"
+
+chmod go+r "${output_dir}/${filename}.${6}"

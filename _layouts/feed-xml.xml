@@ -27,7 +27,7 @@
   <link rel="alternate" type="text/html" href="{{ '/' | absolute_url }}" {% if site.lang %}hreflang="{{ site.lang }}" {% endif %}/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>{{ page.url | absolute_url | xml_escape }}</id>
-  {%- assign icon = site.feed.icon | default: site.favicon -%}
+  {%- assign icon = site.favicon -%}
   {%- if icon %}
   <icon>{{ '/assets/icons/' | append: icon | absolute_url | xml_escape }}</icon>
   {%- endif -%}

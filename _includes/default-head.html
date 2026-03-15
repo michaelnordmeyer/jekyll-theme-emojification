@@ -2,7 +2,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="generator" content="Jekyll {{ jekyll.version }}">
-  {%- if site.author.copyright %}
+{%- if site.author.copyright %}
   <meta name="copyright" content="{{ site.author.copyright }}">
 {%- endif %}
 {%- if site.author.license_link %}
@@ -12,16 +12,26 @@
   <meta name="robots" content="noindex">
 {%- endif -%}
 {%- assign theme_color = page.theme_color | default: site.theme_settings.theme_color -%}
-{%- if theme_color %}
-  {%- if theme_color != 'none' %}
+{%- if theme_color != 'none' %}
   <meta name="theme-color" content="{{ theme_color }}">
-    {%- if theme_color contains '#' %}
-      {%- assign theme_color = theme_color | replace: '#', '' %}
-    {%- endif %}
-  {% include_cached icons/{{ theme_color }}.html %}
+  {%- if theme_color contains '#' %}
+    {%- assign theme_color = theme_color | replace: '#', '' %}
   {%- endif %}
-  <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css' | relative_url }}">
+  {%- for static_file in site.static_files -%}
+    {%- assign icon_path = '/assets/icons/' | append: theme_color | append: '.png' | relative_url -%}
+    {%- if static_file.path == icon_path %}
+  <link rel="icon" type="image/png" href="{{ static_file.path | relative_url }}">
+    {%- endif -%}
+    {%- assign icon_path = '/assets/icons/' | append: theme_color | append: '.webp' | relative_url -%}
+    {%- if static_file.path == icon_path %}
+  <link rel="icon" type="image/webp" href="{{ static_file.path | relative_url }}">
+    {%- endif -%}
+    {%- assign icon_path = '/assets/icons/' | append: theme_color | append: '.svg' | relative_url -%}
+    {%- if static_file.path == icon_path %}
+  <link rel="icon" type="image/svg+xml" href="{{ static_file.path | relative_url }}">
+    {%- endif -%}
+  {%- endfor -%}
 {%- else %}
-  <link rel="stylesheet" href="{{ '/assets/css/none.css' | relative_url }}">
   <link rel="icon" href="data:;base64,=">
-{%- endif -%}
+{%- endif %}
+  <link rel="stylesheet" href="{{ '/assets/css/' | append: theme_color | append: '.css' | relative_url }}">
