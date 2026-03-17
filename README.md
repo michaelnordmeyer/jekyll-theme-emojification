@@ -139,7 +139,7 @@ Support for right-to-left languages through `lang_direction: rtl` in `_config.ym
 
 ## Installation
 
-Installation from Gem is recommended, but using a remote theme is also possible, even though it will increase build times a little, depending on your internet connection and the size of the theme download, because it will be downloaded during each build. Gems are installed locally.
+Installation from Gem is recommended, but using a remote theme is also possible, even though it will increase build times a little, depending on your internet connection and the size of the theme download, because it will be downloaded during each build. Gems are installed locally once. This theme has a lot of demo content, which makes the remote theme approach even less desirable.
 
 GitHub Pages gem users need to use the remote theme method.
 
