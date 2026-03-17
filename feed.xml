@@ -1,0 +1,5 @@
+---
+layout: feed-xml
+permalink: /:path/:basename:output_ext
+sitemap: false
+---

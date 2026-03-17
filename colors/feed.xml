@@ -1,0 +1,7 @@
+---
+category: colors
+description: "Generated demo pages with different color but same content"
+layout: feed-xml
+permalink: /:path/:basename:output_ext
+sitemap: false
+---

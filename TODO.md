@@ -5,7 +5,7 @@ GitHub repo card template is 1280x640, but measures 80+1120+80 = 1280. For 720px
 ## Build
 
 ```sh
-cd .. && gem build jekyll-theme-emojification.gemspec && gem install --local jekyll-theme-emojification-1.0.0.gem && cd _demo
+cd .. && gem build jekyll-theme-emojification.gemspec && gem install --local jekyll-theme-emojification-1.0.0.gem
 ```
 
 ## Task List
@@ -39,7 +39,6 @@ cd .. && gem build jekyll-theme-emojification.gemspec && gem install --local jek
   - [ ] https://github.com/mattvh/jekyllthemes
   - [ ] https://www.builtatlightspeed.com/submit/opensource
   - [ ] https://jekyll-themes.com/submit
-- [ ] use Git submodules and two _config.yml to have content for testing (--config _config.yml _demo/_config.yml)
 
 ## Performance
 

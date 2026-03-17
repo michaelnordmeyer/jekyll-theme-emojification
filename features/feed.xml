@@ -1,0 +1,7 @@
+---
+category: features
+description: "A demo of the features"
+layout: feed-xml
+permalink: /:path/:basename:output_ext
+sitemap: false
+---

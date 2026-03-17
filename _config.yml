@@ -1,14 +1,16 @@
+## Jekyll settings
 # Remove URL for GitHub Pages plugin
 url: https://jekyll-theme-emojification.michaelnordmeyer.com
-# baseurl: "" # The subpath of the site, e.g. /blog
+# baseurl: "/blog" # The subpath of the site, e.g. /blog
 title: Jekyll Theme Emojification
-# Description is used for meta headers and feeds. Limit to 160 characters if possible
+# Description is used for meta headers and feeds. Limit to 160 characters, if possible
 description: >-
   A simple and minimal single-author theme with configurable big emoji as the header link, and configurable background colors, which can be chosen for each post or page
 
-## Jekyll build settings
-exclude: [CODE_OF_CONDUCT.md, jekyll-theme-emojification*, LICENSE, Rakefile.rb, README.md, repo-card.png, TODO.md]
-# ignore_theme_config: true # Since Jekyll 4.0, see: https://jekyllrb.com/docs/themes/#pre-configuring-theme-gems40, https://jekyllrb.com/docs/configuration/options/
+## Jekyll build settings https://jekyllrb.com/docs/configuration/default/
+exclude: [CODE_OF_CONDUCT.md, jekyll-theme-emojification*, LICENSE, Rakefile.rb, README.md, repo-cards, repo-card.png, TODO.md]
+ignore_theme_config: true # Since Jekyll 4.0, see: https://jekyllrb.com/docs/themes/#pre-configuring-theme-gems40, https://jekyllrb.com/docs/configuration/options/
+include: [.well-known]
 kramdown:
   show_warnings: true
   syntax_highlighter_opts:
@@ -23,5 +25,105 @@ sass:
   style: compressed
 strict_front_matter: true # default: false
 # remote_theme: michaelnordmeyer/jekyll-theme-emojification
-# theme: jekyll-theme-emojification
-# timezone: Europe/Berlin # default: local timezone
+theme: jekyll-theme-emojification
+timezone: UTC # default: local timezone
+
+## Custom settings used by plugins and the theme
+author:
+  name: Michael Nordmeyer
+  # email: xxx@example.com
+  uri: https://michaelnordmeyer.com/
+  copyright: Copyright © Michael Nordmeyer
+  license_link: https://raw.githubusercontent.com/michaelnordmeyer/jekyll-theme-emojification/main/LICENSE
+# date_format: "%b %-d, %Y" # default: "%Y-%m-%d"
+feed: # Plugin settings jekyll-feed (built-in)
+  # excerpt_only: true # default: false (can be declared in front matter as well)
+  hide_generator: true # default: false
+  path: /feed.xml # default: /feed.xml (mandatory)
+  posts_limit: 1000 # default: 10
+  title_separator: ": "
+lang: en-US # default: en (is not used by Jekyll, but by many other plugins)
+# minify: true # default: false (jekyll-feed, jekyll-sitemap built-in)
+social: # Social links are used in SEO meta headers (jekyll-seo-tag built-in)
+  fediverse_creator: "@mnordmeyer@indieweb.social" # "@username@fediverse.example"
+  links:
+    - https://github.com/michaelnordmeyer
+    - https://www.linkedin.com/in/michaelnordmeyer
+    - https://www.xing.com/profile/Michael_Nordmeyer
+    - https://indieweb.social/@mnordmeyer
+title_separator: " • " # default: " | "
+## Custom theme settings
+favicon: yellowgreen.webp # filename, not full path. Optional, is also used by feeds
+## Custom theme settings to not overwrite anything from Jekyll or plugins
+theme_settings:
+  # category_title_prefix: "" # default: "Category: "
+  # category_home_link_title: "" # default: "Category Home"
+  # category_home_link_aria_label: "" # default: "Category Home Link"
+  category_feed_all_name: "All" # (mandatory, but can be "")
+  # feed_filename: "feed.xml" # default: "feed.xml"
+  # home_link_title: "" # default: "Home"
+  # home_link_aria_label: "" # default: "Home Link"
+  icon: 🌳
+  # lang_direction: rtl # default: "ltr"
+  # redirect_page_title: "Redirecting…" # default: "Redirecting…"
+  # redirect_page_from: "Redirecting from" # default: "Redirecting from"
+  # redirect_page_to: "to" # default: "to"
+  # redirect_page_text: "Click here if you are not being redirected." # default: "Click here if you are not being redirected.""
+  # show_descriptions is used to enable descriptions on posts, pages, and index pages like home and categories
+  show_descriptions: true # default: false
+  tag_icon: 🏷️
+  # tag_title_prefix: "" # default: "Tag: "
+  theme_color: yellowgreen # default: none (= no colors. If this CSS file is missing, there will be also no structural styling)
+
+## Plugin settings jekyll-archives
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    category: '/:name/'
+    tag: '/tags/:name/'
+
+## Plugin settings jekyll-redirect-from
+redirect_from:
+  json: false
+
+## https://jekyllrb.com/docs/configuration/front-matter-defaults/
+# Only works for all posts, but can work for a subset of pages
+defaults:
+  - scope:
+      path: "" # an empty string here means all files in the project (allows globs, but is slow)
+      type: posts # type (optional): posts, pages, drafts, or any collection
+    values:
+      layout: post
+      permalink: /:title
+  - scope:
+      path: ""
+      type: pages # pages have permalink: /:path/:basename
+    values:
+      layout: page
+      permalink: /:path/:basename
+  - scope:
+      path: colors/_posts
+    values:
+      sitemap: false
+  - scope:
+      path: errors
+      type: pages
+    values:
+      icon: 😩
+      layout: error
+      sitemap: false
+  - scope:
+      path: defaults-test
+      type: pages
+    values:
+      description: "A quick test to test _config.yml defaults."
+      icon: 🪽
+      layout: page
+      theme_color: dodgerblue
+  - scope:
+      path: ""
+    values:
+      layout: default
