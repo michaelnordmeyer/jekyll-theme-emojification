@@ -19,16 +19,17 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
   - Single-author
   - No visible authors, categories, or tags on posts or pages
   - No header, footer, or menu
-  - No pagination for the home page to effectively be the archive and allow for searching all titles in-browser
+  - No pagination for the home page or any other index page to effectively be the archive and allow for searching all titles in-browser
+  - System fonts without the dependence on possibly tracking third-parties
 - Posts
 - Pages
 - Fancy category pages (also on GitHub Pages, where additional plugins are not allowed)
-- A styled redirection page, which will be used by the plugin [`jekyll-redirect-from`](https://github.com/jekyll/jekyll-redirect-from)
-- Built-in feed and sitemap creation (no dependency to jekyll-feed and jekyll-sitemap)
-- Theme-color matching favicons
+- Styled redirection and error pages, which will be used by the plugin [`jekyll-redirect-from`](https://github.com/jekyll/jekyll-redirect-from)
+- Built-in Atom feed and sitemap.xml creation without category and tag pages so they don't compete on search engine result pages with post content, and no dependency to the plugins `jekyll-feed` and `jekyll-sitemap`
+- Theme-color-matching favicons
 - Optional colorful index pages
 - Header images
-- Optional descriptions or excerpts in feed, SEO tags, and on category and home pages
+- Optional descriptions or excerpts in feeds, SEO tags, and on category and home pages
 - Content warnings for embedded videos
 - Hidden semantic info for embedding and SEO like [Open Graph](https://ogp.me/), [JSON-LD](https://json-ld.org/), and inline [Microdata](https://en.wikipedia.org/wiki/Microdata_(HTML)). No need for the `jekyll-seo-tag` plugin
 - Minimal build and load times
@@ -36,14 +37,14 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 
 ## Additional Features
 
-Some features cannot be applied automatically due to how Jekyll integrates gem-based or remote themes. They have to be copied manually to your site’s root directory and are included in the [demo repository](https://github.com/michaelnordmeyer/jekyll-theme-emojification-demo).
+Some features cannot be applied automatically due to how Jekyll integrates gem-based or remote themes. They have to be copied manually to your site’s root directory and are included in the repository.
 
 - Category settings, and category and feed pages, e.g. `_data/categories.yml`, `colors/index.md`, and `colors/feed.xml`
-- Custom error pages from directory `errors`
+- Custom error pages from directory `errors` into the site’s root directory
 - Settings from `_config.yml`
-- Draft, build, and deploy support via `Rakefile.rb`, including creating a UUID for posts
+- Draft, build, and deploy support via `Rakefile.rb`, including creating a UUID for posts, into the site’s root directory
 
-Only the categories and custom error pages need to be edited, if you want to (category name, color, emoji, title, permalink, maybe extra textual content).
+Only the category settings and custom error pages need to be edited, if you want to (category name, color, emoji, title, permalink, maybe extra textual content).
 
 ## Minutiae
 
