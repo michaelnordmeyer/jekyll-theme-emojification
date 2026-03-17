@@ -25,7 +25,7 @@ In the [posts from 2023 below](#2023) are a variety of color-matching emoji. Mat
 
 ## Special Cases
 
-The color grey has only a single foreground color and links colored in a two-tone style, which was derived from the appearance of Apple’s interpretation of Unicode’s [“teacup without handle”](https://emojipedia.org/teacup-without-handle#designs). Visited links are less saturated. The contrast is not great, though.
+The color grey has only a single foreground color and links are colored in a two-tone style, which was derived from the appearance of Apple’s interpretation of Unicode’s [“teacup without handle”](https://emojipedia.org/teacup-without-handle#designs). Visited links are less saturated. The contrast is not great, though.
 
 I run the grey theme on [my home page](https://michaelnordmeyer.com/).
 
@@ -40,7 +40,7 @@ I run the grey theme on [my home page](https://michaelnordmeyer.com/).
 - Posts
 - Pages
 - Fancy category pages (also on GitHub Pages, where additional plugins are not allowed)
-- A styled redirection page, which will be used by the optional plugin [Jekyll Redirect From](https://github.com/jekyll/jekyll-redirect-from)
+- A styled redirection page, which will be used by the plugin [`jekyll-redirect-from`](https://github.com/jekyll/jekyll-redirect-from)
 - Built-in feed and sitemap creation (no dependency to jekyll-feed and jekyll-sitemap)
 - Theme-color matching favicons
 - Optional [colorful index pages](/index-colorful)

@@ -23,14 +23,14 @@ Compatible with Jekyll >= 3.9.3 and GitHub Pages.
 - Posts
 - Pages
 - Fancy category pages (also on GitHub Pages, where additional plugins are not allowed)
-- A styled redirection page, which will be used by the optional plugin [Jekyll Redirect From](https://github.com/jekyll/jekyll-redirect-from)
+- A styled redirection page, which will be used by the plugin [`jekyll-redirect-from`](https://github.com/jekyll/jekyll-redirect-from)
 - Built-in feed and sitemap creation (no dependency to jekyll-feed and jekyll-sitemap)
 - Theme-color matching favicons
 - Optional colorful index pages
 - Header images
 - Optional descriptions or excerpts in feed, SEO tags, and on category and home pages
 - Content warnings for embedded videos
-- Hidden semantic info for embedding and SEO like Open Graph, JSON-LD, and inline Microdata. No need for the `jekyll-seo-tag` plugin
+- Hidden semantic info for embedding and SEO like [Open Graph](https://ogp.me/), [JSON-LD](https://json-ld.org/), and inline [Microdata](https://en.wikipedia.org/wiki/Microdata_(HTML)). No need for the `jekyll-seo-tag` plugin
 - Minimal build and load times
 - Custom header and footer to add snippets
 
