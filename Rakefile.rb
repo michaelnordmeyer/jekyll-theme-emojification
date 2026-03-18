@@ -19,7 +19,7 @@ ssh_path = "/srv/http/#{base_url}/"
 
 task :default => ["build"]
 
-desc 'Creates a draft from a template with an UUID'
+desc 'Creates a draft from a template with a UUID'
 task :draft do
   puts '==> Creating draft...'
   sh 'sed "s/uuid:/uuid: $(uuidgen)/" _drafts/_.md > _drafts/$(date +%Y-%m-%d-%H-%M-%S).md'
