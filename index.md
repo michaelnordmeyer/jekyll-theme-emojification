@@ -7,7 +7,7 @@ icon: 🧑‍🎨
 ---
 A simple and minimal single-author theme with configurable big emoji as the header link, and configurable background colors, which can be chosen for each post or page. [Sample craziness](/colors/).
 
-![Sample](/repo-card.webp){: loading="lazy" style="box-shadow: 5px 5px black;"}
+![Sample](/images/repo-card.webp){: loading="lazy" style="box-shadow: 5px 5px black;"}
 
 ## The Idea
 

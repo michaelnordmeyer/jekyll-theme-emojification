@@ -36,14 +36,40 @@ This page’s `hotpink.scss`:
 @use "black-white";
 
 :root {
-  --bg-color: hsl(330 100% 71%);
-  --pre-bg-color: hsl(330 100% 66%);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: hsl(330 100% 71%);
+    --pre-bg-color: hsl(330 100% 76%);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: hsl(330 100% 5%);
+    --pre-bg-color: hsl(330 100% 10%);
+    --fg-color: hsl(330 100% 71%);
+    --decoration-color: hsl(330 100% 95%);
+    --link-color: var(--fg-color);
+    --link-u-color: var(--decoration-color);
+    --link-vis-color: var(--fg-color);
+    --link-vis-u-color: hsl(330 100% 85%);
+    --line-color: var(--decoration-color);
+  }
+
+  ::selection {
+    background-color: hsl(330 100% 71% / 0.5);
+  }
 }
 ```
 
-For a style with saturated colors, only `--bg-color` and `--pre-bg-color` have to be changed.
+For a style with saturated colors, only `--bg-color` and `--pre-bg-color` have to be changed for light mode.
 
 For the `--pre-bg-color` color I mostly choose a 5 percentage points lower or higher luminance than the `--bg-color`. That’s the second percentage of this `HSL` color. [Mozilla’s color picker](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool) to the rescue.
+
+Dark mode takes a little more work, but it is derived from the light `--bg-color`. It becomes the `--fg-color` of the dark mode, and the rest of the colors are the same color but with substantially less or more luminance.
 
 ## Create Your Own
 
@@ -51,18 +77,7 @@ To have a defined color in frontmatter's `theme_color` or `_config.yml`’s `the
 
 ### Named Colors
 
-For named colors like “orange”, the file has to be named `orange.scss`. Create a directory called `assets` in your site’s root directory, and a subdirectory called `css`. In there create a file called `orange.scss`, and put the corresponding HSL colors in there:
-
-```css
----
----
-@use "black-white";
-
-:root {
-  --bg-color: hsl(39 100% 50%);
-  --pre-bg-color: hsl(39 100% 45%);
-}
-```
+For named colors like “orange”, the file has to be named `orange.scss`. Create a directory called `assets` in your site’s root directory, and finally a subdirectory called `css`. In there create a file called `orange.scss`, and put the colors derived from hsl(39 100% 50%) in there.
 
 ### Hex Colors
 

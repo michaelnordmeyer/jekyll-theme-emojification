@@ -1,22 +1,22 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 set -eu
 
-if [ ${#} -lt 6 ] || [ ${#} -gt 7 ]; then
+if [[ ${#} -lt 5 || ${#} -gt 6 ]]; then
   echo "Creates a 180×180 icon from a Unicode glyph, like ★"
   echo "Sets filename to background color if not set as parameter"
-  echo "Usage: ${0##*/} <background-color> <foreground-color> <font> <unicode-glyph> <output_dir> <file-extension> [filename]"
-  echo "Example: ${0##*/} hotpink white /System/Library/Fonts/Apple\ Symbols.ttf ★ static/assets/icons webp"
+  echo "Usage: ${0##*/} <background-color> <foreground-color> <font> <unicode-glyph> <output_dir> [filename]"
+  echo "Example: ${0##*/} hotpink white /System/Library/Fonts/Apple\ Symbols.ttf ★ static/assets/icons"
   exit 1
 fi
 
 output_dir="${5}"
 mkdir -p "${output_dir}"
 
-if [ -z "${7+x}" ]; then
+if [[ -z "${6+x}" ]]; then
   filename="${1}"
 else
-  filename="${7}"
+  filename="${6}"
 fi
 
 # Depending on the font metrics the glyph has to be manually centered.
@@ -36,6 +36,6 @@ convert \
   -pointsize 256 \
   -annotate +1+12 "${4}" \
   label:' ' \
-  "${output_dir}/${filename}.${6}"
+  "${output_dir}/${filename}.webp"
 
-chmod go+r "${output_dir}/${filename}.${6}"
+chmod go+r "${output_dir}/${filename}.webp"

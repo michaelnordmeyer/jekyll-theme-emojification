@@ -52,8 +52,6 @@ social: # Social links are used in SEO meta headers (jekyll-seo-tag built-in)
     - https://www.xing.com/profile/Michael_Nordmeyer
     - https://indieweb.social/@mnordmeyer
 title_separator: " • " # default: " | "
-## Custom theme settings
-favicon: yellowgreen.webp # filename, not full path. Optional, is also used by feeds
 ## Custom theme settings to not overwrite anything from Jekyll or plugins
 theme_settings:
   # category_title_prefix: "" # default: "Category: "

@@ -3,6 +3,30 @@
 @use "black-white";
 
 :root {
-  --bg-color: hsl(33 100% 50%);
-  --pre-bg-color: hsl(33 100% 55%);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: hsl(33 100% 50%);
+    --pre-bg-color: hsl(33 100% 55%);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: hsl(33 100% 5%);
+    --pre-bg-color: hsl(33 100% 10%);
+    --fg-color: hsl(33 100% 50%);
+    --decoration-color: hsl(33 100% 90%);
+    --link-color: var(--fg-color);
+    --link-u-color: var(--decoration-color);
+    --link-vis-color: var(--fg-color);
+    --link-vis-u-color: hsl(33 100% 80%);
+    --line-color: var(--decoration-color);
+  }
+
+  ::selection {
+    background-color: hsl(33 100% 50% / 0.5);
+  }
 }

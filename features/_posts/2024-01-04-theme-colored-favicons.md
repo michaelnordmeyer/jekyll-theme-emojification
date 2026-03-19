@@ -10,10 +10,6 @@ theme_color: gold
 ---
 Your browser should display a favicon in the color of the background, which applies to all pages of this site. This happens automatically, if they have been created when a [theme with a new background color was created](/manuals/choosing-and-applying-colors).
 
-Because a favicon is linked in the site’s feed, it has to be configured as well. It should reflect the homepage’s theme color. It is declared in the site’s `_config.yaml`. For this site it is:
-
-```yaml
-favicon: /assets/icons/yellowgreen.webp # optional, is used by the Atom feed
-```
+Atom feeds also link to a favicon. To reflect the homepage’s theme color, the default-colored favicon is linked.
 
 If you like to use other icons, you can easily [generate favicons from Unicode glyphs](https://michaelnordmeyer.com/generating-favicons-from-unicode-glyphs), if you are not afraid of the terminal.

@@ -27,9 +27,9 @@
   <link rel="alternate" type="text/html" href="{{ '/' | absolute_url }}" {% if site.lang %}hreflang="{{ site.lang }}" {% endif %}/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
   <id>{{ page.url | absolute_url | xml_escape }}</id>
-  {%- assign icon = site.favicon -%}
-  {%- if icon %}
-  <icon>{{ '/assets/icons/' | append: icon | absolute_url | xml_escape }}</icon>
+  {%- assign theme_color = site.theme_color -%}
+  {%- if theme_color and theme_color != 'none' %}
+  <icon>{{ '/assets/icons/' | append: theme_color | append: '.webp' | absolute_url | xml_escape }}</icon>
   {%- endif -%}
   {%- assign title = site.title | default: site.name -%}
   {%- assign title_separator = site.feed.title_separator | default: ': ' -%}

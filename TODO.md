@@ -33,7 +33,6 @@ cd .. && gem build jekyll-theme-emojification.gemspec && gem install --local jek
     {%- endif -%}
   {%- endif %}
 - [ ] Add all theme-supported variables in _data as YAML and create documentation
-- [ ] Add info about favicon and XML or use submodules
 - [ ] Submit themes
   - [ ] https://github.com/stackbit/jamstackthemes
   - [ ] https://github.com/mattvh/jekyllthemes

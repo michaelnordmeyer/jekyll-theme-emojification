@@ -14,7 +14,9 @@ If the ordinary post index is too boring, there’s also a crazy option. Put `co
 
 This only works well for posts with backgrounds different from the index page’s background, because of the added padding. The posts with default theme color have too much of it.
 
-Also the special theme cases black, white, and grey don’t work well with the link styling of the current page’s theme color.
+Also the special theme cases colorless and grey don’t work well with the link styling of the current page’s theme color.
+
+And dark mode makes it hard to have proper link styling at all, which means the colorful index effectively only works for theme color “none”, which has no styling at all, or “colorless”, which has the background colors white and black for light and dark mode.
 
 ## Configuration for Index Pages
 
