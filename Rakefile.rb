@@ -67,7 +67,7 @@ end
 desc 'Syncs the content of ./_site to the server via rsync'
 task :rsync do
   puts "==> Rsyncing #{base_url}'s content to SSH host #{ssh_domain}"
-  sh "rsync -e 'ssh -p #{ssh_port}' -vcrlptDShP --delete --rsync-path 'sudo -u root rsync' --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
+  sh "rsync -e 'ssh -p #{ssh_port}' -vcrlptDShP --delete --rsync-path 'sudo -u #{ssh_user} rsync' --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
     --exclude=.DS_Store \
     --exclude=._* \
     --exclude=.git \
