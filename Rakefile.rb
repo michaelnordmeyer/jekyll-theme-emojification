@@ -12,7 +12,10 @@ end
 gemspec = File.absolute_path(File.basename(File.dirname(__FILE__)) + ".gemspec")
 artefact = Gem::Specification::load(gemspec).name
 version = Gem::Specification::load(gemspec).version
-ssh_domain = 'michaelnordmeyer.com'
+log_path = '/var/log/nginx'
+nginx_user = 'nginx'
+nginx_group = 'adm'
+ssh_host = 'michaelnordmeyer.com'
 ssh_port = 1111
 ssh_user = 'root'
 ssh_path = "/srv/http/#{base_url}/"
@@ -66,7 +69,8 @@ end
 
 desc 'Syncs the content of ./_site to the server via rsync'
 task :rsync do
-  puts "==> Rsyncing #{base_url}'s content to SSH host #{ssh_domain}"
+  puts "==> Rsyncing #{base_url}'s content to SSH host #{ssh_host}"
+  sh "ssh -p #{ssh_port} #{ssh_user}@#{ssh_host} 'touch #{log_path}/#{domain}.log && chown #{nginx_user}:#{nginx_group} #{log_path}/#{domain}.log'"
   sh "rsync -e 'ssh -p #{ssh_port}' -vcrlptDShP --delete \
     --rsync-path 'sudo -u #{ssh_user} rsync' --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
     --exclude=.DS_Store \
@@ -75,25 +79,25 @@ task :rsync do
     --exclude=.gitignore \
     --exclude=.github \
     _site/ \
-    #{ssh_user}@#{ssh_domain}:#{ssh_path}"
+    #{ssh_user}@#{ssh_host}:#{ssh_path}"
 end
 
 desc 'Copies robots.txt to the server via scp'
 task :scprobots do
-  puts "==> Scp'ing #{base_url} robots.txt to SSH host #{ssh_domain}"
-  sh "scp -P #{ssh_port} robots.txt #{ssh_user}@#{ssh_domain}:#{ssh_path}"
+  puts "==> Scp'ing #{base_url} robots.txt to SSH host #{ssh_host}"
+  sh "scp -P #{ssh_port} robots.txt #{ssh_user}@#{ssh_host}:#{ssh_path}"
 end
 
 desc 'Compresses the site via SSH'
 task :compress do
   puts "==> Compressing #{base_url} via SSH..."
-  sh "ssh -p #{ssh_port} #{ssh_user}@#{ssh_domain} 'for file in $(find #{ssh_path} -type f -size +1100c -regex \".*\\.\\(css\\|map\\|html\\|js\\|json\\|svg\\|txt\\|xml\\)$\"); do printf . && gzip -kf -9 \"${file}\" && brotli -kf -q 9 \"${file}\"; done; echo'"
+  sh "ssh -p #{ssh_port} #{ssh_user}@#{ssh_host} 'for file in $(find #{ssh_path} -type f -size +1100c -regex \".*\\.\\(css\\|map\\|html\\|js\\|json\\|svg\\|txt\\|xml\\)$\"); do printf . && gzip -kf -9 \"${file}\" && brotli -kf -q 9 \"${file}\"; done; echo'"
 end
 
 desc 'Compresses robots.txt via SSH'
 task :compressrobots do
   puts "==> Compressing #{base_url} robots.txt via SSH..."
-  sh "ssh -p #{ssh_port} #{ssh_user}@#{ssh_domain} 'gzip -kf -9 #{ssh_path}robots.txt && brotli -kf -q 9 #{ssh_path}robots.txt'"
+  sh "ssh -p #{ssh_port} #{ssh_user}@#{ssh_host} 'gzip -kf -9 #{ssh_path}robots.txt && brotli -kf -q 9 #{ssh_path}robots.txt'"
 end
 
 desc 'Builds and deploys the site'
