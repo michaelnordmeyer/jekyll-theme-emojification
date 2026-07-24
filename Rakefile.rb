@@ -70,7 +70,7 @@ end
 desc 'Syncs the content of ./_site to the server via rsync'
 task :rsync do
   puts "==> Rsyncing #{base_url}'s content to SSH host #{ssh_host}"
-  sh "ssh -p #{ssh_port} #{ssh_user}@#{ssh_host} 'touch #{log_path}/#{domain}.log && chown #{nginx_user}:#{nginx_group} #{log_path}/#{domain}.log'"
+  sh "ssh -p #{ssh_port} #{ssh_user}@#{ssh_host} 'touch #{log_path}/#{base_url}.log && chown #{nginx_user}:#{nginx_group} #{log_path}/#{base_url}.log'"
   sh "rsync -e 'ssh -p #{ssh_port}' -vcrlptDShP --delete \
     --rsync-path 'sudo -u #{ssh_user} rsync' --chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r \
     --exclude=.DS_Store \
