@@ -61,7 +61,7 @@ theme_settings:
   # feed_filename: "feed.xml" # default: "feed.xml"
   # home_link_title: "" # default: "Home"
   # home_link_aria_label: "" # default: "Home Link"
-  icon: 🌳
+  icon: 🐼
   # lang_direction: rtl # default: "ltr"
   # redirect_page_title: "Redirecting…" # default: "Redirecting…"
   # redirect_page_from: "Redirecting from" # default: "Redirecting from"
@@ -71,7 +71,7 @@ theme_settings:
   show_descriptions: true # default: false
   tag_icon: 🏷️
   # tag_title_prefix: "" # default: "Tag: "
-  theme_color: yellowgreen # default: none (= no colors. If this CSS file is missing, there will be also no structural styling)
+  theme_color: colorless # default: none (= no colors. If this CSS file is missing, there will be also no structural styling)
 
 ## Plugin settings jekyll-archives
 jekyll-archives:
