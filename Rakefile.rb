@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+Rake::FileUtilsExt.verbose(false)
+
 ## Build settings
 # -c 8- for insecure HTTP URLs
 base_url = `yq '.url += .baseurl' _config.yml | grep -E '^url:' | cut -d ' ' -f 2 | cut -c 9- | tr -d '\n'`
