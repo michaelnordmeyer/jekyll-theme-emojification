@@ -30,13 +30,6 @@ task :draft do
   sh 'sed "s/uuid:/uuid: $(uuidgen)/" _drafts/_.md > _drafts/$(date +%Y-%m-%d-%H-%M-%S).md'
 end
 
-desc 'Builds the robots.txt'
-task :robots do
-  puts "==> Building #{base_url} robots.txt..."
-  sh "printf 'Sitemap: https://#{base_url}/sitemap.xml\\n\\n' > robots.txt"
-  sh 'cat ../robots.txt >> robots.txt'
-end
-
 desc 'Builds the icons'
 task :icons do
   puts "==> Building #{base_url} icons..."
@@ -54,7 +47,6 @@ end
 
 desc 'Builds the site for deployment'
 task :build do
-  Rake::Task[:robots].invoke
   Rake::Task[:icons].invoke
   puts "==> Building #{base_url}..."
   sh 'JEKYLL_ENV="production" bundle exec jekyll build'
@@ -63,10 +55,16 @@ end
 
 desc 'Serves the site locally'
 task :serve do
-  Rake::Task[:robots].invoke
   Rake::Task[:icons].invoke
   puts "==> Building and serving #{base_url} locally..."
   sh 'bundle exec jekyll serve'
+end
+
+desc 'Builds the robots.txt'
+task :robots do
+  puts "==> Building #{base_url} robots.txt..."
+  sh "printf 'Sitemap: https://#{base_url}/sitemap.xml\\n\\n' > robots.txt"
+  sh 'cat ../robots.txt >> robots.txt'
 end
 
 desc 'Syncs the content of ./_site to the server via rsync'
@@ -106,9 +104,9 @@ desc 'Builds and deploys the site'
 task :deploy do
   puts "==> Building and deploying #{base_url}..."
   Rake::Task[:build].invoke
+  Rake::Task[:robots].invoke
   Rake::Task[:rsync].invoke
   Rake::Task[:compress].invoke
-  Rake::Task[:clean].invoke
 end
 
 desc 'Builds and deploys the robots.txt'
