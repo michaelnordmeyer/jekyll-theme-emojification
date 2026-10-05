@@ -91,13 +91,15 @@ end
 desc 'Compresses the site via SSH'
 task :compress do
   puts "==> Compressing #{base_url} via SSH..."
-  sh "ssh -p #{ssh_port} #{ssh_user}@#{ssh_host} 'for file in $(find #{ssh_path} -type f -size +1100c -regex \".*\\.\\(css\\|map\\|html\\|js\\|json\\|svg\\|txt\\|xml\\)$\"); do printf . && gzip -kf -9 \"${file}\" && brotli -kf -q 9 \"${file}\"; done; echo'"
+  # sh "ssh -p #{ssh_port} #{ssh_user}@#{ssh_host} 'for file in $(find #{ssh_path} -type f -size +1100c -regex \".*\\.\\(css\\|map\\|html\\|js\\|json\\|svg\\|txt\\|xml\\)$\"); do printf . && gzip -kf -9 \"${file}\" && brotli -kf -q 9 \"${file}\"; done; echo'"
+  sh "ssh -p #{ssh_port} #{ssh_user}@#{ssh_host} 'for file in $(find #{ssh_path} -type f -size +1100c -regex \".*\\.\\(css\\|map\\|html\\|js\\|json\\|svg\\|txt\\|xml\\)$\"); do printf . && gzip -kf -9 \"${file}\"; done; echo'"
 end
 
 desc 'Compresses robots.txt via SSH'
 task :compressrobots do
   puts "==> Compressing #{base_url} robots.txt via SSH..."
-  sh "ssh -p #{ssh_port} #{ssh_user}@#{ssh_host} 'gzip -kf -9 #{ssh_path}robots.txt && brotli -kf -q 9 #{ssh_path}robots.txt'"
+  # sh "ssh -p #{ssh_port} #{ssh_user}@#{ssh_host} 'gzip -kf -9 #{ssh_path}robots.txt && brotli -kf -q 9 #{ssh_path}robots.txt'"
+  sh "ssh -p #{ssh_port} #{ssh_user}@#{ssh_host} 'gzip -kf -9 #{ssh_path}robots.txt'"
 end
 
 desc 'Builds and deploys the site'
