@@ -1,23 +1,26 @@
 ---
 ---
-@use "black-white";
+@use "base-color";
 
 :root {
-  color-scheme: light dark;
+  --decoration-color: var(--fg-color);
+  --link-vis-u-color: color-mix(in srgb, var(--fg-color) 33%, transparent);
+  --line-color: color-mix(in srgb, var(--fg-color) 33%, transparent);
+}
+
+::selection {
+  color: var(--fg-color);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     --bg-color: hsl(0 0% 100%);
     --pre-bg-color: hsl(0 0% 95%);
-    --decoration-color: hsl(0 0% 0%);
-    --link-u-color: var(--decoration-color);
-    --link-vis-u-color: hsl(0 0% 67%);
-    --line-color: hsl(0 0% 67%);
+    --fg-color: hsl(0 0% 0%);
   }
 
   ::selection {
-    background-color: hsl(0 0% 0% / 0.25);
+    background-color: color-mix(in srgb, var(--fg-color) 25%, transparent);
   }
 }
 
@@ -26,15 +29,9 @@
     --bg-color: hsl(0 0% 0%);
     --pre-bg-color: hsl(0 0% 20%);
     --fg-color: hsl(30 100% 97%);
-    --decoration-color: var(--fg-color);
-    --link-color: var(--fg-color);
-    --link-u-color: var(--fg-color);
-    --link-vis-color: var(--fg-color);
-    --link-vis-u-color: hsl(0 0% 67%);
-    --line-color: hsl(0 0% 67%);
   }
 
   ::selection {
-    background-color: hsl(0 0% 100% / 0.5);
+    background-color: color-mix(in srgb, var(--fg-color) 50%, transparent);
   }
 }

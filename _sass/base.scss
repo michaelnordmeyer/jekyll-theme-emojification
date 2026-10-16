@@ -3,6 +3,7 @@
 /* General Baseline 2015-07 Edge 12 */
 
 :root { /* CSS variables: Baseline 2024-07 Firefox 128 */
+  color-scheme: light dark;
   --font-family: ui-sans-serif, 'Segoe UI', Roboto, Ubuntu, 'Noto Sans', 'Liberation Sans', system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-family-monospace: ui-monospace, 'Segoe UI Mono', 'Roboto Mono', 'Ubuntu Monospace', 'Noto Sans Mono', 'Liberation Mono', 'SF Mono', SFMono-Regular, monospace, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-size: 110%;
@@ -11,7 +12,7 @@
   --font-size-big:          calc(32/16 * 1rem);
   --font-size-list-heading: calc(24/16 * 1rem);
   --font-size-small:        calc(14/16 * 1rem);
-  --x-script:               calc(11/16 * 1rem);
+  --font-size-script:       calc(11/16 * 1rem);
   --border-radius:          calc( 3/16 * 1rem);
   --border-size-thick:      calc( 2/16 * 1rem);
   --border-size:            calc( 1/16 * 1rem);
@@ -38,21 +39,21 @@ h1 { margin-block: 0.67em; margin: 0 0 var(--spacing); font-size: var(--font-siz
 p { text-align: justify; hyphens: auto; } /* Baseline 2023-09 */
 ul, ol { padding: 0 calc(var(--spacing)) 0 calc(var(--spacing) * 2); }
 ul > ul, ol > ol, ul > ol, ol > ul, li > ul, li > ol { padding-left: calc(var(--spacing) * 5/4); }
-blockquote { margin-left: calc(var(--spacing) * 1/2); padding-left: calc(var(--spacing) * 3/4); border-left: var(--border-size) solid var(--line-color); }
-pre, code { border: var(--border-size) solid var(--pre-bg-color); border-radius: var(--border-radius); background-color: var(--pre-bg-color); font-family: var(--font-family-monospace); tab-size: 2; } /* Baseline 2021-08 */
+blockquote { margin-left: calc(var(--spacing) * 1/2); padding-left: calc(var(--spacing) * 3/4); border-left-width: var(--border-size); border-left-style: solid; }
+pre, code { border-radius: var(--border-radius); font-family: var(--font-family-monospace); tab-size: 2; } /* Baseline 2021-08 */
 pre { padding: calc(var(--spacing) * 1/2) calc(var(--spacing) * 3/4); overflow-x: auto; }
 code { padding: calc(var(--spacing) * 1/8) calc(var(--spacing) * 1/4); }
-pre > code { border: 0; padding-right: 0; padding-left: 0; }
-sub, sup { font-size: var(--x-script); line-height: 0; }
+pre > code { padding-right: 0; padding-left: 0; }
+sub, sup { font-size: var(--font-size-script); line-height: 0; }
 figure { margin-left: 0; margin-right: 0; max-width: 100%; text-align: center; font-size: var(--font-size-small); line-height: 1; }
 figure:has(iframe) > figcaption { margin-top: var(--spacing); } /* Baseline 2023-12 */
 table { border-collapse: collapse; margin: var(--spacing) auto; }
 th, td { padding: calc(var(--spacing) * 1/2); }
-thead th { border-bottom: var(--border-size-thick) solid var(--line-color); }
-tbody th, tbody td { border-top: var(--border-size) solid var(--line-color); }
+thead th { border-bottom-width: var(--border-size-thick); border-bottom-style: solid; }
+tbody th, tbody td { border-top-width: var(--border-size); border-top-style: solid; }
 tbody + tbody,
-tfoot th, tfoot td { border-top: var(--border-size-thick) solid var(--line-color); }
-hr { margin: calc(var(--spacing) * 2) 0; border: none; border-top: var(--border-size) solid var(--line-color); }
+tfoot th, tfoot td { border-top-width: var(--border-size-thick); border-top-style: solid; }
+hr { margin: calc(var(--spacing) * 2) 0; border: none; border-top-width: var(--border-size); border-top-style: solid; }
 body > header { margin: calc(var(--spacing) * 1/2) auto; text-align: center; font-size: var(--font-size-emoji); line-height: 1; }
 body > header a { text-decoration: none; }
 body > main { margin-bottom: calc(var(--spacing) * 3); }

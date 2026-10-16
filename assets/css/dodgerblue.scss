@@ -2,10 +2,6 @@
 ---
 @use "black-white";
 
-:root {
-  color-scheme: light dark;
-}
-
 @media (prefers-color-scheme: light) {
   :root {
     --bg-color: hsl(210 100% 56%);
@@ -19,14 +15,6 @@
     --pre-bg-color: hsl(210 100% 10%);
     --fg-color: hsl(210 100% 61%);
     --decoration-color: hsl(210 100% 90%);
-    --link-color: var(--fg-color);
-    --link-u-color: var(--decoration-color);
-    --link-vis-color: var(--fg-color);
     --link-vis-u-color: hsl(210 100% 80%);
-    --line-color: var(--decoration-color);
-  }
-
-  ::selection {
-    background-color: hsl(210 100% 56% / 0.5);
   }
 }

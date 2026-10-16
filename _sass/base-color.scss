@@ -1,5 +1,11 @@
 @use "base";
 
+:root {
+  --link-color: var(--fg-color);
+  --link-u-color: var(--decoration-color);
+  --link-vis-color: var(--fg-color);
+}
+
 html {
   background-color: var(--bg-color);
   color: var(--fg-color);
@@ -14,3 +20,11 @@ a:visited {
   color: var(--link-vis-color);
   text-decoration-color: var(--link-vis-u-color);
 }
+
+blockquote { border-left-color: var(--line-color); }
+pre, code { background-color: var(--pre-bg-color); }
+thead th { border-bottom-color: var(--line-color); }
+tbody th, tbody td { border-top-color: var(--line-color); }
+tbody + tbody,
+tfoot th, tfoot td { border-top-color: var(--line-color); }
+hr { border-top-color: var(--line-color); }
