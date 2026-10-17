@@ -3,35 +3,21 @@
 @use "base-color";
 
 :root {
+  --bg-color: light-dark(
+    hsl(0 0% 100%),
+    hsl(0 0% 0%)); /* Baseline 2024-05 Safari 17.5 */
+  --pre-bg-color: light-dark(
+    hsl(0 0% 95%),
+    hsl(0 0% 20%)); /* Baseline 2024-05 Safari 17.5 */
+  --fg-color: light-dark(
+    hsl(0 0% 0%),
+    hsl(30 100% 97%)); /* Baseline 2024-05 Safari 17.5 */
   --decoration-color: var(--fg-color);
   --link-vis-u-color: color-mix(in srgb, var(--fg-color) 33%, transparent);
   --line-color: color-mix(in srgb, var(--fg-color) 33%, transparent);
 }
 
 ::selection {
+  background-color: light-dark(color-mix(in srgb, var(--fg-color) 25%, transparent), color-mix(in srgb, var(--fg-color) 50%, transparent)); /* Baseline 2026-09 Safari 27 */
   color: var(--fg-color);
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg-color: hsl(0 0% 100%);
-    --pre-bg-color: hsl(0 0% 95%);
-    --fg-color: hsl(0 0% 0%);
-  }
-
-  ::selection {
-    background-color: color-mix(in srgb, var(--fg-color) 25%, transparent);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: hsl(0 0% 0%);
-    --pre-bg-color: hsl(0 0% 20%);
-    --fg-color: hsl(30 100% 97%);
-  }
-
-  ::selection {
-    background-color: color-mix(in srgb, var(--fg-color) 50%, transparent);
-  }
 }

@@ -2,19 +2,20 @@
 ---
 @use "black-white";
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg-color: hsl(210 100% 56%);
-    --pre-bg-color: hsl(210 100% 61%);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: hsl(210 100% 5%);
-    --pre-bg-color: hsl(210 100% 10%);
-    --fg-color: hsl(210 100% 61%);
-    --decoration-color: hsl(210 100% 90%);
-    --link-vis-u-color: hsl(210 100% 80%);
-  }
+:root {
+  --bg-color: light-dark(
+    hsl(210 100% 56%),
+    hsl(210 100% 5%)); /* Baseline 2024-05 Safari 17.5 */
+  --pre-bg-color: light-dark(
+    hsl(210 100% 61%),
+    hsl(210 100% 10%)); /* Baseline 2024-05 Safari 17.5 */
+  --fg-color: light-dark(
+    hsl(0 0% 0%),
+    hsl(210 100% 61%)); /* Baseline 2024-05 Safari 17.5 */
+  --decoration-color: light-dark(
+    hsl(0 0% 100%),
+    hsl(210 100% 90%)); /* Baseline 2024-05 Safari 17.5 */
+  --link-vis-u-color: light-dark(
+    var(--fg-color),
+    hsl(210 100% 80%)); /* Baseline 2024-05 Safari 17.5 */
 }

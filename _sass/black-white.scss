@@ -1,9 +1,6 @@
 @use "base-color";
 
 :root {
-  --fg-color: hsl(0 0% 0%);
-  --decoration-color: hsl(0 0% 100%);
-  --link-vis-u-color: var(--fg-color);
   --line-color: var(--decoration-color);
 }
 
