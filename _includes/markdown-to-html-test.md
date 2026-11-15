@@ -27,7 +27,7 @@ Another paragraph with more text to show, how the paragraph spacing is done. Not
 - List item two
 - List item three
 
-#### Ordered List (Nested)
+#### Ordered Lists (Nested)
 
 1. List item one
    1. List item one
@@ -72,7 +72,8 @@ The image tag will show a linked image, in this case the favicon for this page, 
   {%- assign theme_color = theme_color | replace: '#', '' -%}
 {%- elsif theme_color == 'none' -%}
   {%- assign theme_color = 'white' -%}
-{%- endif -%}
+{%- endif %}
+
 ![Image Alt Text]({{ '/assets/icons/' | relative_url }}{{ theme_color }}.webp "Image Title Text")
 
 ### Pre-Formatted Tag
