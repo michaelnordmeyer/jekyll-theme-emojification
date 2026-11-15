@@ -32,14 +32,14 @@ end
 
 desc 'Builds the icons'
 task :icons do
-  puts "==> Building #{base_url} icons..."
+  puts "==> Building #{base_url}'s icons..."
   sh '_tools/generate-icons.sh . $(yq ".theme_settings.theme_color" _config.yml) "★" "/System/Library/Fonts/Apple Symbols.ttf"'
   sh 'for color in $(find . -type f -iname "*.md" -exec grep -E "^theme_color: " {} \; | cut -d ":" -f 2 | cut -d " " -f 2 | sort | uniq); do _tools/generate-icons.sh . "${color//\"/}" "★" "/System/Library/Fonts/Apple Symbols.ttf"; done'
 end
 
 desc 'Beautifies kramdown output'
 task :beautify do
-  puts "==> Beautifying #{base_url} kramdown output..."
+  puts "==> Beautifying #{base_url}'s kramdown output..."
   sh "for file in _site/*.html _site/**/*.html; do sed -i '' -E 's,<((br|hr|img|link|meta).*) />,<\\1>,g' ${file}; done"
   sh "for file in _site/*.html _site/**/*.html; do sed -i '' -E 's/ class=\"footnotes?\"//g' ${file}; done"
   sh "for file in _site/*.html _site/**/*.html; do sed -i '' 's/ class=\"reversefootnote\"//g' ${file}; done"
@@ -61,8 +61,8 @@ task :serve do
 end
 
 desc 'Builds the robots.txt'
-task :robots do
-  puts "==> Building #{base_url} robots.txt..."
+task :robotstxt do
+  puts "==> Building #{base_url}'s robots.txt..."
   sh "printf 'Sitemap: https://#{base_url}/sitemap.xml\\n\\n' > robots.txt"
   sh 'cat ../robots.txt >> robots.txt'
 end
@@ -83,8 +83,8 @@ task :rsync do
 end
 
 desc 'Copies robots.txt to the server via scp'
-task :scprobots do
-  puts "==> Scp'ing #{base_url} robots.txt to SSH host #{ssh_host}"
+task :scprobotstxt do
+  puts "==> Scp'ing #{base_url}'s robots.txt to SSH host #{ssh_host}"
   sh "scp -P #{ssh_port} robots.txt #{ssh_user}@#{ssh_host}:#{ssh_path}"
 end
 
@@ -96,8 +96,8 @@ task :compress do
 end
 
 desc 'Compresses robots.txt via SSH'
-task :compressrobots do
-  puts "==> Compressing #{base_url} robots.txt via SSH..."
+task :compressrobotstxt do
+  puts "==> Compressing #{base_url}'s robots.txt via SSH..."
   # sh "ssh -p #{ssh_port} #{ssh_user}@#{ssh_host} 'gzip -kf -9 #{ssh_path}robots.txt && brotli -kf -q 9 #{ssh_path}robots.txt'"
   sh "ssh -p #{ssh_port} #{ssh_user}@#{ssh_host} 'gzip -kf -9 #{ssh_path}robots.txt'"
 end
@@ -106,17 +106,17 @@ desc 'Builds and deploys the site'
 task :deploy do
   puts "==> Building and deploying #{base_url}..."
   Rake::Task[:build].invoke
-  Rake::Task[:robots].invoke
+  Rake::Task[:robotstxt].invoke
   Rake::Task[:rsync].invoke
   Rake::Task[:compress].invoke
 end
 
 desc 'Builds and deploys the robots.txt'
-task :deployrobots do
-  puts "==> Building and deploying #{base_url} robots.txt..."
-  Rake::Task[:robots].invoke
-  Rake::Task[:scprobots].invoke
-  Rake::Task[:compressrobots].invoke
+task :deployrobotstxt do
+  puts "==> Building and deploying #{base_url}'s robots.txt..."
+  Rake::Task[:robotstxt].invoke
+  Rake::Task[:scprobotstxt].invoke
+  Rake::Task[:compressrobotstxt].invoke
 end
 
 desc 'Cleans the source dir'
