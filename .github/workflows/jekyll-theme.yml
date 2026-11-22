@@ -18,70 +18,16 @@ jobs:
       fail-fast: false
       matrix:
         # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#choosing-github-hosted-runners
-        os: [ubuntu-latest, ubuntu-24.04-arm, macos-14, macos-latest, windows-latest]
+        os: [ubuntu-latest, ubuntu-26.04-arm, macos-latest, macos-26-intel, windows-latest, windows-11-arm]
         # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
-        ruby: ['3.3', '3.4', '4.0']
+        ruby: ['3.4', '4.0']
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 1
       - name: "Set up Ruby ${{ matrix.ruby }} on ${{ matrix.os }}"
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby }}
-          rubygems: latest
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - name: Build Jekyll
-        run: bundle exec jekyll build
-        env:
-          JEKYLL_ENV: production
-      - name: Build gem
-        run: bundle exec gem build *.gemspec
-
-  gem_build_jruby:
-    name: "Gem build (JRuby on ${{ matrix.os }})"
-    if: "!contains(github.event.commits[0].message, '[ci skip]')"
-    strategy:
-      fail-fast: false
-      matrix:
-        # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#choosing-github-hosted-runners
-        os: [ubuntu-latest, ubuntu-24.04-arm, macos-14, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-      - name: "Setup JRuby on ${{ matrix.os }}"
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: jruby
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - name: Build Jekyll
-        run: bundle exec jekyll build
-        env:
-          JEKYLL_ENV: production
-      - name: Build gem
-        run: bundle exec gem build *.gemspec
-
-  gem_build_windows_11_arm:
-    name: "Gem build (Ruby ${{ matrix.ruby }} on windows-11-arm)"
-    if: "!contains(github.event.commits[0].message, '[ci skip]')"
-    strategy:
-      fail-fast: false
-      matrix:
-        # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
-        ruby: ['3.4', '4.0']
-    # https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#choosing-github-hosted-runners
-    runs-on: windows-11-arm
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-      - name: "Set up Ruby ${{ matrix.ruby }} on windows-11-arm"
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
